@@ -132,6 +132,10 @@ Review errors and warnings before creating a scenario. Missing input files, empt
 
 Night mode is off by default. The bottom of the page shows the last update date for the tool.
 
+## Upcoming/Planned Features
+
+- Input file variable tagging and grouping.
+
 ## Portability
 
 The editor is designed to run independently from the comparison tool. Move the full `VisionEvalEditor` folder to another device to keep the same editor features.

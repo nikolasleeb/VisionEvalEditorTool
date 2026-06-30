@@ -60,6 +60,10 @@ http://127.0.0.1:3000
 - Very small percentage changes may not visibly change integer cells if the calculated value rounds back to the original integer.
 - Scenario outputs are local and are not committed to this repository.
 
+## Upcoming/Planned Features
+
+- Input file variable tagging and grouping.
+
 ## Detailed Guide
 
 See [UserGuide.md](UserGuide.md) for the full workflow, interface notes, and troubleshooting guidance.
