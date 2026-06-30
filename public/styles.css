@@ -845,7 +845,9 @@ button:disabled {
 }
 
 .batch-checklist {
+  box-sizing: border-box;
   display: grid;
+  align-content: start;
   gap: 8px;
   min-height: 190px;
   height: 190px;

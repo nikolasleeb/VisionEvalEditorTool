@@ -18,6 +18,7 @@ const state = {
   batchFileCache: {},
   workspace: "",
   sidebarWidth: 280,
+  scenarioStarted: false,
 };
 
 const el = {
@@ -262,6 +263,9 @@ async function loadConfig() {
   await loadSimFiles();
   await loadSetupLocationOptions();
   updateStartNewScenarioButton();
+  state.scenarioStarted = false;
+  switchTab("guidePanel");
+  updateScenarioTabAccess();
 }
 
 async function loadScenarios() {
@@ -323,6 +327,7 @@ async function startNewScenario() {
   state.nextSimNumber = 2;
   state.activeSimIndex = 0;
   state.activeIterationIndex = 0;
+  state.scenarioStarted = true;
   state.batchFilterValue = [...simLocationDefaults(activeSim())];
   renderSimFiles();
   renderIterationEditor();
@@ -358,6 +363,7 @@ async function loadSelectedScenario() {
   resetSimCounterAfterNames(state.simDefinitions);
   state.activeSimIndex = 0;
   state.activeIterationIndex = 0;
+  state.scenarioStarted = true;
   state.batchFilterValue = [...simLocationDefaults(activeSim())];
   renderSimFiles();
   renderIterationEditor();
@@ -1989,9 +1995,27 @@ function setSidebarWidth(width) {
   el.iterationWorkspace.style.setProperty("--sidebar-width", `${clamped}px`);
 }
 
+function panelRequiresScenario(panelId) {
+  return panelId === "simulationEditorPanel" || panelId === "overviewSubmitPanel";
+}
+
+function updateScenarioTabAccess() {
+  el.tabButtons.forEach((button) => {
+    const locked = panelRequiresScenario(button.dataset.tab) && !state.scenarioStarted;
+    button.disabled = locked;
+    button.title = locked ? "Start or load a scenario first." : "";
+  });
+}
+
 function switchTab(panelId) {
+  if (panelRequiresScenario(panelId) && !state.scenarioStarted) {
+    updateScenarioTabAccess();
+    setStatus("Start a new scenario or load a saved scenario before opening the editor or submit tabs.");
+    panelId = "guidePanel";
+  }
   el.tabButtons.forEach((button) => button.classList.toggle("active", button.dataset.tab === panelId));
   el.tabPanels.forEach((panel) => panel.classList.toggle("active", panel.id === panelId));
+  updateScenarioTabAccess();
 }
 
 el.tabButtons.forEach((button) => button.addEventListener("click", () => switchTab(button.dataset.tab)));
