@@ -1554,6 +1554,8 @@ async function applyBatchPreview() {
     const columns = columnsByFile[file.path] || [];
     if (!columns.length) continue;
     const iteration = await prepareBatchIteration(sim, file);
+    iteration.columns = [...columns];
+    iteration.column = columns[0] || "";
     pushIterationUndo(iteration);
     let fileChanged = 0;
     for (const column of columns) {
@@ -1597,7 +1599,8 @@ async function applyBatchPreview() {
   if (firstIteration) {
     state.activeIterationIndex = firstIterationIndex;
     state.editorMode = "file";
-    firstIteration.column = (columnsByFile[firstIteration.filePath] || [])[0] || firstIteration.column;
+    firstIteration.columns = [...(columnsByFile[firstIteration.filePath] || [])];
+    firstIteration.column = firstIteration.columns[0] || firstIteration.column;
     firstIteration.year = year;
     firstIteration.operation = operation;
     firstIteration.value = value;
