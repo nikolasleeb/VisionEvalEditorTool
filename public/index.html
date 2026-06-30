@@ -4,7 +4,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>VisionEval Data Editor</title>
-    <link rel="stylesheet" href="/styles.css?v=editor-20260630-10">
+    <link rel="stylesheet" href="/styles.css?v=editor-20260630-11">
   </head>
   <body>
     <header>
@@ -169,10 +169,10 @@
                 </div>
                 <p class="muted">Select files first, then choose the numeric columns to change for each selected file.</p>
                 <section class="batch-grid">
-                  <label class="batch-files-control">
-                    Files
-                    <select id="batchFileSelect" multiple size="6"></select>
-                  </label>
+                  <div class="field-label batch-files-control">
+                    <span>Files</span>
+                    <div id="batchFileChecklist" class="batch-checklist batch-file-checklist"></div>
+                  </div>
                   <div class="field-label batch-columns-control">
                     <span>Columns</span>
                     <div id="batchColumnChecklist" class="batch-checklist"></div>
@@ -337,6 +337,6 @@
         </div>
       </form>
     </dialog>
-    <script src="/app.js?v=editor-20260630-10"></script>
+    <script src="/app.js?v=editor-20260630-11"></script>
   </body>
 </html>

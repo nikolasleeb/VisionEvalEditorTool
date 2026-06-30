@@ -57,7 +57,7 @@ const el = {
   simDefaultLocationValueSelect: document.getElementById("simDefaultLocationValueSelect"),
   simDefaultLocationDropdown: document.getElementById("simDefaultLocationDropdown"),
   simDefaultLocationSummary: document.getElementById("simDefaultLocationSummary"),
-  batchFileSelect: document.getElementById("batchFileSelect"),
+  batchFileChecklist: document.getElementById("batchFileChecklist"),
   batchColumnChecklist: document.getElementById("batchColumnChecklist"),
   batchLocationLevelSelect: document.getElementById("batchLocationLevelSelect"),
   batchLocationSearchInput: document.getElementById("batchLocationSearchInput"),
@@ -782,7 +782,9 @@ function fileByPath(path) {
 }
 
 function selectedBatchFilePaths() {
-  return [...(el.batchFileSelect?.selectedOptions || [])].map((option) => option.value).filter(Boolean);
+  return [...(el.batchFileChecklist?.querySelectorAll("input[type='checkbox'][data-batch-file-path]:checked") || [])]
+    .map((input) => input.dataset.batchFilePath)
+    .filter(Boolean);
 }
 
 function selectedBatchFiles() {
@@ -876,14 +878,25 @@ function renderActiveSimTools() {
 }
 
 function renderBatchControls() {
-  const selectedPaths = new Set(selectedBatchFilePaths());
-  el.batchFileSelect.innerHTML = state.simFiles
-    .map((file) => `<option value="${escapeHtml(file.path)}"${selectedPaths.has(file.path) ? " selected" : ""}>${escapeHtml(file.name)}</option>`)
-    .join("");
+  renderBatchFileChecklist();
   renderBatchLocationLevels();
   renderBatchColumns().catch((error) => {
     el.batchColumnChecklist.innerHTML = `<div class="muted">${escapeHtml(error.message)}</div>`;
   });
+}
+
+function renderBatchFileChecklist() {
+  const selectedPaths = new Set(selectedBatchFilePaths());
+  el.batchFileChecklist.innerHTML = state.simFiles.length
+    ? state.simFiles
+        .map(
+          (file) => `<label class="batch-check-option batch-file-option">
+            <input type="checkbox" data-batch-file-path="${escapeHtml(file.path)}"${selectedPaths.has(file.path) ? " checked" : ""}>
+            <span class="batch-column-name">${escapeHtml(file.name)}</span>
+          </label>`
+        )
+        .join("")
+    : `<div class="muted">Choose an input library first.</div>`;
 }
 
 function selectedBatchLocationLevel() {
@@ -2086,7 +2099,8 @@ el.addSidebarSimButton.addEventListener("click", () => {
   clearPreview();
 });
 el.duplicateSimButton.addEventListener("click", duplicateActiveSim);
-el.batchFileSelect.addEventListener("change", () => {
+el.batchFileChecklist.addEventListener("change", (event) => {
+  if (!event.target.matches("input[type='checkbox'][data-batch-file-path]")) return;
   const selected = new Set(selectedBatchFilePaths());
   Object.keys(state.batchColumnSelection).forEach((key) => {
     const splitAt = key.lastIndexOf("::");

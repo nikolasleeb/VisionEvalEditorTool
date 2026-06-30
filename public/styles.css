@@ -847,6 +847,8 @@ button:disabled {
 .batch-checklist {
   display: grid;
   gap: 8px;
+  min-height: 190px;
+  height: 190px;
   max-height: 190px;
   overflow: auto;
   padding: 8px;
@@ -883,17 +885,19 @@ button:disabled {
   flex: 0 0 auto;
 }
 
+.batch-file-checklist {
+  align-content: start;
+}
+
+.batch-file-option {
+  line-height: 1.25;
+}
+
 .batch-column-name {
   min-width: 0;
   color: var(--text);
   overflow-wrap: anywhere;
   white-space: normal;
-}
-
-#batchFileSelect {
-  display: block;
-  min-height: 118px;
-  max-height: 190px;
 }
 
 .iteration-controls {
