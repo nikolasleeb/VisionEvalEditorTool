@@ -64,6 +64,10 @@ http://127.0.0.1:3000
 
 - Input file variable tagging and grouping.
 
+## Developed By
+
+## Contact
+
 ## Detailed Guide
 
 See [UserGuide.md](UserGuide.md) for the full workflow, interface notes, and troubleshooting guidance.

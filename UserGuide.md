@@ -136,6 +136,10 @@ Night mode is off by default. The bottom of the page shows the last update date 
 
 - Input file variable tagging and grouping.
 
+## Developed By
+
+## Contact
+
 ## Portability
 
 The editor is designed to run independently from the comparison tool. Move the full `VisionEvalEditor` folder to another device to keep the same editor features.
