@@ -1,0 +1,5182 @@
+{
+  "source": "/Users/nikolasleebishop/VIsionEvalTools/VisionEvalComparison/VE/PlanRVA MM (Baseline)/results/Datastore/DatastoreListing.Rda",
+  "sourceLabel": "PlanRVA MM (Baseline)",
+  "variables": {
+    "bzone": [
+      {
+        "key": "Bzone/Bzone",
+        "table": "Bzone",
+        "name": "Bzone",
+        "display": "Bzone",
+        "type": "character",
+        "units": "",
+        "unitLabel": "",
+        "description": null
+      },
+      {
+        "key": "Household/Bzone",
+        "table": "Household",
+        "name": "Bzone",
+        "display": "Bzone (ID)",
+        "type": "character",
+        "units": "ID",
+        "unitLabel": "ID",
+        "description": "ID of Bzone in which household resides"
+      },
+      {
+        "key": "Worker/Bzone",
+        "table": "Worker",
+        "name": "Bzone",
+        "display": "Bzone (ID)",
+        "type": "character",
+        "units": "ID",
+        "unitLabel": "ID",
+        "description": "Bzone ID of worker job location"
+      }
+    ],
+    "azone": [
+      {
+        "key": "Bzone/Azone",
+        "table": "Bzone",
+        "name": "Azone",
+        "display": "Azone",
+        "type": "character",
+        "units": "",
+        "unitLabel": "",
+        "description": null
+      },
+      {
+        "key": "Azone/Azone",
+        "table": "Azone",
+        "name": "Azone",
+        "display": "Azone",
+        "type": "character",
+        "units": "",
+        "unitLabel": "",
+        "description": null
+      },
+      {
+        "key": "Household/Azone",
+        "table": "Household",
+        "name": "Azone",
+        "display": "Azone (ID)",
+        "type": "character",
+        "units": "ID",
+        "unitLabel": "ID",
+        "description": "Azone ID"
+      },
+      {
+        "key": "Worker/Azone",
+        "table": "Worker",
+        "name": "Azone",
+        "display": "Azone (ID)",
+        "type": "character",
+        "units": "ID",
+        "unitLabel": "ID",
+        "description": "Azone ID of worker job location"
+      },
+      {
+        "key": "Vehicle/Azone",
+        "table": "Vehicle",
+        "name": "Azone",
+        "display": "Azone (ID)",
+        "type": "character",
+        "units": "ID",
+        "unitLabel": "ID",
+        "description": "Azone ID"
+      }
+    ],
+    "marea": [
+      {
+        "key": "Bzone/Marea",
+        "table": "Bzone",
+        "name": "Marea",
+        "display": "Marea",
+        "type": "character",
+        "units": "",
+        "unitLabel": "",
+        "description": null
+      },
+      {
+        "key": "Azone/Marea",
+        "table": "Azone",
+        "name": "Marea",
+        "display": "Marea",
+        "type": "character",
+        "units": "",
+        "unitLabel": "",
+        "description": null
+      },
+      {
+        "key": "Marea/Marea",
+        "table": "Marea",
+        "name": "Marea",
+        "display": "Marea",
+        "type": "character",
+        "units": "",
+        "unitLabel": "",
+        "description": null
+      },
+      {
+        "key": "Household/Marea",
+        "table": "Household",
+        "name": "Marea",
+        "display": "Marea (ID)",
+        "type": "character",
+        "units": "ID",
+        "unitLabel": "ID",
+        "description": "Marea ID"
+      },
+      {
+        "key": "Worker/Marea",
+        "table": "Worker",
+        "name": "Marea",
+        "display": "Marea (ID)",
+        "type": "character",
+        "units": "ID",
+        "unitLabel": "ID",
+        "description": "Marea ID of worker job location"
+      },
+      {
+        "key": "Vehicle/Marea",
+        "table": "Vehicle",
+        "name": "Marea",
+        "display": "Marea (ID)",
+        "type": "character",
+        "units": "ID",
+        "unitLabel": "ID",
+        "description": "Marea ID"
+      }
+    ],
+    "valueoftime": [
+      {
+        "key": "Model/ValueOfTime",
+        "table": "Model",
+        "name": "ValueOfTime",
+        "display": "ValueOfTime (base cost year dollars per hour)",
+        "type": "currency",
+        "units": "base cost year dollars per hour",
+        "unitLabel": "base cost year dollars per hour",
+        "description": null
+      }
+    ],
+    "age0to14": [
+      {
+        "key": "Azone/Age0to14",
+        "table": "Azone",
+        "name": "Age0to14",
+        "display": "Age0to14 (People (PRSN))",
+        "type": "people",
+        "units": "PRSN",
+        "unitLabel": "People",
+        "description": "Household (non-group quarters) population in 0 to 14 year old age group"
+      },
+      {
+        "key": "Household/Age0to14",
+        "table": "Household",
+        "name": "Age0to14",
+        "display": "Age0to14 (People (PRSN))",
+        "type": "people",
+        "units": "PRSN",
+        "unitLabel": "People",
+        "description": "Persons in 0 to 14 year old age group"
+      }
+    ],
+    "age15to19": [
+      {
+        "key": "Azone/Age15to19",
+        "table": "Azone",
+        "name": "Age15to19",
+        "display": "Age15to19 (People (PRSN))",
+        "type": "people",
+        "units": "PRSN",
+        "unitLabel": "People",
+        "description": "Household (non-group quarters) population in 15 to 19 year old age group"
+      },
+      {
+        "key": "Household/Age15to19",
+        "table": "Household",
+        "name": "Age15to19",
+        "display": "Age15to19 (People (PRSN))",
+        "type": "people",
+        "units": "PRSN",
+        "unitLabel": "People",
+        "description": "Persons in 15 to 19 year old age group"
+      }
+    ],
+    "age20to29": [
+      {
+        "key": "Azone/Age20to29",
+        "table": "Azone",
+        "name": "Age20to29",
+        "display": "Age20to29 (People (PRSN))",
+        "type": "people",
+        "units": "PRSN",
+        "unitLabel": "People",
+        "description": "Household (non-group quarters) population in 20 to 29 year old age group"
+      },
+      {
+        "key": "Household/Age20to29",
+        "table": "Household",
+        "name": "Age20to29",
+        "display": "Age20to29 (People (PRSN))",
+        "type": "people",
+        "units": "PRSN",
+        "unitLabel": "People",
+        "description": "Persons in 20 to 29 year old age group"
+      }
+    ],
+    "age30to54": [
+      {
+        "key": "Azone/Age30to54",
+        "table": "Azone",
+        "name": "Age30to54",
+        "display": "Age30to54 (People (PRSN))",
+        "type": "people",
+        "units": "PRSN",
+        "unitLabel": "People",
+        "description": "Household (non-group quarters) population in 30 to 54 year old age group"
+      },
+      {
+        "key": "Household/Age30to54",
+        "table": "Household",
+        "name": "Age30to54",
+        "display": "Age30to54 (People (PRSN))",
+        "type": "people",
+        "units": "PRSN",
+        "unitLabel": "People",
+        "description": "Persons in 30 to 54 year old age group"
+      }
+    ],
+    "age55to64": [
+      {
+        "key": "Azone/Age55to64",
+        "table": "Azone",
+        "name": "Age55to64",
+        "display": "Age55to64 (People (PRSN))",
+        "type": "people",
+        "units": "PRSN",
+        "unitLabel": "People",
+        "description": "Household (non-group quarters) population in 55 to 64 year old age group"
+      },
+      {
+        "key": "Household/Age55to64",
+        "table": "Household",
+        "name": "Age55to64",
+        "display": "Age55to64 (People (PRSN))",
+        "type": "people",
+        "units": "PRSN",
+        "unitLabel": "People",
+        "description": "Persons in 55 to 64 year old age group"
+      }
+    ],
+    "age65plus": [
+      {
+        "key": "Azone/Age65Plus",
+        "table": "Azone",
+        "name": "Age65Plus",
+        "display": "Age65Plus (People (PRSN))",
+        "type": "people",
+        "units": "PRSN",
+        "unitLabel": "People",
+        "description": "Household (non-group quarters) population in 65 or older age group"
+      },
+      {
+        "key": "Household/Age65Plus",
+        "table": "Household",
+        "name": "Age65Plus",
+        "display": "Age65Plus (People (PRSN))",
+        "type": "people",
+        "units": "PRSN",
+        "unitLabel": "People",
+        "description": "Persons in 65 or older age group"
+      }
+    ],
+    "avehhsize": [
+      {
+        "key": "Azone/AveHhSize",
+        "table": "Azone",
+        "name": "AveHhSize",
+        "display": "AveHhSize (PRSN/HH)",
+        "type": "compound",
+        "units": "PRSN/HH",
+        "unitLabel": "PRSN/HH",
+        "description": "Average household size of households (non-group quarters)"
+      }
+    ],
+    "prop1perhh": [
+      {
+        "key": "Azone/Prop1PerHh",
+        "table": "Azone",
+        "name": "Prop1PerHh",
+        "display": "Prop1PerHh (proportion of households)",
+        "type": "double",
+        "units": "proportion of households",
+        "unitLabel": "proportion of households",
+        "description": "Proportion of households (non-group quarters) having only one person"
+      }
+    ],
+    "grpage0to14": [
+      {
+        "key": "Azone/GrpAge0to14",
+        "table": "Azone",
+        "name": "GrpAge0to14",
+        "display": "GrpAge0to14 (People (PRSN))",
+        "type": "people",
+        "units": "PRSN",
+        "unitLabel": "People",
+        "description": "Group quarters population in 0 to 14 year old age group"
+      }
+    ],
+    "grpage15to19": [
+      {
+        "key": "Azone/GrpAge15to19",
+        "table": "Azone",
+        "name": "GrpAge15to19",
+        "display": "GrpAge15to19 (People (PRSN))",
+        "type": "people",
+        "units": "PRSN",
+        "unitLabel": "People",
+        "description": "Group quarters population in 15 to 19 year old age group"
+      }
+    ],
+    "grpage20to29": [
+      {
+        "key": "Azone/GrpAge20to29",
+        "table": "Azone",
+        "name": "GrpAge20to29",
+        "display": "GrpAge20to29 (People (PRSN))",
+        "type": "people",
+        "units": "PRSN",
+        "unitLabel": "People",
+        "description": "Group quarters population in 20 to 29 year old age group"
+      }
+    ],
+    "grpage30to54": [
+      {
+        "key": "Azone/GrpAge30to54",
+        "table": "Azone",
+        "name": "GrpAge30to54",
+        "display": "GrpAge30to54 (People (PRSN))",
+        "type": "people",
+        "units": "PRSN",
+        "unitLabel": "People",
+        "description": "Group quarters population in 30 to 54 year old age group"
+      }
+    ],
+    "grpage55to64": [
+      {
+        "key": "Azone/GrpAge55to64",
+        "table": "Azone",
+        "name": "GrpAge55to64",
+        "display": "GrpAge55to64 (People (PRSN))",
+        "type": "people",
+        "units": "PRSN",
+        "unitLabel": "People",
+        "description": "Group quarters population in 55 to 64 year old age group"
+      }
+    ],
+    "grpage65plus": [
+      {
+        "key": "Azone/GrpAge65Plus",
+        "table": "Azone",
+        "name": "GrpAge65Plus",
+        "display": "GrpAge65Plus (People (PRSN))",
+        "type": "people",
+        "units": "PRSN",
+        "unitLabel": "People",
+        "description": "Group quarters population in 65 or older age group"
+      }
+    ],
+    "relemp15to19": [
+      {
+        "key": "Azone/RelEmp15to19",
+        "table": "Azone",
+        "name": "RelEmp15to19",
+        "display": "RelEmp15to19 (proportion)",
+        "type": "double",
+        "units": "proportion",
+        "unitLabel": "proportion",
+        "description": "Ratio of workers to persons age 15 to 19 in model year vs. in estimation data year"
+      }
+    ],
+    "relemp20to29": [
+      {
+        "key": "Azone/RelEmp20to29",
+        "table": "Azone",
+        "name": "RelEmp20to29",
+        "display": "RelEmp20to29 (proportion)",
+        "type": "double",
+        "units": "proportion",
+        "unitLabel": "proportion",
+        "description": "Ratio of workers to persons age 20 to 29 in model year vs. in estimation data year"
+      }
+    ],
+    "relemp30to54": [
+      {
+        "key": "Azone/RelEmp30to54",
+        "table": "Azone",
+        "name": "RelEmp30to54",
+        "display": "RelEmp30to54 (proportion)",
+        "type": "double",
+        "units": "proportion",
+        "unitLabel": "proportion",
+        "description": "Ratio of workers to persons age 30 to 54 in model year vs. in estimation data year"
+      }
+    ],
+    "relemp55to64": [
+      {
+        "key": "Azone/RelEmp55to64",
+        "table": "Azone",
+        "name": "RelEmp55to64",
+        "display": "RelEmp55to64 (proportion)",
+        "type": "double",
+        "units": "proportion",
+        "unitLabel": "proportion",
+        "description": "Ratio of workers to persons age 55 to 64 in model year vs. in estimation data year"
+      }
+    ],
+    "relemp65plus": [
+      {
+        "key": "Azone/RelEmp65Plus",
+        "table": "Azone",
+        "name": "RelEmp65Plus",
+        "display": "RelEmp65Plus (proportion)",
+        "type": "double",
+        "units": "proportion",
+        "unitLabel": "proportion",
+        "description": "Ratio of workers to persons age 65 or older in model year vs. in estimation data year"
+      }
+    ],
+    "hhincomepc": [
+      {
+        "key": "Azone/HHIncomePC",
+        "table": "Azone",
+        "name": "HHIncomePC",
+        "display": "HHIncomePC (USD)",
+        "type": "currency",
+        "units": "USD",
+        "unitLabel": "USD",
+        "description": "Average annual per capita income of households (non-group quarters)"
+      }
+    ],
+    "gqincomepc": [
+      {
+        "key": "Azone/GQIncomePC",
+        "table": "Azone",
+        "name": "GQIncomePC",
+        "display": "GQIncomePC (USD)",
+        "type": "currency",
+        "units": "USD",
+        "unitLabel": "USD",
+        "description": "Average annual per capita income of group quarters population"
+      }
+    ],
+    "sfdu": [
+      {
+        "key": "Bzone/SFDU",
+        "table": "Bzone",
+        "name": "SFDU",
+        "display": "SFDU (DU)",
+        "type": "integer",
+        "units": "DU",
+        "unitLabel": "DU",
+        "description": "Number of single family dwelling units (PUMS codes 01 - 03) in zone"
+      }
+    ],
+    "mfdu": [
+      {
+        "key": "Bzone/MFDU",
+        "table": "Bzone",
+        "name": "MFDU",
+        "display": "MFDU (DU)",
+        "type": "integer",
+        "units": "DU",
+        "unitLabel": "DU",
+        "description": "Number of multi-family dwelling units (PUMS codes 04 - 09) in zone"
+      }
+    ],
+    "gqdu": [
+      {
+        "key": "Bzone/GQDU",
+        "table": "Bzone",
+        "name": "GQDU",
+        "display": "GQDU (DU)",
+        "type": "integer",
+        "units": "DU",
+        "unitLabel": "DU",
+        "description": "Number of qroup quarters population accommodations in zone"
+      }
+    ],
+    "hhpropincq1": [
+      {
+        "key": "Bzone/HhPropIncQ1",
+        "table": "Bzone",
+        "name": "HhPropIncQ1",
+        "display": "HhPropIncQ1 (NA)",
+        "type": "double",
+        "units": "NA",
+        "unitLabel": "NA",
+        "description": "Proportion of Bzone households (non-group quarters) in 1st quartile of Azone household income"
+      }
+    ],
+    "hhpropincq2": [
+      {
+        "key": "Bzone/HhPropIncQ2",
+        "table": "Bzone",
+        "name": "HhPropIncQ2",
+        "display": "HhPropIncQ2 (NA)",
+        "type": "double",
+        "units": "NA",
+        "unitLabel": "NA",
+        "description": "Proportion of Bzone households (non-group quarters) in 2nd quartile of Azone household income"
+      }
+    ],
+    "hhpropincq3": [
+      {
+        "key": "Bzone/HhPropIncQ3",
+        "table": "Bzone",
+        "name": "HhPropIncQ3",
+        "display": "HhPropIncQ3 (NA)",
+        "type": "double",
+        "units": "NA",
+        "unitLabel": "NA",
+        "description": "Proportion of Bzone households (non-group quarters) in 3rd quartile of Azone household income"
+      }
+    ],
+    "hhpropincq4": [
+      {
+        "key": "Bzone/HhPropIncQ4",
+        "table": "Bzone",
+        "name": "HhPropIncQ4",
+        "display": "HhPropIncQ4 (NA)",
+        "type": "double",
+        "units": "NA",
+        "unitLabel": "NA",
+        "description": "Proportion of Bzone households (non-group quarters) in 4th quartile of Azone household income"
+      }
+    ],
+    "totemp": [
+      {
+        "key": "Bzone/TotEmp",
+        "table": "Bzone",
+        "name": "TotEmp",
+        "display": "TotEmp (People (PRSN))",
+        "type": "people",
+        "units": "PRSN",
+        "unitLabel": "People",
+        "description": "Total number of jobs in zone"
+      }
+    ],
+    "retemp": [
+      {
+        "key": "Bzone/RetEmp",
+        "table": "Bzone",
+        "name": "RetEmp",
+        "display": "RetEmp (People (PRSN))",
+        "type": "people",
+        "units": "PRSN",
+        "unitLabel": "People",
+        "description": "Number of jobs in retail sector in zone"
+      }
+    ],
+    "svcemp": [
+      {
+        "key": "Bzone/SvcEmp",
+        "table": "Bzone",
+        "name": "SvcEmp",
+        "display": "SvcEmp (People (PRSN))",
+        "type": "people",
+        "units": "PRSN",
+        "unitLabel": "People",
+        "description": "Number of jobs in service sector in zone"
+      }
+    ],
+    "latitude": [
+      {
+        "key": "Bzone/Latitude",
+        "table": "Bzone",
+        "name": "Latitude",
+        "display": "Latitude (NA)",
+        "type": "double",
+        "units": "NA",
+        "unitLabel": "NA",
+        "description": "Latitude in decimal degrees of the centroid of the zone"
+      }
+    ],
+    "longitude": [
+      {
+        "key": "Bzone/Longitude",
+        "table": "Bzone",
+        "name": "Longitude",
+        "display": "Longitude (NA)",
+        "type": "double",
+        "units": "NA",
+        "unitLabel": "NA",
+        "description": "Longitude in decimal degrees of the centroid of the zone"
+      }
+    ],
+    "propurbansfdu": [
+      {
+        "key": "Bzone/PropUrbanSFDU",
+        "table": "Bzone",
+        "name": "PropUrbanSFDU",
+        "display": "PropUrbanSFDU (NA)",
+        "type": "double",
+        "units": "NA",
+        "unitLabel": "NA",
+        "description": "Proportion of single family dwelling units located within the urban portion of the zone"
+      }
+    ],
+    "propurbanmfdu": [
+      {
+        "key": "Bzone/PropUrbanMFDU",
+        "table": "Bzone",
+        "name": "PropUrbanMFDU",
+        "display": "PropUrbanMFDU (NA)",
+        "type": "double",
+        "units": "NA",
+        "unitLabel": "NA",
+        "description": "Proportion of multi-family dwelling units located within the urban portion of the zone"
+      }
+    ],
+    "propurbangqdu": [
+      {
+        "key": "Bzone/PropUrbanGQDU",
+        "table": "Bzone",
+        "name": "PropUrbanGQDU",
+        "display": "PropUrbanGQDU (NA)",
+        "type": "double",
+        "units": "NA",
+        "unitLabel": "NA",
+        "description": "Proportion of group quarters accommodations located within the urban portion of the zone"
+      }
+    ],
+    "proptownsfdu": [
+      {
+        "key": "Bzone/PropTownSFDU",
+        "table": "Bzone",
+        "name": "PropTownSFDU",
+        "display": "PropTownSFDU (NA)",
+        "type": "double",
+        "units": "NA",
+        "unitLabel": "NA",
+        "description": "Proportion of single family dwelling units located within the town portion of the zone"
+      }
+    ],
+    "proptownmfdu": [
+      {
+        "key": "Bzone/PropTownMFDU",
+        "table": "Bzone",
+        "name": "PropTownMFDU",
+        "display": "PropTownMFDU (NA)",
+        "type": "double",
+        "units": "NA",
+        "unitLabel": "NA",
+        "description": "Proportion of multi-family dwelling units located within the town portion of the zone"
+      }
+    ],
+    "proptowngqdu": [
+      {
+        "key": "Bzone/PropTownGQDU",
+        "table": "Bzone",
+        "name": "PropTownGQDU",
+        "display": "PropTownGQDU (NA)",
+        "type": "double",
+        "units": "NA",
+        "unitLabel": "NA",
+        "description": "Proportion of group quarters accommodations located within the town portion of the zone"
+      }
+    ],
+    "urbanarea": [
+      {
+        "key": "Bzone/UrbanArea",
+        "table": "Bzone",
+        "name": "UrbanArea",
+        "display": "UrbanArea (SQMI)",
+        "type": "area",
+        "units": "SQMI",
+        "unitLabel": "SQMI",
+        "description": "Area that is Urban and unprotected (i.e. developable) within the zone"
+      }
+    ],
+    "townarea": [
+      {
+        "key": "Bzone/TownArea",
+        "table": "Bzone",
+        "name": "TownArea",
+        "display": "TownArea (SQMI)",
+        "type": "area",
+        "units": "SQMI",
+        "unitLabel": "SQMI",
+        "description": "Area that is Town and unprotected (i.e. developable) within the zone"
+      }
+    ],
+    "ruralarea": [
+      {
+        "key": "Bzone/RuralArea",
+        "table": "Bzone",
+        "name": "RuralArea",
+        "display": "RuralArea (SQMI)",
+        "type": "area",
+        "units": "SQMI",
+        "unitLabel": "SQMI",
+        "description": "Area that is Rural and unprotected (i.e. developable) within the zone"
+      }
+    ],
+    "d3bpo4": [
+      {
+        "key": "Bzone/D3bpo4",
+        "table": "Bzone",
+        "name": "D3bpo4",
+        "display": "D3bpo4 (pedestrian-oriented intersections per square mile)",
+        "type": "double",
+        "units": "pedestrian-oriented intersections per square mile",
+        "unitLabel": "pedestrian-oriented intersections per square mile",
+        "description": "Intersection density in terms of pedestrian-oriented intersections having four or more legs per square mile (Ref: EPA 2010 Smart Location Database)"
+      }
+    ],
+    "mixuseprop": [
+      {
+        "key": "Bzone/MixUseProp",
+        "table": "Bzone",
+        "name": "MixUseProp",
+        "display": "MixUseProp (proportion)",
+        "type": "double",
+        "units": "proportion",
+        "unitLabel": "proportion",
+        "description": "Target for proportion of households located in mixed-use neighborhoods in zone (or NA if no target)"
+      }
+    ],
+    "pkgspacespersfdu": [
+      {
+        "key": "Bzone/PkgSpacesPerSFDU",
+        "table": "Bzone",
+        "name": "PkgSpacesPerSFDU",
+        "display": "PkgSpacesPerSFDU (parking spaces)",
+        "type": "double",
+        "units": "parking spaces",
+        "unitLabel": "parking spaces",
+        "description": "Average number of free parking spaces available to residents of single-family dwelling units"
+      }
+    ],
+    "pkgspacespermfdu": [
+      {
+        "key": "Bzone/PkgSpacesPerMFDU",
+        "table": "Bzone",
+        "name": "PkgSpacesPerMFDU",
+        "display": "PkgSpacesPerMFDU (parking spaces)",
+        "type": "double",
+        "units": "parking spaces",
+        "unitLabel": "parking spaces",
+        "description": "Average number of free parking spaces available to residents of multifamily dwelling units"
+      }
+    ],
+    "pkgspacespergq": [
+      {
+        "key": "Bzone/PkgSpacesPerGQ",
+        "table": "Bzone",
+        "name": "PkgSpacesPerGQ",
+        "display": "PkgSpacesPerGQ (parking spaces)",
+        "type": "double",
+        "units": "parking spaces",
+        "unitLabel": "parking spaces",
+        "description": "Average number of free parking spaces available to group quarters residents"
+      }
+    ],
+    "propwkrpay": [
+      {
+        "key": "Bzone/PropWkrPay",
+        "table": "Bzone",
+        "name": "PropWkrPay",
+        "display": "PropWkrPay (proportion)",
+        "type": "double",
+        "units": "proportion",
+        "unitLabel": "proportion",
+        "description": "Proportion of workers who pay for parking"
+      }
+    ],
+    "propcashout": [
+      {
+        "key": "Bzone/PropCashOut",
+        "table": "Bzone",
+        "name": "PropCashOut",
+        "display": "PropCashOut (proportion)",
+        "type": "double",
+        "units": "proportion",
+        "unitLabel": "proportion",
+        "description": "Proportions of workers paying for parking in a cash-out-buy-back program"
+      }
+    ],
+    "propnonwrktrippay": [
+      {
+        "key": "Bzone/PropNonWrkTripPay",
+        "table": "Bzone",
+        "name": "PropNonWrkTripPay",
+        "display": "PropNonWrkTripPay (proportion)",
+        "type": "double",
+        "units": "proportion",
+        "unitLabel": "proportion",
+        "description": "Proportion of non-work trips who pay for parking"
+      }
+    ],
+    "pkgcost": [
+      {
+        "key": "Bzone/PkgCost",
+        "table": "Bzone",
+        "name": "PkgCost",
+        "display": "PkgCost (USD)",
+        "type": "currency",
+        "units": "USD",
+        "unitLabel": "USD",
+        "description": "Average daily cost for long-term parking (e.g. paid on monthly basis)"
+      }
+    ],
+    "ecoprop": [
+      {
+        "key": "Bzone/EcoProp",
+        "table": "Bzone",
+        "name": "EcoProp",
+        "display": "EcoProp (proportion)",
+        "type": "double",
+        "units": "proportion",
+        "unitLabel": "proportion",
+        "description": "Proportion of workers working in Bzone who participate in strong employee commute options program"
+      }
+    ],
+    "impprop": [
+      {
+        "key": "Bzone/ImpProp",
+        "table": "Bzone",
+        "name": "ImpProp",
+        "display": "ImpProp (proportion)",
+        "type": "double",
+        "units": "proportion",
+        "unitLabel": "proportion",
+        "description": "Proportion of households residing in Bzone who participate in strong individualized marketing program"
+      }
+    ],
+    "carsvclevel": [
+      {
+        "key": "Bzone/CarSvcLevel",
+        "table": "Bzone",
+        "name": "CarSvcLevel",
+        "display": "CarSvcLevel (category)",
+        "type": "character",
+        "units": "category",
+        "unitLabel": "category",
+        "description": "Level of car service availability. High means access is competitive with household owned car. Low is not competitive."
+      },
+      {
+        "key": "Household/CarSvcLevel",
+        "table": "Household",
+        "name": "CarSvcLevel",
+        "display": "CarSvcLevel (category)",
+        "type": "character",
+        "units": "category",
+        "unitLabel": "category",
+        "description": "Level of car service availability. High means access is competitive with household owned car. Low is not competitive."
+      }
+    ],
+    "drrevmi": [
+      {
+        "key": "Marea/DRRevMi",
+        "table": "Marea",
+        "name": "DRRevMi",
+        "display": "DRRevMi (MI/DAY)",
+        "type": "compound",
+        "units": "MI/DAY",
+        "unitLabel": "MI/DAY",
+        "description": "Annual revenue-miles of demand-responsive public transit service"
+      }
+    ],
+    "vprevmi": [
+      {
+        "key": "Marea/VPRevMi",
+        "table": "Marea",
+        "name": "VPRevMi",
+        "display": "VPRevMi (MI/DAY)",
+        "type": "compound",
+        "units": "MI/DAY",
+        "unitLabel": "MI/DAY",
+        "description": "Annual revenue-miles of van-pool and similar public transit service"
+      }
+    ],
+    "mbrevmi": [
+      {
+        "key": "Marea/MBRevMi",
+        "table": "Marea",
+        "name": "MBRevMi",
+        "display": "MBRevMi (MI/DAY)",
+        "type": "compound",
+        "units": "MI/DAY",
+        "unitLabel": "MI/DAY",
+        "description": "Annual revenue-miles of standard bus public transit service"
+      }
+    ],
+    "rbrevmi": [
+      {
+        "key": "Marea/RBRevMi",
+        "table": "Marea",
+        "name": "RBRevMi",
+        "display": "RBRevMi (MI/DAY)",
+        "type": "compound",
+        "units": "MI/DAY",
+        "unitLabel": "MI/DAY",
+        "description": "Annual revenue-miles of rapid-bus and commuter bus public transit service"
+      }
+    ],
+    "mgrevmi": [
+      {
+        "key": "Marea/MGRevMi",
+        "table": "Marea",
+        "name": "MGRevMi",
+        "display": "MGRevMi (MI/DAY)",
+        "type": "compound",
+        "units": "MI/DAY",
+        "unitLabel": "MI/DAY",
+        "description": "Annual revenue-miles of monorail and automated guideway public transit service"
+      }
+    ],
+    "srrevmi": [
+      {
+        "key": "Marea/SRRevMi",
+        "table": "Marea",
+        "name": "SRRevMi",
+        "display": "SRRevMi (MI/DAY)",
+        "type": "compound",
+        "units": "MI/DAY",
+        "unitLabel": "MI/DAY",
+        "description": "Annual revenue-miles of streetcar and trolleybus public transit service"
+      }
+    ],
+    "hrrevmi": [
+      {
+        "key": "Marea/HRRevMi",
+        "table": "Marea",
+        "name": "HRRevMi",
+        "display": "HRRevMi (MI/DAY)",
+        "type": "compound",
+        "units": "MI/DAY",
+        "unitLabel": "MI/DAY",
+        "description": "Annual revenue-miles of light rail and heavy rail public transit service"
+      }
+    ],
+    "crrevmi": [
+      {
+        "key": "Marea/CRRevMi",
+        "table": "Marea",
+        "name": "CRRevMi",
+        "display": "CRRevMi (MI/DAY)",
+        "type": "compound",
+        "units": "MI/DAY",
+        "unitLabel": "MI/DAY",
+        "description": "Annual revenue-miles of commuter rail, hybrid rail, cable car, and aerial tramway public transit service"
+      }
+    ],
+    "d4c": [
+      {
+        "key": "Bzone/D4c",
+        "table": "Bzone",
+        "name": "D4c",
+        "display": "D4c (aggregate peak period transit service)",
+        "type": "double",
+        "units": "aggregate peak period transit service",
+        "unitLabel": "aggregate peak period transit service",
+        "description": "Aggregate frequency of transit service within 0.25 miles of block group boundary per hour during evening peak period (Ref: EPA 2010 Smart Location Database)"
+      }
+    ],
+    "fwylanemi": [
+      {
+        "key": "Marea/FwyLaneMi",
+        "table": "Marea",
+        "name": "FwyLaneMi",
+        "display": "FwyLaneMi (Miles (MI))",
+        "type": "distance",
+        "units": "MI",
+        "unitLabel": "Miles",
+        "description": "Lane-miles of roadways functionally classified as freeways or expressways in the urbanized portion of the metropolitan area"
+      }
+    ],
+    "artlanemi": [
+      {
+        "key": "Marea/ArtLaneMi",
+        "table": "Marea",
+        "name": "ArtLaneMi",
+        "display": "ArtLaneMi (Miles (MI))",
+        "type": "distance",
+        "units": "MI",
+        "unitLabel": "Miles",
+        "description": "Lane-miles of roadways functionally classified as arterials (but not freeways or expressways) in the urbanized portion of the metropolitan area"
+      }
+    ],
+    "drvperprsn15to19": [
+      {
+        "key": "Region/DrvPerPrsn15to19",
+        "table": "Region",
+        "name": "DrvPerPrsn15to19",
+        "display": "DrvPerPrsn15to19 (NA/)",
+        "type": "compound",
+        "units": "NA/",
+        "unitLabel": "NA/",
+        "description": "Target ratio of drivers to persons in the 15 to 19 years old age group"
+      }
+    ],
+    "drvperprsn20to29": [
+      {
+        "key": "Region/DrvPerPrsn20to29",
+        "table": "Region",
+        "name": "DrvPerPrsn20to29",
+        "display": "DrvPerPrsn20to29 (NA/)",
+        "type": "compound",
+        "units": "NA/",
+        "unitLabel": "NA/",
+        "description": "Target ratio of drivers to persons in the 20 to 29 years old age group"
+      }
+    ],
+    "drvperprsn30to54": [
+      {
+        "key": "Region/DrvPerPrsn30to54",
+        "table": "Region",
+        "name": "DrvPerPrsn30to54",
+        "display": "DrvPerPrsn30to54 (NA/)",
+        "type": "compound",
+        "units": "NA/",
+        "unitLabel": "NA/",
+        "description": "Target ratio of drivers to persons in the 30 to 54 years old age group"
+      }
+    ],
+    "drvperprsn55to64": [
+      {
+        "key": "Region/DrvPerPrsn55to64",
+        "table": "Region",
+        "name": "DrvPerPrsn55to64",
+        "display": "DrvPerPrsn55to64 (NA/)",
+        "type": "compound",
+        "units": "NA/",
+        "unitLabel": "NA/",
+        "description": "Target ratio of drivers to persons in the 55 to 64 years old age group"
+      }
+    ],
+    "drvperprsn65plus": [
+      {
+        "key": "Region/DrvPerPrsn65Plus",
+        "table": "Region",
+        "name": "DrvPerPrsn65Plus",
+        "display": "DrvPerPrsn65Plus (NA/)",
+        "type": "compound",
+        "units": "NA/",
+        "unitLabel": "NA/",
+        "description": "Target ratio of drivers to persons in the 65 or older age group"
+      }
+    ],
+    "lttrkprop": [
+      {
+        "key": "Azone/LtTrkProp",
+        "table": "Azone",
+        "name": "LtTrkProp",
+        "display": "LtTrkProp (proportion)",
+        "type": "double",
+        "units": "proportion",
+        "unitLabel": "proportion",
+        "description": "Proportion of household vehicles that are light trucks (pickup, SUV, van)"
+      }
+    ],
+    "highcarsvccost": [
+      {
+        "key": "Azone/HighCarSvcCost",
+        "table": "Azone",
+        "name": "HighCarSvcCost",
+        "display": "HighCarSvcCost (USD)",
+        "type": "currency",
+        "units": "USD",
+        "unitLabel": "USD",
+        "description": "Average cost in dollars per mile for travel by high service level car service exclusive of the cost of fuel, road use taxes, and carbon taxes (and any other social costs charged to vehicle use)."
+      }
+    ],
+    "lowcarsvccost": [
+      {
+        "key": "Azone/LowCarSvcCost",
+        "table": "Azone",
+        "name": "LowCarSvcCost",
+        "display": "LowCarSvcCost (USD)",
+        "type": "currency",
+        "units": "USD",
+        "unitLabel": "USD",
+        "description": "Average cost in dollars per mile for travel by low service level car service exclusive of the cost of fuel, road use taxes, and carbon taxes (and any other social costs charged to vehicle use)."
+      }
+    ],
+    "avecarsvcvehicleage": [
+      {
+        "key": "Azone/AveCarSvcVehicleAge",
+        "table": "Azone",
+        "name": "AveCarSvcVehicleAge",
+        "display": "AveCarSvcVehicleAge (DAY)",
+        "type": "time",
+        "units": "DAY",
+        "unitLabel": "DAY",
+        "description": "Average age of car service vehicles in years"
+      }
+    ],
+    "lttrkcarsvcsubprop": [
+      {
+        "key": "Azone/LtTrkCarSvcSubProp",
+        "table": "Azone",
+        "name": "LtTrkCarSvcSubProp",
+        "display": "LtTrkCarSvcSubProp (proportion)",
+        "type": "double",
+        "units": "proportion",
+        "unitLabel": "proportion",
+        "description": "The proportion of light-truck owners who would substitute a less-costly car service option for owning their light truck"
+      }
+    ],
+    "autocarsvcsubprop": [
+      {
+        "key": "Azone/AutoCarSvcSubProp",
+        "table": "Azone",
+        "name": "AutoCarSvcSubProp",
+        "display": "AutoCarSvcSubProp (proportion)",
+        "type": "double",
+        "units": "proportion",
+        "unitLabel": "proportion",
+        "description": "Th proportion of automobile owners who would substitute a less-costly car service option for owning their automobile"
+      }
+    ],
+    "automeanage": [
+      {
+        "key": "Azone/AutoMeanAge",
+        "table": "Azone",
+        "name": "AutoMeanAge",
+        "display": "AutoMeanAge (DAY)",
+        "type": "time",
+        "units": "DAY",
+        "unitLabel": "DAY",
+        "description": "Mean age of automobiles owned or leased by households."
+      }
+    ],
+    "lttrkmeanage": [
+      {
+        "key": "Azone/LtTrkMeanAge",
+        "table": "Azone",
+        "name": "LtTrkMeanAge",
+        "display": "LtTrkMeanAge (DAY)",
+        "type": "time",
+        "units": "DAY",
+        "unitLabel": "DAY",
+        "description": "Mean age of light trucks owned or leased by households."
+      }
+    ],
+    "vehownflatratefee": [
+      {
+        "key": "Azone/VehOwnFlatRateFee",
+        "table": "Azone",
+        "name": "VehOwnFlatRateFee",
+        "display": "VehOwnFlatRateFee (USD)",
+        "type": "currency",
+        "units": "USD",
+        "unitLabel": "USD",
+        "description": "Annual flat rate tax per vehicle in dollars"
+      }
+    ],
+    "vehownadvaloremtax": [
+      {
+        "key": "Azone/VehOwnAdValoremTax",
+        "table": "Azone",
+        "name": "VehOwnAdValoremTax",
+        "display": "VehOwnAdValoremTax (proportion)",
+        "type": "double",
+        "units": "proportion",
+        "unitLabel": "proportion",
+        "description": "Annual proportion of vehicle value paid in taxes"
+      }
+    ],
+    "paydhhprop": [
+      {
+        "key": "Azone/PaydHhProp",
+        "table": "Azone",
+        "name": "PaydHhProp",
+        "display": "PaydHhProp (proportion)",
+        "type": "double",
+        "units": "proportion",
+        "unitLabel": "proportion",
+        "description": "Proportion of households in the Azone who have pay-as-you-drive insurance for their vehicles"
+      }
+    ],
+    "census_r": [
+      {
+        "key": "Marea/CENSUS_R",
+        "table": "Marea",
+        "name": "CENSUS_R",
+        "display": "CENSUS_R (category)",
+        "type": "character",
+        "units": "category",
+        "unitLabel": "category",
+        "description": "CENSUS_R"
+      }
+    ],
+    "propsovdvmtdiverted": [
+      {
+        "key": "Azone/PropSovDvmtDiverted",
+        "table": "Azone",
+        "name": "PropSovDvmtDiverted",
+        "display": "PropSovDvmtDiverted (Proportion)",
+        "type": "double",
+        "units": "Proportion",
+        "unitLabel": "Proportion",
+        "description": "Goals for the proportion of household DVMT in single occupant vehicle tours with round-trip distances of 20 miles or less be diverted to bicycling or other slow speed modes of travel"
+      }
+    ],
+    "electricityci": [
+      {
+        "key": "Azone/ElectricityCI",
+        "table": "Azone",
+        "name": "ElectricityCI",
+        "display": "ElectricityCI (KG/GGE)",
+        "type": "compound",
+        "units": "KG/GGE",
+        "unitLabel": "KG/GGE",
+        "description": "Carbon intensity of electricity at point of consumption (grams CO2e per megajoule)"
+      }
+    ],
+    "transitethanolpropgasoline": [
+      {
+        "key": "Marea/TransitEthanolPropGasoline",
+        "table": "Marea",
+        "name": "TransitEthanolPropGasoline",
+        "display": "TransitEthanolPropGasoline (proportion)",
+        "type": "double",
+        "units": "proportion",
+        "unitLabel": "proportion",
+        "description": "Ethanol proportion of gasoline used by transit vehicles"
+      }
+    ],
+    "transitbiodieselpropdiesel": [
+      {
+        "key": "Marea/TransitBiodieselPropDiesel",
+        "table": "Marea",
+        "name": "TransitBiodieselPropDiesel",
+        "display": "TransitBiodieselPropDiesel (proportion)",
+        "type": "double",
+        "units": "proportion",
+        "unitLabel": "proportion",
+        "description": "Biodiesel proportion of diesel used by transit vehicles"
+      }
+    ],
+    "transitrngpropcng": [
+      {
+        "key": "Marea/TransitRngPropCng",
+        "table": "Marea",
+        "name": "TransitRngPropCng",
+        "display": "TransitRngPropCng (proportion)",
+        "type": "double",
+        "units": "proportion",
+        "unitLabel": "proportion",
+        "description": "Renewable natural gas proportion of compressed natural gas used by transit vehicles"
+      }
+    ],
+    "vanpropdiesel": [
+      {
+        "key": "Marea/VanPropDiesel",
+        "table": "Marea",
+        "name": "VanPropDiesel",
+        "display": "VanPropDiesel (proportion)",
+        "type": "double",
+        "units": "proportion",
+        "unitLabel": "proportion",
+        "description": "Proportion of non-electric transit van travel powered by diesel"
+      }
+    ],
+    "vanpropgasoline": [
+      {
+        "key": "Marea/VanPropGasoline",
+        "table": "Marea",
+        "name": "VanPropGasoline",
+        "display": "VanPropGasoline (proportion)",
+        "type": "double",
+        "units": "proportion",
+        "unitLabel": "proportion",
+        "description": "Proportion of non-electric transit van travel powered by gasoline"
+      }
+    ],
+    "vanpropcng": [
+      {
+        "key": "Marea/VanPropCng",
+        "table": "Marea",
+        "name": "VanPropCng",
+        "display": "VanPropCng (proportion)",
+        "type": "double",
+        "units": "proportion",
+        "unitLabel": "proportion",
+        "description": "Proportion of non-electric transit van travel powered by compressed natural gas"
+      }
+    ],
+    "buspropdiesel": [
+      {
+        "key": "Marea/BusPropDiesel",
+        "table": "Marea",
+        "name": "BusPropDiesel",
+        "display": "BusPropDiesel (proportion)",
+        "type": "double",
+        "units": "proportion",
+        "unitLabel": "proportion",
+        "description": "Proportion of non-electric transit bus travel powered by diesel"
+      }
+    ],
+    "buspropgasoline": [
+      {
+        "key": "Marea/BusPropGasoline",
+        "table": "Marea",
+        "name": "BusPropGasoline",
+        "display": "BusPropGasoline (proportion)",
+        "type": "double",
+        "units": "proportion",
+        "unitLabel": "proportion",
+        "description": "Proportion of non-electric transit bus travel powered by gasoline"
+      }
+    ],
+    "buspropcng": [
+      {
+        "key": "Marea/BusPropCng",
+        "table": "Marea",
+        "name": "BusPropCng",
+        "display": "BusPropCng (proportion)",
+        "type": "double",
+        "units": "proportion",
+        "unitLabel": "proportion",
+        "description": "Proportion of non-electric transit bus travel powered by compressed natural gas"
+      }
+    ],
+    "railpropdiesel": [
+      {
+        "key": "Marea/RailPropDiesel",
+        "table": "Marea",
+        "name": "RailPropDiesel",
+        "display": "RailPropDiesel (proportion)",
+        "type": "double",
+        "units": "proportion",
+        "unitLabel": "proportion",
+        "description": "Proportion of non-electric transit rail travel powered by diesel"
+      }
+    ],
+    "railpropgasoline": [
+      {
+        "key": "Marea/RailPropGasoline",
+        "table": "Marea",
+        "name": "RailPropGasoline",
+        "display": "RailPropGasoline (proportion)",
+        "type": "double",
+        "units": "proportion",
+        "unitLabel": "proportion",
+        "description": "Proportion of non-electric transit rail travel powered by gasoline"
+      }
+    ],
+    "vanpropicev": [
+      {
+        "key": "Marea/VanPropIcev",
+        "table": "Marea",
+        "name": "VanPropIcev",
+        "display": "VanPropIcev (proportion)",
+        "type": "double",
+        "units": "proportion",
+        "unitLabel": "proportion",
+        "description": "Proportion of transit van travel using internal combustion engine powertrains"
+      }
+    ],
+    "vanprophev": [
+      {
+        "key": "Marea/VanPropHev",
+        "table": "Marea",
+        "name": "VanPropHev",
+        "display": "VanPropHev (proportion)",
+        "type": "double",
+        "units": "proportion",
+        "unitLabel": "proportion",
+        "description": "Proportion of transit van travel using hybrid electric powertrains"
+      }
+    ],
+    "vanpropbev": [
+      {
+        "key": "Marea/VanPropBev",
+        "table": "Marea",
+        "name": "VanPropBev",
+        "display": "VanPropBev (proportion)",
+        "type": "double",
+        "units": "proportion",
+        "unitLabel": "proportion",
+        "description": "Proportion of transit van travel using battery electric powertrains"
+      }
+    ],
+    "buspropicev": [
+      {
+        "key": "Marea/BusPropIcev",
+        "table": "Marea",
+        "name": "BusPropIcev",
+        "display": "BusPropIcev (proportion)",
+        "type": "double",
+        "units": "proportion",
+        "unitLabel": "proportion",
+        "description": "Proportion of transit bus travel using internal combustion engine powertrains"
+      }
+    ],
+    "busprophev": [
+      {
+        "key": "Marea/BusPropHev",
+        "table": "Marea",
+        "name": "BusPropHev",
+        "display": "BusPropHev (proportion)",
+        "type": "double",
+        "units": "proportion",
+        "unitLabel": "proportion",
+        "description": "Proportion of transit bus travel using hybrid electric powertrains"
+      }
+    ],
+    "buspropbev": [
+      {
+        "key": "Marea/BusPropBev",
+        "table": "Marea",
+        "name": "BusPropBev",
+        "display": "BusPropBev (proportion)",
+        "type": "double",
+        "units": "proportion",
+        "unitLabel": "proportion",
+        "description": "Proportion of transit bus travel using battery electric powertrains"
+      }
+    ],
+    "railpropicev": [
+      {
+        "key": "Marea/RailPropIcev",
+        "table": "Marea",
+        "name": "RailPropIcev",
+        "display": "RailPropIcev (proportion)",
+        "type": "double",
+        "units": "proportion",
+        "unitLabel": "proportion",
+        "description": "Proportion of transit rail travel using internal combustion engine powertrains"
+      }
+    ],
+    "railprophev": [
+      {
+        "key": "Marea/RailPropHev",
+        "table": "Marea",
+        "name": "RailPropHev",
+        "display": "RailPropHev (proportion)",
+        "type": "double",
+        "units": "proportion",
+        "unitLabel": "proportion",
+        "description": "Proportion of transit rail travel using hybrid electric powertrains"
+      }
+    ],
+    "railpropev": [
+      {
+        "key": "Marea/RailPropEv",
+        "table": "Marea",
+        "name": "RailPropEv",
+        "display": "RailPropEv (proportion)",
+        "type": "double",
+        "units": "proportion",
+        "unitLabel": "proportion",
+        "description": "Proportion of transit rail travel using electric powertrains"
+      }
+    ],
+    "carsvcautopropicev": [
+      {
+        "key": "Region/CarSvcAutoPropIcev",
+        "table": "Region",
+        "name": "CarSvcAutoPropIcev",
+        "display": "CarSvcAutoPropIcev (proportion)",
+        "type": "double",
+        "units": "proportion",
+        "unitLabel": "proportion",
+        "description": "Proportion of car service automobile travel powered by internal combustion engine powertrains"
+      }
+    ],
+    "carsvcautoprophev": [
+      {
+        "key": "Region/CarSvcAutoPropHev",
+        "table": "Region",
+        "name": "CarSvcAutoPropHev",
+        "display": "CarSvcAutoPropHev (proportion)",
+        "type": "double",
+        "units": "proportion",
+        "unitLabel": "proportion",
+        "description": "Proportion of car service automobile travel powered by hybrid electric powertrains"
+      }
+    ],
+    "carsvcautopropbev": [
+      {
+        "key": "Region/CarSvcAutoPropBev",
+        "table": "Region",
+        "name": "CarSvcAutoPropBev",
+        "display": "CarSvcAutoPropBev (proportion)",
+        "type": "double",
+        "units": "proportion",
+        "unitLabel": "proportion",
+        "description": "Proportion of car service automobile travel powered by battery electric powertrains"
+      }
+    ],
+    "carsvclttrkpropicev": [
+      {
+        "key": "Region/CarSvcLtTrkPropIcev",
+        "table": "Region",
+        "name": "CarSvcLtTrkPropIcev",
+        "display": "CarSvcLtTrkPropIcev (proportion)",
+        "type": "double",
+        "units": "proportion",
+        "unitLabel": "proportion",
+        "description": "Proportion of car service light truck travel powered by internal combustion engine powertrains"
+      }
+    ],
+    "carsvclttrkprophev": [
+      {
+        "key": "Region/CarSvcLtTrkPropHev",
+        "table": "Region",
+        "name": "CarSvcLtTrkPropHev",
+        "display": "CarSvcLtTrkPropHev (proportion)",
+        "type": "double",
+        "units": "proportion",
+        "unitLabel": "proportion",
+        "description": "Proportion of car service light truck travel powered by hybrid electric powertrains"
+      }
+    ],
+    "carsvclttrkpropbev": [
+      {
+        "key": "Region/CarSvcLtTrkPropBev",
+        "table": "Region",
+        "name": "CarSvcLtTrkPropBev",
+        "display": "CarSvcLtTrkPropBev (proportion)",
+        "type": "double",
+        "units": "proportion",
+        "unitLabel": "proportion",
+        "description": "Proportion of car service light truck travel powered by battery electric powertrains"
+      }
+    ],
+    "comsvcautopropicev": [
+      {
+        "key": "Region/ComSvcAutoPropIcev",
+        "table": "Region",
+        "name": "ComSvcAutoPropIcev",
+        "display": "ComSvcAutoPropIcev (proportion)",
+        "type": "double",
+        "units": "proportion",
+        "unitLabel": "proportion",
+        "description": "Proportion of commercial service automobile travel powered by internal combustion engine powertrains"
+      }
+    ],
+    "comsvcautoprophev": [
+      {
+        "key": "Region/ComSvcAutoPropHev",
+        "table": "Region",
+        "name": "ComSvcAutoPropHev",
+        "display": "ComSvcAutoPropHev (proportion)",
+        "type": "double",
+        "units": "proportion",
+        "unitLabel": "proportion",
+        "description": "Proportion of commercial service automobile travel powered by hybrid electric powertrains"
+      }
+    ],
+    "comsvcautopropbev": [
+      {
+        "key": "Region/ComSvcAutoPropBev",
+        "table": "Region",
+        "name": "ComSvcAutoPropBev",
+        "display": "ComSvcAutoPropBev (proportion)",
+        "type": "double",
+        "units": "proportion",
+        "unitLabel": "proportion",
+        "description": "Proportion of commercial service automobile travel powered by battery electric powertrains"
+      }
+    ],
+    "comsvclttrkpropicev": [
+      {
+        "key": "Region/ComSvcLtTrkPropIcev",
+        "table": "Region",
+        "name": "ComSvcLtTrkPropIcev",
+        "display": "ComSvcLtTrkPropIcev (proportion)",
+        "type": "double",
+        "units": "proportion",
+        "unitLabel": "proportion",
+        "description": "Proportion of commercial service light truck travel powered by internal combustion engine powertrains"
+      }
+    ],
+    "comsvclttrkprophev": [
+      {
+        "key": "Region/ComSvcLtTrkPropHev",
+        "table": "Region",
+        "name": "ComSvcLtTrkPropHev",
+        "display": "ComSvcLtTrkPropHev (proportion)",
+        "type": "double",
+        "units": "proportion",
+        "unitLabel": "proportion",
+        "description": "Proportion of commercial service light truck travel powered by hybrid electric powertrains"
+      }
+    ],
+    "comsvclttrkpropbev": [
+      {
+        "key": "Region/ComSvcLtTrkPropBev",
+        "table": "Region",
+        "name": "ComSvcLtTrkPropBev",
+        "display": "ComSvcLtTrkPropBev (proportion)",
+        "type": "double",
+        "units": "proportion",
+        "unitLabel": "proportion",
+        "description": "Proportion of commercial service light truck travel powered by battery electric powertrains"
+      }
+    ],
+    "hvytrkpropicev": [
+      {
+        "key": "Region/HvyTrkPropIcev",
+        "table": "Region",
+        "name": "HvyTrkPropIcev",
+        "display": "HvyTrkPropIcev (proportion)",
+        "type": "double",
+        "units": "proportion",
+        "unitLabel": "proportion",
+        "description": "Proportion of heavy truck travel powered by internal combustion engine powertrains"
+      }
+    ],
+    "hvytrkprophev": [
+      {
+        "key": "Region/HvyTrkPropHev",
+        "table": "Region",
+        "name": "HvyTrkPropHev",
+        "display": "HvyTrkPropHev (proportion)",
+        "type": "double",
+        "units": "proportion",
+        "unitLabel": "proportion",
+        "description": "Proportion of heavy truck travel powered by hybrid electric powertrains"
+      }
+    ],
+    "hvytrkpropbev": [
+      {
+        "key": "Region/HvyTrkPropBev",
+        "table": "Region",
+        "name": "HvyTrkPropBev",
+        "display": "HvyTrkPropBev (proportion)",
+        "type": "double",
+        "units": "proportion",
+        "unitLabel": "proportion",
+        "description": "Proportion of heavy truck travel powered by battery electric powertrains"
+      }
+    ],
+    "propsfchargingavail": [
+      {
+        "key": "Azone/PropSFChargingAvail",
+        "table": "Azone",
+        "name": "PropSFChargingAvail",
+        "display": "PropSFChargingAvail (proportion)",
+        "type": "double",
+        "units": "proportion",
+        "unitLabel": "proportion",
+        "description": "Proportion of single-family dwellings in Azone that have PEV charging facilties installed or able to be installed"
+      }
+    ],
+    "propmfchargingavail": [
+      {
+        "key": "Azone/PropMFChargingAvail",
+        "table": "Azone",
+        "name": "PropMFChargingAvail",
+        "display": "PropMFChargingAvail (proportion)",
+        "type": "double",
+        "units": "proportion",
+        "unitLabel": "proportion",
+        "description": "Proportion of multi-family dwelling units in Azone that have PEV charging facilities available"
+      }
+    ],
+    "propgqchargingavail": [
+      {
+        "key": "Azone/PropGQChargingAvail",
+        "table": "Azone",
+        "name": "PropGQChargingAvail",
+        "display": "PropGQChargingAvail (proportion)",
+        "type": "double",
+        "units": "proportion",
+        "unitLabel": "proportion",
+        "description": "Proportion of group quarters dwelling units in Azone that have PEV charging facilities available"
+      }
+    ],
+    "stateabbrlookup": [
+      {
+        "key": "Region/StateAbbrLookup",
+        "table": "Region",
+        "name": "StateAbbrLookup",
+        "display": "StateAbbrLookup (ID)",
+        "type": "character",
+        "units": "ID",
+        "unitLabel": "ID",
+        "description": "Postal code abbreviation of the 50 states, the District of Columbia (DC), or Puerto Rico (PR) where the region is located. It is recommended that the value be blank if the model is not a state model (i.e. is a model for a metropolitan area). See the module documentation for details."
+      }
+    ],
+    "hvytrkdvmtgrowthbasis": [
+      {
+        "key": "Region/HvyTrkDvmtGrowthBasis",
+        "table": "Region",
+        "name": "HvyTrkDvmtGrowthBasis",
+        "display": "HvyTrkDvmtGrowthBasis (ID)",
+        "type": "character",
+        "units": "ID",
+        "unitLabel": "ID",
+        "description": "Factor used to grow heavy truck DVMT from base year value"
+      }
+    ],
+    "hvytrkdvmt": [
+      {
+        "key": "Region/HvyTrkDvmt",
+        "table": "Region",
+        "name": "HvyTrkDvmt",
+        "display": "HvyTrkDvmt (MI/DAY)",
+        "type": "compound",
+        "units": "MI/DAY",
+        "unitLabel": "MI/DAY",
+        "description": "Average daily vehicle miles of travel on roadways in the region by heavy trucks during the base year. The value for this input may be NA instead of number. In that case, if a state abbreviation is provided, the base year value is calculated from the state per capita rate tabulated by the LoadDefaultRoadDvmtValues.R script and the base year population. If the state abbreviation is NA (as for a metropolitan model) the base year value is calculated from metropolitan area per capita rates and metropolitan area population."
+      }
+    ],
+    "comsvcdvmtgrowthbasis": [
+      {
+        "key": "Region/ComSvcDvmtGrowthBasis",
+        "table": "Region",
+        "name": "ComSvcDvmtGrowthBasis",
+        "display": "ComSvcDvmtGrowthBasis (ID)",
+        "type": "character",
+        "units": "ID",
+        "unitLabel": "ID",
+        "description": "Factor used to grow commercial service vehicle DVMT in Marea from base year value"
+      }
+    ],
+    "uzanamelookup": [
+      {
+        "key": "Marea/UzaNameLookup",
+        "table": "Marea",
+        "name": "UzaNameLookup",
+        "display": "UzaNameLookup (ID)",
+        "type": "character",
+        "units": "ID",
+        "unitLabel": "ID",
+        "description": "Name(s) of urbanized area(s) in default tables corresponding to the Marea(s). This may be omitted if values are provided for both UrbanLdvDvmt and UrbanHvyTrkDvmt. The name(s) must be consistent with names in the urbanized area names in the default data. See module documentation for a listing."
+      }
+    ],
+    "urbanldvdvmt": [
+      {
+        "key": "Marea/UrbanLdvDvmt",
+        "table": "Marea",
+        "name": "UrbanLdvDvmt",
+        "display": "UrbanLdvDvmt (MI/DAY)",
+        "type": "compound",
+        "units": "MI/DAY",
+        "unitLabel": "MI/DAY",
+        "description": "Average daily vehicle miles of travel on roadways in the urbanized portion of the Marea by light-duty vehicles during the base year. This value may be omitted if a value for UzaNameLookup is provided so that a value may be computed from the urbanized area per capita rate tabulated by the LoadDefaultRoadDvmtValues.R script and the base year urban population."
+      }
+    ],
+    "urbanhvytrkdvmt": [
+      {
+        "key": "Marea/UrbanHvyTrkDvmt",
+        "table": "Marea",
+        "name": "UrbanHvyTrkDvmt",
+        "display": "UrbanHvyTrkDvmt (MI/DAY)",
+        "type": "compound",
+        "units": "MI/DAY",
+        "unitLabel": "MI/DAY",
+        "description": "Average daily vehicle miles of travel on roadways in the urbanized portion of the Marea by heavy trucks during he base year. This value may be omitted if a value for UzaNameLookup is provided so that a value may be computed from the urbanized area per capita rate tabulated by the LoadDefaultRoadDvmtValues.R script and the base year urban population."
+      }
+    ],
+    "ldvfwydvmtprop": [
+      {
+        "key": "Marea/LdvFwyDvmtProp",
+        "table": "Marea",
+        "name": "LdvFwyDvmtProp",
+        "display": "LdvFwyDvmtProp (proportion)",
+        "type": "double",
+        "units": "proportion",
+        "unitLabel": "proportion",
+        "description": "Proportion of light-duty daily vehicle miles of travel in the urbanized portion of the Marea occurring on freeways"
+      }
+    ],
+    "ldvartdvmtprop": [
+      {
+        "key": "Marea/LdvArtDvmtProp",
+        "table": "Marea",
+        "name": "LdvArtDvmtProp",
+        "display": "LdvArtDvmtProp (proportion)",
+        "type": "double",
+        "units": "proportion",
+        "unitLabel": "proportion",
+        "description": "Proportion of light-duty daily vehicle miles of travel in the urbanized portion of the Marea occurring on arterial roadways"
+      }
+    ],
+    "ldvothdvmtprop": [
+      {
+        "key": "Marea/LdvOthDvmtProp",
+        "table": "Marea",
+        "name": "LdvOthDvmtProp",
+        "display": "LdvOthDvmtProp (proportion)",
+        "type": "double",
+        "units": "proportion",
+        "unitLabel": "proportion",
+        "description": "Proportion of light-duty daily vehicle miles of travel in the urbanized portion of the Marea occurring on other roadways"
+      }
+    ],
+    "hvytrkfwydvmtprop": [
+      {
+        "key": "Marea/HvyTrkFwyDvmtProp",
+        "table": "Marea",
+        "name": "HvyTrkFwyDvmtProp",
+        "display": "HvyTrkFwyDvmtProp (proportion)",
+        "type": "double",
+        "units": "proportion",
+        "unitLabel": "proportion",
+        "description": "Proportion of heavy truck daily vehicle miles of travel in the urbanized portion of the Marea occurring on freeways"
+      }
+    ],
+    "hvytrkartdvmtprop": [
+      {
+        "key": "Marea/HvyTrkArtDvmtProp",
+        "table": "Marea",
+        "name": "HvyTrkArtDvmtProp",
+        "display": "HvyTrkArtDvmtProp (proportion)",
+        "type": "double",
+        "units": "proportion",
+        "unitLabel": "proportion",
+        "description": "Proportion of heavy truck daily vehicle miles of travel in the urbanized portion of the Marea occurring on arterial roadways"
+      }
+    ],
+    "hvytrkothdvmtprop": [
+      {
+        "key": "Marea/HvyTrkOthDvmtProp",
+        "table": "Marea",
+        "name": "HvyTrkOthDvmtProp",
+        "display": "HvyTrkOthDvmtProp (proportion)",
+        "type": "double",
+        "units": "proportion",
+        "unitLabel": "proportion",
+        "description": "Proportion of heavy truck daily vehicle miles of travel in the urbanized portion of the Marea occurring on other roadways"
+      }
+    ],
+    "busfwydvmtprop": [
+      {
+        "key": "Marea/BusFwyDvmtProp",
+        "table": "Marea",
+        "name": "BusFwyDvmtProp",
+        "display": "BusFwyDvmtProp (proportion)",
+        "type": "double",
+        "units": "proportion",
+        "unitLabel": "proportion",
+        "description": "Proportion of bus daily vehicle miles of travel in the urbanized portion of the Marea occurring on freeways"
+      }
+    ],
+    "busartdvmtprop": [
+      {
+        "key": "Marea/BusArtDvmtProp",
+        "table": "Marea",
+        "name": "BusArtDvmtProp",
+        "display": "BusArtDvmtProp (proportion)",
+        "type": "double",
+        "units": "proportion",
+        "unitLabel": "proportion",
+        "description": "Proportion of bus daily vehicle miles of travel in the urbanized portion of the Marea occurring on arterial roadways"
+      }
+    ],
+    "busothdvmtprop": [
+      {
+        "key": "Marea/BusOthDvmtProp",
+        "table": "Marea",
+        "name": "BusOthDvmtProp",
+        "display": "BusOthDvmtProp (proportion)",
+        "type": "double",
+        "units": "proportion",
+        "unitLabel": "proportion",
+        "description": "Proportion of bus daily vehicle miles of travel in the urbanized portion of the Marea occuring on other roadways"
+      }
+    ],
+    "level": [
+      {
+        "key": "OtherOpsEffectiveness/Level",
+        "table": "OtherOpsEffectiveness",
+        "name": "Level",
+        "display": "Level (category)",
+        "type": "character",
+        "units": "category",
+        "unitLabel": "category",
+        "description": "Congestion levels: None = none, Mod = moderate, Hvy = heavy, Sev = severe, Ext = extreme"
+      }
+    ],
+    "art_rcr": [
+      {
+        "key": "OtherOpsEffectiveness/Art_Rcr",
+        "table": "OtherOpsEffectiveness",
+        "name": "Art_Rcr",
+        "display": "Art_Rcr (percentage)",
+        "type": "double",
+        "units": "percentage",
+        "unitLabel": "percentage",
+        "description": "Percentage reduction of recurring arterial delay that would occur with full deployment of other user-defined arterial operations measures"
+      }
+    ],
+    "art_nonrcr": [
+      {
+        "key": "OtherOpsEffectiveness/Art_NonRcr",
+        "table": "OtherOpsEffectiveness",
+        "name": "Art_NonRcr",
+        "display": "Art_NonRcr (percentage)",
+        "type": "double",
+        "units": "percentage",
+        "unitLabel": "percentage",
+        "description": "Percentage reduction of non-recurring arterial delay that would occur with full deployment of other user-defined arterial operations measures"
+      }
+    ],
+    "fwy_rcr": [
+      {
+        "key": "OtherOpsEffectiveness/Fwy_Rcr",
+        "table": "OtherOpsEffectiveness",
+        "name": "Fwy_Rcr",
+        "display": "Fwy_Rcr (percentage)",
+        "type": "double",
+        "units": "percentage",
+        "unitLabel": "percentage",
+        "description": "Percentage reduction of recurring freeway delay that would occur with full deployment of other user-defined freeway operations measures"
+      }
+    ],
+    "fwy_nonrcr": [
+      {
+        "key": "OtherOpsEffectiveness/Fwy_NonRcr",
+        "table": "OtherOpsEffectiveness",
+        "name": "Fwy_NonRcr",
+        "display": "Fwy_NonRcr (percentage)",
+        "type": "double",
+        "units": "percentage",
+        "unitLabel": "percentage",
+        "description": "Percentage reduction of non-recurring freeway delay that would occur with full deployment of other user-defined freeway operations measures"
+      }
+    ],
+    "rampmeterdeployprop": [
+      {
+        "key": "Marea/RampMeterDeployProp",
+        "table": "Marea",
+        "name": "RampMeterDeployProp",
+        "display": "RampMeterDeployProp (proportion)",
+        "type": "double",
+        "units": "proportion",
+        "unitLabel": "proportion",
+        "description": "Proportion of freeway DVMT affected by ramp metering deployment"
+      }
+    ],
+    "incidentmgtdeployprop": [
+      {
+        "key": "Marea/IncidentMgtDeployProp",
+        "table": "Marea",
+        "name": "IncidentMgtDeployProp",
+        "display": "IncidentMgtDeployProp (proportion)",
+        "type": "double",
+        "units": "proportion",
+        "unitLabel": "proportion",
+        "description": "Proportion of freeway DVMT affected by incident management deployment"
+      }
+    ],
+    "signalcoorddeployprop": [
+      {
+        "key": "Marea/SignalCoordDeployProp",
+        "table": "Marea",
+        "name": "SignalCoordDeployProp",
+        "display": "SignalCoordDeployProp (proportion)",
+        "type": "double",
+        "units": "proportion",
+        "unitLabel": "proportion",
+        "description": "Proportion of arterial DVMT affected by signal coordination deployment"
+      }
+    ],
+    "accessmgtdeployprop": [
+      {
+        "key": "Marea/AccessMgtDeployProp",
+        "table": "Marea",
+        "name": "AccessMgtDeployProp",
+        "display": "AccessMgtDeployProp (proportion)",
+        "type": "double",
+        "units": "proportion",
+        "unitLabel": "proportion",
+        "description": "Proportion of arterial DVMT affected by access management deployment"
+      }
+    ],
+    "otherfwyopsdeployprop": [
+      {
+        "key": "Marea/OtherFwyOpsDeployProp",
+        "table": "Marea",
+        "name": "OtherFwyOpsDeployProp",
+        "display": "OtherFwyOpsDeployProp (proportion)",
+        "type": "double",
+        "units": "proportion",
+        "unitLabel": "proportion",
+        "description": "Proportion of freeway DVMT affected by deployment of other user-defined freeway operations measures"
+      }
+    ],
+    "otherartopsdeployprop": [
+      {
+        "key": "Marea/OtherArtOpsDeployProp",
+        "table": "Marea",
+        "name": "OtherArtOpsDeployProp",
+        "display": "OtherArtOpsDeployProp (proportion)",
+        "type": "double",
+        "units": "proportion",
+        "unitLabel": "proportion",
+        "description": "Proportion of arterial DVMT affected by deployment of other user-defined arterial operations measures"
+      }
+    ],
+    "fwynonecongchg": [
+      {
+        "key": "Marea/FwyNoneCongChg",
+        "table": "Marea",
+        "name": "FwyNoneCongChg",
+        "display": "FwyNoneCongChg (USD)",
+        "type": "currency",
+        "units": "USD",
+        "unitLabel": "USD",
+        "description": "Charge per mile (U.S. dollars) of vehicle travel on freeways during periods of no congestion"
+      }
+    ],
+    "fwymodcongchg": [
+      {
+        "key": "Marea/FwyModCongChg",
+        "table": "Marea",
+        "name": "FwyModCongChg",
+        "display": "FwyModCongChg (USD)",
+        "type": "currency",
+        "units": "USD",
+        "unitLabel": "USD",
+        "description": "Charge per mile (U.S. dollars) of vehicle travel on freeways during periods of moderate congestion"
+      }
+    ],
+    "fwyhvycongchg": [
+      {
+        "key": "Marea/FwyHvyCongChg",
+        "table": "Marea",
+        "name": "FwyHvyCongChg",
+        "display": "FwyHvyCongChg (USD)",
+        "type": "currency",
+        "units": "USD",
+        "unitLabel": "USD",
+        "description": "Charge per mile (U.S. dollars) of vehicle travel on freeways during periods of heavy congestion"
+      }
+    ],
+    "fwysevcongchg": [
+      {
+        "key": "Marea/FwySevCongChg",
+        "table": "Marea",
+        "name": "FwySevCongChg",
+        "display": "FwySevCongChg (USD)",
+        "type": "currency",
+        "units": "USD",
+        "unitLabel": "USD",
+        "description": "Charge per mile (U.S. dollars) of vehicle travel on freeways during periods of severe congestion"
+      }
+    ],
+    "fwyextcongchg": [
+      {
+        "key": "Marea/FwyExtCongChg",
+        "table": "Marea",
+        "name": "FwyExtCongChg",
+        "display": "FwyExtCongChg (USD)",
+        "type": "currency",
+        "units": "USD",
+        "unitLabel": "USD",
+        "description": "Charge per mile (U.S. dollars) of vehicle travel on freeways during periods of extreme congestion"
+      }
+    ],
+    "artnonecongchg": [
+      {
+        "key": "Marea/ArtNoneCongChg",
+        "table": "Marea",
+        "name": "ArtNoneCongChg",
+        "display": "ArtNoneCongChg (USD)",
+        "type": "currency",
+        "units": "USD",
+        "unitLabel": "USD",
+        "description": "Charge per mile (U.S. dollars) of vehicle travel on arterials during periods of no congestion"
+      }
+    ],
+    "artmodcongchg": [
+      {
+        "key": "Marea/ArtModCongChg",
+        "table": "Marea",
+        "name": "ArtModCongChg",
+        "display": "ArtModCongChg (USD)",
+        "type": "currency",
+        "units": "USD",
+        "unitLabel": "USD",
+        "description": "Charge per mile (U.S. dollars) of vehicle travel on arterials during periods of moderate congestion"
+      }
+    ],
+    "arthvycongchg": [
+      {
+        "key": "Marea/ArtHvyCongChg",
+        "table": "Marea",
+        "name": "ArtHvyCongChg",
+        "display": "ArtHvyCongChg (USD)",
+        "type": "currency",
+        "units": "USD",
+        "unitLabel": "USD",
+        "description": "Charge per mile (U.S. dollars) of vehicle travel on arterials during periods of heavy congestion"
+      }
+    ],
+    "artsevcongchg": [
+      {
+        "key": "Marea/ArtSevCongChg",
+        "table": "Marea",
+        "name": "ArtSevCongChg",
+        "display": "ArtSevCongChg (USD)",
+        "type": "currency",
+        "units": "USD",
+        "unitLabel": "USD",
+        "description": "Charge per mile (U.S. dollars) of vehicle travel on arterials during periods of severe congestion"
+      }
+    ],
+    "artextcongchg": [
+      {
+        "key": "Marea/ArtExtCongChg",
+        "table": "Marea",
+        "name": "ArtExtCongChg",
+        "display": "ArtExtCongChg (USD)",
+        "type": "currency",
+        "units": "USD",
+        "unitLabel": "USD",
+        "description": "Charge per mile (U.S. dollars) of vehicle travel on arterials during periods of extreme congestion"
+      }
+    ],
+    "fwysmooth": [
+      {
+        "key": "Marea/FwySmooth",
+        "table": "Marea",
+        "name": "FwySmooth",
+        "display": "FwySmooth (proportion)",
+        "type": "double",
+        "units": "proportion",
+        "unitLabel": "proportion",
+        "description": "Fractional deployment of speed smoothing traffic management on freeways, where 0 is no deployment and 1 is the full potential fuel savings"
+      }
+    ],
+    "artsmooth": [
+      {
+        "key": "Marea/ArtSmooth",
+        "table": "Marea",
+        "name": "ArtSmooth",
+        "display": "ArtSmooth (proportion)",
+        "type": "double",
+        "units": "proportion",
+        "unitLabel": "proportion",
+        "description": "Fractional deployment of speed smoothing traffic management on arterials, where 0 is no deployment and 1 is the full potential fuel savings"
+      }
+    ],
+    "ldvecodrive": [
+      {
+        "key": "Marea/LdvEcoDrive",
+        "table": "Marea",
+        "name": "LdvEcoDrive",
+        "display": "LdvEcoDrive (proportion)",
+        "type": "double",
+        "units": "proportion",
+        "unitLabel": "proportion",
+        "description": "Eco-driving penetration for light-duty vehicles; the fraction of vehicles from 0 to 1"
+      }
+    ],
+    "hvytrkecodrive": [
+      {
+        "key": "Marea/HvyTrkEcoDrive",
+        "table": "Marea",
+        "name": "HvyTrkEcoDrive",
+        "display": "HvyTrkEcoDrive (proportion)",
+        "type": "double",
+        "units": "proportion",
+        "unitLabel": "proportion",
+        "description": "Eco-driving penetration for heavy-duty vehicles; the fraction of vehicles from 0 to 1"
+      }
+    ],
+    "ownedvehaccesstime": [
+      {
+        "key": "Azone/OwnedVehAccessTime",
+        "table": "Azone",
+        "name": "OwnedVehAccessTime",
+        "display": "OwnedVehAccessTime (DAY)",
+        "type": "time",
+        "units": "DAY",
+        "unitLabel": "DAY",
+        "description": "Average amount of time in minutes required for access to and egress from a household-owned vehicle for a trip"
+      }
+    ],
+    "highcarsvcaccesstime": [
+      {
+        "key": "Azone/HighCarSvcAccessTime",
+        "table": "Azone",
+        "name": "HighCarSvcAccessTime",
+        "display": "HighCarSvcAccessTime (DAY)",
+        "type": "time",
+        "units": "DAY",
+        "unitLabel": "DAY",
+        "description": "Average amount of time in minutes required for access to and egress from a high service level car service for a trip"
+      }
+    ],
+    "lowcarsvcaccesstime": [
+      {
+        "key": "Azone/LowCarSvcAccessTime",
+        "table": "Azone",
+        "name": "LowCarSvcAccessTime",
+        "display": "LowCarSvcAccessTime (DAY)",
+        "type": "time",
+        "units": "DAY",
+        "unitLabel": "DAY",
+        "description": "Average amount of time in minutes required for access to and egress from a low service level car service for a trip"
+      }
+    ],
+    "fuelcost": [
+      {
+        "key": "Azone/FuelCost",
+        "table": "Azone",
+        "name": "FuelCost",
+        "display": "FuelCost (USD)",
+        "type": "currency",
+        "units": "USD",
+        "unitLabel": "USD",
+        "description": "Retail cost of fuel per gas gallon equivalent in dollars"
+      }
+    ],
+    "powercost": [
+      {
+        "key": "Azone/PowerCost",
+        "table": "Azone",
+        "name": "PowerCost",
+        "display": "PowerCost (USD)",
+        "type": "currency",
+        "units": "USD",
+        "unitLabel": "USD",
+        "description": "Retail cost of electric power per kilowatt-hour in dollars"
+      }
+    ],
+    "fueltax": [
+      {
+        "key": "Azone/FuelTax",
+        "table": "Azone",
+        "name": "FuelTax",
+        "display": "FuelTax (USD)",
+        "type": "currency",
+        "units": "USD",
+        "unitLabel": "USD",
+        "description": "Tax per gas gallon equivalent of fuel in dollars"
+      }
+    ],
+    "vmttax": [
+      {
+        "key": "Azone/VmtTax",
+        "table": "Azone",
+        "name": "VmtTax",
+        "display": "VmtTax (USD)",
+        "type": "currency",
+        "units": "USD",
+        "unitLabel": "USD",
+        "description": "Tax per mile of vehicle travel in dollars"
+      }
+    ],
+    "pevsurchgtaxprop": [
+      {
+        "key": "Azone/PevSurchgTaxProp",
+        "table": "Azone",
+        "name": "PevSurchgTaxProp",
+        "display": "PevSurchgTaxProp (proportion)",
+        "type": "double",
+        "units": "proportion",
+        "unitLabel": "proportion",
+        "description": "Proportion of equivalent gas tax per mile paid by hydrocarbon fuel consuming vehicles to be charged to plug-in electric vehicles per mile of travel powered by electricity"
+      }
+    ],
+    "propclimatecostpaid": [
+      {
+        "key": "Region/PropClimateCostPaid",
+        "table": "Region",
+        "name": "PropClimateCostPaid",
+        "display": "PropClimateCostPaid (proportion)",
+        "type": "double",
+        "units": "proportion",
+        "unitLabel": "proportion",
+        "description": "Proportion of climate change costs paid by users (i.e. ratio of carbon taxes to climate change costs)"
+      }
+    ],
+    "propotherextcostpaid": [
+      {
+        "key": "Region/PropOtherExtCostPaid",
+        "table": "Region",
+        "name": "PropOtherExtCostPaid",
+        "display": "PropOtherExtCostPaid (proportion)",
+        "type": "double",
+        "units": "proportion",
+        "unitLabel": "proportion",
+        "description": "Proportion of other social costs paid by users"
+      }
+    ],
+    "roadbasemodcost": [
+      {
+        "key": "Region/RoadBaseModCost",
+        "table": "Region",
+        "name": "RoadBaseModCost",
+        "display": "RoadBaseModCost (USD)",
+        "type": "currency",
+        "units": "USD",
+        "unitLabel": "USD",
+        "description": "Average base modernization cost per light-duty vehicle mile traveled (dollars per vehicle mile). Base modernization includes roadway improvements exclusive of addition of lanes."
+      }
+    ],
+    "roadpresopmaintcost": [
+      {
+        "key": "Region/RoadPresOpMaintCost",
+        "table": "Region",
+        "name": "RoadPresOpMaintCost",
+        "display": "RoadPresOpMaintCost (USD)",
+        "type": "currency",
+        "units": "USD",
+        "unitLabel": "USD",
+        "description": "Average road preservation, operations, and maintenance cost per light-duty vehicle mile traveled (dollars per vehicle mile)."
+      }
+    ],
+    "roadothercost": [
+      {
+        "key": "Region/RoadOtherCost",
+        "table": "Region",
+        "name": "RoadOtherCost",
+        "display": "RoadOtherCost (USD)",
+        "type": "currency",
+        "units": "USD",
+        "unitLabel": "USD",
+        "description": "Average other road cost (e.g. administration, planning, project development, safety) per light-duty vehicle mile traveled (dollars per vehicle mile)."
+      }
+    ],
+    "fwylnmicost": [
+      {
+        "key": "Region/FwyLnMiCost",
+        "table": "Region",
+        "name": "FwyLnMiCost",
+        "display": "FwyLnMiCost (USD)",
+        "type": "currency",
+        "units": "USD",
+        "unitLabel": "USD",
+        "description": "Average cost to build one freeway lane-mile (dollars per lane-mile)"
+      }
+    ],
+    "artlnmicost": [
+      {
+        "key": "Region/ArtLnMiCost",
+        "table": "Region",
+        "name": "ArtLnMiCost",
+        "display": "ArtLnMiCost (USD)",
+        "type": "currency",
+        "units": "USD",
+        "unitLabel": "USD",
+        "description": "Average cost to build one arterial lane-mile (dollars per lane-mile)"
+      }
+    ],
+    "hvytrkpce": [
+      {
+        "key": "Region/HvyTrkPCE",
+        "table": "Region",
+        "name": "HvyTrkPCE",
+        "display": "HvyTrkPCE (ratio)",
+        "type": "double",
+        "units": "ratio",
+        "unitLabel": "ratio",
+        "description": "Passenger car equivalent (PCE) for heavy trucks. PCE indicates the number of light-duty vehicles a heavy truck is equivalent to in calculating road capacity."
+      }
+    ],
+    "comsvclttrkprop": [
+      {
+        "key": "Region/ComSvcLtTrkProp",
+        "table": "Region",
+        "name": "ComSvcLtTrkProp",
+        "display": "ComSvcLtTrkProp (proportion)",
+        "type": "double",
+        "units": "proportion",
+        "unitLabel": "proportion",
+        "description": "Regional proportion of commercial service vehicles that are light trucks"
+      }
+    ],
+    "avecomsvcvehicleage": [
+      {
+        "key": "Region/AveComSvcVehicleAge",
+        "table": "Region",
+        "name": "AveComSvcVehicleAge",
+        "display": "AveComSvcVehicleAge (DAY)",
+        "type": "time",
+        "units": "DAY",
+        "unitLabel": "DAY",
+        "description": "Average age of commercial service vehicles"
+      }
+    ],
+    "numhh": [
+      {
+        "key": "Azone/NumHh",
+        "table": "Azone",
+        "name": "NumHh",
+        "display": "NumHh (Households (HH))",
+        "type": "households",
+        "units": "HH",
+        "unitLabel": "Households",
+        "description": "Number of households (non-group quarters)"
+      },
+      {
+        "key": "Bzone/NumHh",
+        "table": "Bzone",
+        "name": "NumHh",
+        "display": "NumHh (Households (HH))",
+        "type": "households",
+        "units": "HH",
+        "unitLabel": "Households",
+        "description": "Number of households (non-group and group quarters) residing in zone"
+      }
+    ],
+    "numgq": [
+      {
+        "key": "Azone/NumGq",
+        "table": "Azone",
+        "name": "NumGq",
+        "display": "NumGq (People (PRSN))",
+        "type": "people",
+        "units": "PRSN",
+        "unitLabel": "People",
+        "description": "Number of people in non-institutional group quarters"
+      }
+    ],
+    "hhid": [
+      {
+        "key": "Household/HhId",
+        "table": "Household",
+        "name": "HhId",
+        "display": "HhId (ID)",
+        "type": "character",
+        "units": "ID",
+        "unitLabel": "ID",
+        "description": "Unique household ID"
+      },
+      {
+        "key": "Worker/HhId",
+        "table": "Worker",
+        "name": "HhId",
+        "display": "HhId (ID)",
+        "type": "character",
+        "units": "ID",
+        "unitLabel": "ID",
+        "description": "Unique household ID"
+      },
+      {
+        "key": "Vehicle/HhId",
+        "table": "Vehicle",
+        "name": "HhId",
+        "display": "HhId (ID)",
+        "type": "character",
+        "units": "ID",
+        "unitLabel": "ID",
+        "description": "Unique household ID"
+      }
+    ],
+    "hhsize": [
+      {
+        "key": "Household/HhSize",
+        "table": "Household",
+        "name": "HhSize",
+        "display": "HhSize (People (PRSN))",
+        "type": "people",
+        "units": "PRSN",
+        "unitLabel": "People",
+        "description": "Number of persons"
+      }
+    ],
+    "hhtype": [
+      {
+        "key": "Household/HhType",
+        "table": "Household",
+        "name": "HhType",
+        "display": "HhType (category)",
+        "type": "character",
+        "units": "category",
+        "unitLabel": "category",
+        "description": "Coded household age composition (e.g. 2-1-0-2-0-0) or Grp for group quarters"
+      }
+    ],
+    "wkr15to19": [
+      {
+        "key": "Household/Wkr15to19",
+        "table": "Household",
+        "name": "Wkr15to19",
+        "display": "Wkr15to19 (People (PRSN))",
+        "type": "people",
+        "units": "PRSN",
+        "unitLabel": "People",
+        "description": "Workers in 15 to 19 year old age group"
+      }
+    ],
+    "wkr20to29": [
+      {
+        "key": "Household/Wkr20to29",
+        "table": "Household",
+        "name": "Wkr20to29",
+        "display": "Wkr20to29 (People (PRSN))",
+        "type": "people",
+        "units": "PRSN",
+        "unitLabel": "People",
+        "description": "Workers in 20 to 29 year old age group"
+      }
+    ],
+    "wkr30to54": [
+      {
+        "key": "Household/Wkr30to54",
+        "table": "Household",
+        "name": "Wkr30to54",
+        "display": "Wkr30to54 (People (PRSN))",
+        "type": "people",
+        "units": "PRSN",
+        "unitLabel": "People",
+        "description": "Workers in 30 to 54 year old age group"
+      }
+    ],
+    "wkr55to64": [
+      {
+        "key": "Household/Wkr55to64",
+        "table": "Household",
+        "name": "Wkr55to64",
+        "display": "Wkr55to64 (People (PRSN))",
+        "type": "people",
+        "units": "PRSN",
+        "unitLabel": "People",
+        "description": "Workers in 55 to 64 year old age group"
+      }
+    ],
+    "wkr65plus": [
+      {
+        "key": "Household/Wkr65Plus",
+        "table": "Household",
+        "name": "Wkr65Plus",
+        "display": "Wkr65Plus (People (PRSN))",
+        "type": "people",
+        "units": "PRSN",
+        "unitLabel": "People",
+        "description": "Workers in 65 or older age group"
+      }
+    ],
+    "workers": [
+      {
+        "key": "Household/Workers",
+        "table": "Household",
+        "name": "Workers",
+        "display": "Workers (People (PRSN))",
+        "type": "people",
+        "units": "PRSN",
+        "unitLabel": "People",
+        "description": "Total workers"
+      }
+    ],
+    "numwkr": [
+      {
+        "key": "Azone/NumWkr",
+        "table": "Azone",
+        "name": "NumWkr",
+        "display": "NumWkr (People (PRSN))",
+        "type": "people",
+        "units": "PRSN",
+        "unitLabel": "People",
+        "description": "Number of workers residing in the zone"
+      },
+      {
+        "key": "Bzone/NumWkr",
+        "table": "Bzone",
+        "name": "NumWkr",
+        "display": "NumWkr (People (PRSN))",
+        "type": "people",
+        "units": "PRSN",
+        "unitLabel": "People",
+        "description": "Number of workers residing in zone"
+      }
+    ],
+    "lifecycle": [
+      {
+        "key": "Household/LifeCycle",
+        "table": "Household",
+        "name": "LifeCycle",
+        "display": "LifeCycle (category)",
+        "type": "character",
+        "units": "category",
+        "unitLabel": "category",
+        "description": "Household life cycle as defined by 2009 NHTS LIF_CYC variable"
+      }
+    ],
+    "income": [
+      {
+        "key": "Household/Income",
+        "table": "Household",
+        "name": "Income",
+        "display": "Income (USD)",
+        "type": "currency",
+        "units": "USD",
+        "unitLabel": "USD",
+        "description": "Total annual household (non-qroup & group quarters) income"
+      }
+    ],
+    "housetype": [
+      {
+        "key": "Household/HouseType",
+        "table": "Household",
+        "name": "HouseType",
+        "display": "HouseType (category)",
+        "type": "character",
+        "units": "category",
+        "unitLabel": "category",
+        "description": "Type of dwelling unit in which the household resides (SF = single family, MF = multi-family, GQ = group quarters"
+      }
+    ],
+    "sf": [
+      {
+        "key": "Bzone/SF",
+        "table": "Bzone",
+        "name": "SF",
+        "display": "SF (DU)",
+        "type": "integer",
+        "units": "DU",
+        "unitLabel": "DU",
+        "description": "Number of households living in single family dwelling units in zone"
+      }
+    ],
+    "mf": [
+      {
+        "key": "Bzone/MF",
+        "table": "Bzone",
+        "name": "MF",
+        "display": "MF (DU)",
+        "type": "integer",
+        "units": "DU",
+        "unitLabel": "DU",
+        "description": "Number of households living in multi-family dwelling units in zone"
+      }
+    ],
+    "gq": [
+      {
+        "key": "Bzone/GQ",
+        "table": "Bzone",
+        "name": "GQ",
+        "display": "GQ (DU)",
+        "type": "integer",
+        "units": "DU",
+        "unitLabel": "DU",
+        "description": "Number of persons living in group quarters in zone"
+      }
+    ],
+    "pop": [
+      {
+        "key": "Bzone/Pop",
+        "table": "Bzone",
+        "name": "Pop",
+        "display": "Pop (People (PRSN))",
+        "type": "people",
+        "units": "PRSN",
+        "unitLabel": "People",
+        "description": "Population residing in zone"
+      }
+    ],
+    "wkrid": [
+      {
+        "key": "Worker/WkrId",
+        "table": "Worker",
+        "name": "WkrId",
+        "display": "WkrId (ID)",
+        "type": "character",
+        "units": "ID",
+        "unitLabel": "ID",
+        "description": "Unique worker ID"
+      }
+    ],
+    "distancetowork": [
+      {
+        "key": "Worker/DistanceToWork",
+        "table": "Worker",
+        "name": "DistanceToWork",
+        "display": "DistanceToWork (Miles (MI))",
+        "type": "distance",
+        "units": "MI",
+        "unitLabel": "Miles",
+        "description": "Distance from home to work assuming location at Bzone centroid and 'Manhattan' distance"
+      }
+    ],
+    "loctype": [
+      {
+        "key": "Household/LocType",
+        "table": "Household",
+        "name": "LocType",
+        "display": "LocType (category)",
+        "type": "character",
+        "units": "category",
+        "unitLabel": "category",
+        "description": "Location type (Urban, Town, Rural) of the place where the household resides"
+      }
+    ],
+    "urbanpop": [
+      {
+        "key": "Bzone/UrbanPop",
+        "table": "Bzone",
+        "name": "UrbanPop",
+        "display": "UrbanPop (People (PRSN))",
+        "type": "people",
+        "units": "PRSN",
+        "unitLabel": "People",
+        "description": "Urbanized area population in the Bzone"
+      },
+      {
+        "key": "Marea/UrbanPop",
+        "table": "Marea",
+        "name": "UrbanPop",
+        "display": "UrbanPop (People (PRSN))",
+        "type": "people",
+        "units": "PRSN",
+        "unitLabel": "People",
+        "description": "Urbanized area population in the Marea"
+      }
+    ],
+    "townpop": [
+      {
+        "key": "Bzone/TownPop",
+        "table": "Bzone",
+        "name": "TownPop",
+        "display": "TownPop (People (PRSN))",
+        "type": "people",
+        "units": "PRSN",
+        "unitLabel": "People",
+        "description": "Town (i.e. urban but non-urbanized area) population in the Bzone"
+      },
+      {
+        "key": "Marea/TownPop",
+        "table": "Marea",
+        "name": "TownPop",
+        "display": "TownPop (People (PRSN))",
+        "type": "people",
+        "units": "PRSN",
+        "unitLabel": "People",
+        "description": "Town (i.e. urban but non-urbanized area) in the Marea"
+      }
+    ],
+    "ruralpop": [
+      {
+        "key": "Bzone/RuralPop",
+        "table": "Bzone",
+        "name": "RuralPop",
+        "display": "RuralPop (People (PRSN))",
+        "type": "people",
+        "units": "PRSN",
+        "unitLabel": "People",
+        "description": "Rural (i.e. not urbanized and not town) population in the Bzone"
+      },
+      {
+        "key": "Marea/RuralPop",
+        "table": "Marea",
+        "name": "RuralPop",
+        "display": "RuralPop (People (PRSN))",
+        "type": "people",
+        "units": "PRSN",
+        "unitLabel": "People",
+        "description": "Rural (i.e. not urbanized and not town) population in the Marea"
+      }
+    ],
+    "urbanincome": [
+      {
+        "key": "Marea/UrbanIncome",
+        "table": "Marea",
+        "name": "UrbanIncome",
+        "display": "UrbanIncome (USD)",
+        "type": "currency",
+        "units": "USD",
+        "unitLabel": "USD",
+        "description": "Total household income of the urbanized area population in the Marea"
+      }
+    ],
+    "townincome": [
+      {
+        "key": "Marea/TownIncome",
+        "table": "Marea",
+        "name": "TownIncome",
+        "display": "TownIncome (USD)",
+        "type": "currency",
+        "units": "USD",
+        "unitLabel": "USD",
+        "description": "Total household income of the town (i.e. urban but non-urbanized area) population in the Marea"
+      }
+    ],
+    "ruralincome": [
+      {
+        "key": "Marea/RuralIncome",
+        "table": "Marea",
+        "name": "RuralIncome",
+        "display": "RuralIncome (USD)",
+        "type": "currency",
+        "units": "USD",
+        "unitLabel": "USD",
+        "description": "Total household income of the rural (i.e. not urbanized and not town) population in the Marea"
+      }
+    ],
+    "d1b": [
+      {
+        "key": "Bzone/D1B",
+        "table": "Bzone",
+        "name": "D1B",
+        "display": "D1B (PRSN/SQMI)",
+        "type": "compound",
+        "units": "PRSN/SQMI",
+        "unitLabel": "PRSN/SQMI",
+        "description": "Gross population density (people/acre) on unprotected (i.e. developable) land in zone (Ref: EPA 2010 Smart Location Database)"
+      }
+    ],
+    "d1c": [
+      {
+        "key": "Bzone/D1C",
+        "table": "Bzone",
+        "name": "D1C",
+        "display": "D1C (JOB/SQMI)",
+        "type": "compound",
+        "units": "JOB/SQMI",
+        "unitLabel": "JOB/SQMI",
+        "description": "Gross employment density (jobs/acre) on unprotected land (i.e. developable) land in zone (Ref: EPA 2010 Smart Location Database)"
+      }
+    ],
+    "d1d": [
+      {
+        "key": "Bzone/D1D",
+        "table": "Bzone",
+        "name": "D1D",
+        "display": "D1D (HHJOB/SQMI)",
+        "type": "compound",
+        "units": "HHJOB/SQMI",
+        "unitLabel": "HHJOB/SQMI",
+        "description": "Gross activity density (employment + households) on unprotected land in zone (Ref: EPA 2010 Smart Location Database)"
+      }
+    ],
+    "d2a_jphh": [
+      {
+        "key": "Bzone/D2A_JPHH",
+        "table": "Bzone",
+        "name": "D2A_JPHH",
+        "display": "D2A_JPHH (JOB/HH)",
+        "type": "compound",
+        "units": "JOB/HH",
+        "unitLabel": "JOB/HH",
+        "description": "Ratio of jobs to households in zone (Ref: EPA 2010 Smart Location Database)"
+      }
+    ],
+    "d2a_wrkemp": [
+      {
+        "key": "Bzone/D2A_WRKEMP",
+        "table": "Bzone",
+        "name": "D2A_WRKEMP",
+        "display": "D2A_WRKEMP (PRSN/JOB)",
+        "type": "compound",
+        "units": "PRSN/JOB",
+        "unitLabel": "PRSN/JOB",
+        "description": "Ratio of workers to jobs in zone (Ref: EPA 2010 Smart Location Database)"
+      }
+    ],
+    "d2a_ephhm": [
+      {
+        "key": "Bzone/D2A_EPHHM",
+        "table": "Bzone",
+        "name": "D2A_EPHHM",
+        "display": "D2A_EPHHM (employment & household entropy)",
+        "type": "double",
+        "units": "employment & household entropy",
+        "unitLabel": "employment & household entropy",
+        "description": "Employment and household entropy measure for zone considering numbers of households, retail jobs, service jobs, and other jobs (Ref: EPA 2010 Smart Location Database)"
+      }
+    ],
+    "d5": [
+      {
+        "key": "Bzone/D5",
+        "table": "Bzone",
+        "name": "D5",
+        "display": "D5 (NA)",
+        "type": "double",
+        "units": "NA",
+        "unitLabel": "NA",
+        "description": "Destination accessibility of zone calculated as harmonic mean of jobs within 2 miles and population within 5 miles"
+      }
+    ],
+    "isurbanmixnbrhd": [
+      {
+        "key": "Household/IsUrbanMixNbrhd",
+        "table": "Household",
+        "name": "IsUrbanMixNbrhd",
+        "display": "IsUrbanMixNbrhd (binary)",
+        "type": "integer",
+        "units": "binary",
+        "unitLabel": "binary",
+        "description": "Flag identifying whether household is (1) or is not (0) in urban mixed-use neighborhood"
+      }
+    ],
+    "freeparkingspaces": [
+      {
+        "key": "Household/FreeParkingSpaces",
+        "table": "Household",
+        "name": "FreeParkingSpaces",
+        "display": "FreeParkingSpaces (parking spaces)",
+        "type": "integer",
+        "units": "parking spaces",
+        "unitLabel": "parking spaces",
+        "description": "Number of free parking spaces available to the household"
+      }
+    ],
+    "parkingunitcost": [
+      {
+        "key": "Household/ParkingUnitCost",
+        "table": "Household",
+        "name": "ParkingUnitCost",
+        "display": "ParkingUnitCost (USD)",
+        "type": "currency",
+        "units": "USD",
+        "unitLabel": "USD",
+        "description": "Daily cost for long-term parking (e.g. paid on monthly basis)"
+      }
+    ],
+    "otherparkingcost": [
+      {
+        "key": "Household/OtherParkingCost",
+        "table": "Household",
+        "name": "OtherParkingCost",
+        "display": "OtherParkingCost (USD)",
+        "type": "currency",
+        "units": "USD",
+        "unitLabel": "USD",
+        "description": "Daily cost for parking at shopping locations or other locations of paid parking not including work (not adjusted for number of vehicle trips)"
+      }
+    ],
+    "paysforparking": [
+      {
+        "key": "Worker/PaysForParking",
+        "table": "Worker",
+        "name": "PaysForParking",
+        "display": "PaysForParking (binary)",
+        "type": "integer",
+        "units": "binary",
+        "unitLabel": "binary",
+        "description": "Does worker pay for parking: 1 = yes, 0 = no"
+      }
+    ],
+    "iscashout": [
+      {
+        "key": "Worker/IsCashOut",
+        "table": "Worker",
+        "name": "IsCashOut",
+        "display": "IsCashOut (binary)",
+        "type": "integer",
+        "units": "binary",
+        "unitLabel": "binary",
+        "description": "Is worker paid parking in cash-out-buy-back program: 1 = yes, 0 = no"
+      }
+    ],
+    "parkingcost": [
+      {
+        "key": "Worker/ParkingCost",
+        "table": "Worker",
+        "name": "ParkingCost",
+        "display": "ParkingCost (USD)",
+        "type": "currency",
+        "units": "USD",
+        "unitLabel": "USD",
+        "description": "Daily cost for long-term parking (e.g. paid on monthly basis)"
+      }
+    ],
+    "isimp": [
+      {
+        "key": "Household/IsIMP",
+        "table": "Household",
+        "name": "IsIMP",
+        "display": "IsIMP (binary)",
+        "type": "integer",
+        "units": "binary",
+        "unitLabel": "binary",
+        "description": "Identifies whether household is participant in travel demand management individualized marketing program (IMP): 1 = yes, 0 = no"
+      }
+    ],
+    "proptdmdvmtreduction": [
+      {
+        "key": "Household/PropTdmDvmtReduction",
+        "table": "Household",
+        "name": "PropTdmDvmtReduction",
+        "display": "PropTdmDvmtReduction (proportion)",
+        "type": "double",
+        "units": "proportion",
+        "unitLabel": "proportion",
+        "description": "Proportional reduction in household DVMT due to participation in travel demand management programs"
+      }
+    ],
+    "iseco": [
+      {
+        "key": "Worker/IsECO",
+        "table": "Worker",
+        "name": "IsECO",
+        "display": "IsECO (binary)",
+        "type": "integer",
+        "units": "binary",
+        "unitLabel": "binary",
+        "description": "Identifies whether worker is a participant in travel demand management employee commute options program: 1 = yes, 0 = no"
+      }
+    ],
+    "tranrevmipc": [
+      {
+        "key": "Marea/TranRevMiPC",
+        "table": "Marea",
+        "name": "TranRevMiPC",
+        "display": "TranRevMiPC (MI/PRSN/DAY)",
+        "type": "compound",
+        "units": "MI/PRSN/DAY",
+        "unitLabel": "MI/PRSN/DAY",
+        "description": "Ratio of annual bus-equivalent revenue-miles (i.e. revenue-miles at the same productivity - passenger miles per revenue mile - as standard bus) to urbanized area population"
+      }
+    ],
+    "vandvmt": [
+      {
+        "key": "Marea/VanDvmt",
+        "table": "Marea",
+        "name": "VanDvmt",
+        "display": "VanDvmt (MI/DAY)",
+        "type": "compound",
+        "units": "MI/DAY",
+        "unitLabel": "MI/DAY",
+        "description": "Total daily miles traveled by vans of various sizes to provide demand responsive, vanpool, and similar services."
+      }
+    ],
+    "busdvmt": [
+      {
+        "key": "Marea/BusDvmt",
+        "table": "Marea",
+        "name": "BusDvmt",
+        "display": "BusDvmt (MI/DAY)",
+        "type": "compound",
+        "units": "MI/DAY",
+        "unitLabel": "MI/DAY",
+        "description": "Total daily miles traveled by buses of various sizes to provide bus service of various types."
+      }
+    ],
+    "raildvmt": [
+      {
+        "key": "Marea/RailDvmt",
+        "table": "Marea",
+        "name": "RailDvmt",
+        "display": "RailDvmt (MI/DAY)",
+        "type": "compound",
+        "units": "MI/DAY",
+        "unitLabel": "MI/DAY",
+        "description": "Total daily miles traveled by light rail, heavy rail, commuter rail, and similar types of vehicles."
+      }
+    ],
+    "fwylanemipc": [
+      {
+        "key": "Marea/FwyLaneMiPC",
+        "table": "Marea",
+        "name": "FwyLaneMiPC",
+        "display": "FwyLaneMiPC (MI/PRSN)",
+        "type": "compound",
+        "units": "MI/PRSN",
+        "unitLabel": "MI/PRSN",
+        "description": "Ratio of urbanized area freeway and expressway lane-miles to urbanized area population"
+      }
+    ],
+    "drv15to19": [
+      {
+        "key": "Household/Drv15to19",
+        "table": "Household",
+        "name": "Drv15to19",
+        "display": "Drv15to19 (People (PRSN))",
+        "type": "people",
+        "units": "PRSN",
+        "unitLabel": "People",
+        "description": "Number of drivers 15 to 19 years old"
+      }
+    ],
+    "drv20to29": [
+      {
+        "key": "Household/Drv20to29",
+        "table": "Household",
+        "name": "Drv20to29",
+        "display": "Drv20to29 (People (PRSN))",
+        "type": "people",
+        "units": "PRSN",
+        "unitLabel": "People",
+        "description": "Number of drivers 20 to 29 years old"
+      }
+    ],
+    "drv30to54": [
+      {
+        "key": "Household/Drv30to54",
+        "table": "Household",
+        "name": "Drv30to54",
+        "display": "Drv30to54 (People (PRSN))",
+        "type": "people",
+        "units": "PRSN",
+        "unitLabel": "People",
+        "description": "Number of drivers 30 to 54 years old"
+      }
+    ],
+    "drv55to64": [
+      {
+        "key": "Household/Drv55to64",
+        "table": "Household",
+        "name": "Drv55to64",
+        "display": "Drv55to64 (People (PRSN))",
+        "type": "people",
+        "units": "PRSN",
+        "unitLabel": "People",
+        "description": "Number of drivers 55 to 64 years old"
+      }
+    ],
+    "drv65plus": [
+      {
+        "key": "Household/Drv65Plus",
+        "table": "Household",
+        "name": "Drv65Plus",
+        "display": "Drv65Plus (People (PRSN))",
+        "type": "people",
+        "units": "PRSN",
+        "unitLabel": "People",
+        "description": "Number of drivers 65 or older"
+      }
+    ],
+    "drivers": [
+      {
+        "key": "Household/Drivers",
+        "table": "Household",
+        "name": "Drivers",
+        "display": "Drivers (People (PRSN))",
+        "type": "people",
+        "units": "PRSN",
+        "unitLabel": "People",
+        "description": "Number of drivers in household"
+      }
+    ],
+    "drvagepersons": [
+      {
+        "key": "Household/DrvAgePersons",
+        "table": "Household",
+        "name": "DrvAgePersons",
+        "display": "DrvAgePersons (People (PRSN))",
+        "type": "people",
+        "units": "PRSN",
+        "unitLabel": "People",
+        "description": "Number of people 15 year old or older in the household"
+      }
+    ],
+    "vehicles": [
+      {
+        "key": "Household/Vehicles",
+        "table": "Household",
+        "name": "Vehicles",
+        "display": "Vehicles (Vehicles (VEH))",
+        "type": "vehicles",
+        "units": "VEH",
+        "unitLabel": "Vehicles",
+        "description": "Number of automobiles and light trucks owned or leased by the household including high level car service vehicles available to driving-age persons"
+      }
+    ],
+    "numlttrk": [
+      {
+        "key": "Household/NumLtTrk",
+        "table": "Household",
+        "name": "NumLtTrk",
+        "display": "NumLtTrk (Vehicles (VEH))",
+        "type": "vehicles",
+        "units": "VEH",
+        "unitLabel": "Vehicles",
+        "description": "Number of light trucks (pickup, sport-utility vehicle, and van) owned or leased by household"
+      }
+    ],
+    "numauto": [
+      {
+        "key": "Household/NumAuto",
+        "table": "Household",
+        "name": "NumAuto",
+        "display": "NumAuto (Vehicles (VEH))",
+        "type": "vehicles",
+        "units": "VEH",
+        "unitLabel": "Vehicles",
+        "description": "Number of automobiles (i.e. 4-tire passenger vehicles that are not light trucks) owned or leased by household"
+      }
+    ],
+    "vehid": [
+      {
+        "key": "Vehicle/VehId",
+        "table": "Vehicle",
+        "name": "VehId",
+        "display": "VehId (ID)",
+        "type": "character",
+        "units": "ID",
+        "unitLabel": "ID",
+        "description": "Unique vehicle ID"
+      }
+    ],
+    "vehicleaccess": [
+      {
+        "key": "Vehicle/VehicleAccess",
+        "table": "Vehicle",
+        "name": "VehicleAccess",
+        "display": "VehicleAccess (category)",
+        "type": "character",
+        "units": "category",
+        "unitLabel": "category",
+        "description": "Identifier whether vehicle is owned by household (Own), if vehicle is low level car service (LowCarSvc), or if vehicle is high level car service (HighCarSvc)"
+      }
+    ],
+    "type": [
+      {
+        "key": "Vehicle/Type",
+        "table": "Vehicle",
+        "name": "Type",
+        "display": "Type (category)",
+        "type": "character",
+        "units": "category",
+        "unitLabel": "category",
+        "description": "Vehicle body type: Auto = automobile, LtTrk = light trucks (i.e. pickup, SUV, Van)"
+      }
+    ],
+    "age": [
+      {
+        "key": "Vehicle/Age",
+        "table": "Vehicle",
+        "name": "Age",
+        "display": "Age (DAY)",
+        "type": "time",
+        "units": "DAY",
+        "unitLabel": "DAY",
+        "description": "Vehicle age in years"
+      }
+    ],
+    "owncost": [
+      {
+        "key": "Vehicle/OwnCost",
+        "table": "Vehicle",
+        "name": "OwnCost",
+        "display": "OwnCost (USD)",
+        "type": "currency",
+        "units": "USD",
+        "unitLabel": "USD",
+        "description": "Annual cost of vehicle ownership including depreciation, financing, insurance, taxes, and residential parking in dollars"
+      },
+      {
+        "key": "Household/OwnCost",
+        "table": "Household",
+        "name": "OwnCost",
+        "display": "OwnCost (USD)",
+        "type": "currency",
+        "units": "USD",
+        "unitLabel": "USD",
+        "description": "Annual household vehicle ownership cost (depreciation, finance, insurance, taxes) savings in dollars"
+      }
+    ],
+    "owncostpermile": [
+      {
+        "key": "Vehicle/OwnCostPerMile",
+        "table": "Vehicle",
+        "name": "OwnCostPerMile",
+        "display": "OwnCostPerMile (USD)",
+        "type": "currency",
+        "units": "USD",
+        "unitLabel": "USD",
+        "description": "Annual cost of vehicle ownership per mile of vehicle travel (dollars per mile)"
+      }
+    ],
+    "inscost": [
+      {
+        "key": "Vehicle/InsCost",
+        "table": "Vehicle",
+        "name": "InsCost",
+        "display": "InsCost (USD)",
+        "type": "currency",
+        "units": "USD",
+        "unitLabel": "USD",
+        "description": "Annual vehicle insurance cost in dollars"
+      }
+    ],
+    "haspaydins": [
+      {
+        "key": "Household/HasPaydIns",
+        "table": "Household",
+        "name": "HasPaydIns",
+        "display": "HasPaydIns (binary)",
+        "type": "integer",
+        "units": "binary",
+        "unitLabel": "binary",
+        "description": "Identifies whether household has pay-as-you-drive insurance for vehicles: 1 = Yes, 0 = no"
+      }
+    ],
+    "switchtocarsvc": [
+      {
+        "key": "Vehicle/SwitchToCarSvc",
+        "table": "Vehicle",
+        "name": "SwitchToCarSvc",
+        "display": "SwitchToCarSvc (binary)",
+        "type": "integer",
+        "units": "binary",
+        "unitLabel": "binary",
+        "description": "Identifies whether a vehicle was switched from owned to car service"
+      }
+    ],
+    "owncostsavings": [
+      {
+        "key": "Household/OwnCostSavings",
+        "table": "Household",
+        "name": "OwnCostSavings",
+        "display": "OwnCostSavings (USD)",
+        "type": "currency",
+        "units": "USD",
+        "unitLabel": "USD",
+        "description": "Annual vehicle ownership cost (depreciation, finance, insurance, taxes) savings in dollars resulting from substituting the use of car services for a household vehicle"
+      }
+    ],
+    "numhighcarsvc": [
+      {
+        "key": "Household/NumHighCarSvc",
+        "table": "Household",
+        "name": "NumHighCarSvc",
+        "display": "NumHighCarSvc (Vehicles (VEH))",
+        "type": "vehicles",
+        "units": "VEH",
+        "unitLabel": "Vehicles",
+        "description": "Number of high level service car service vehicles available to the household (difference between number of vehicles owned by the household and number of driving age persons for households having availability of high level car services"
+      }
+    ],
+    "dvmt": [
+      {
+        "key": "Household/Dvmt",
+        "table": "Household",
+        "name": "Dvmt",
+        "display": "Dvmt (MI/DAY)",
+        "type": "compound",
+        "units": "MI/DAY",
+        "unitLabel": "MI/DAY",
+        "description": "Average daily vehicle miles traveled by the household in autos or light trucks"
+      }
+    ],
+    "urbanhhdvmt": [
+      {
+        "key": "Marea/UrbanHhDvmt",
+        "table": "Marea",
+        "name": "UrbanHhDvmt",
+        "display": "UrbanHhDvmt (MI/DAY)",
+        "type": "compound",
+        "units": "MI/DAY",
+        "unitLabel": "MI/DAY",
+        "description": "Average daily vehicle miles traveled in autos or light trucks by households residing in the urbanized portion of the Marea"
+      }
+    ],
+    "townhhdvmt": [
+      {
+        "key": "Marea/TownHhDvmt",
+        "table": "Marea",
+        "name": "TownHhDvmt",
+        "display": "TownHhDvmt (MI/DAY)",
+        "type": "compound",
+        "units": "MI/DAY",
+        "unitLabel": "MI/DAY",
+        "description": "Average daily vehicle miles traveled in autos or light trucks by households residing in town (urban but not urbanized) portion of the Marea"
+      }
+    ],
+    "ruralhhdvmt": [
+      {
+        "key": "Marea/RuralHhDvmt",
+        "table": "Marea",
+        "name": "RuralHhDvmt",
+        "display": "RuralHhDvmt (MI/DAY)",
+        "type": "compound",
+        "units": "MI/DAY",
+        "unitLabel": "MI/DAY",
+        "description": "Average daily vehicle miles traveled in autos or light trucks by households residing in the rural (non-urban) portion of the Marea"
+      }
+    ],
+    "walktrips": [
+      {
+        "key": "Household/WalkTrips",
+        "table": "Household",
+        "name": "WalkTrips",
+        "display": "WalkTrips (TRIP/DAY)",
+        "type": "compound",
+        "units": "TRIP/DAY",
+        "unitLabel": "TRIP/DAY",
+        "description": "Average number of walk trips per year by household members"
+      }
+    ],
+    "biketrips": [
+      {
+        "key": "Household/BikeTrips",
+        "table": "Household",
+        "name": "BikeTrips",
+        "display": "BikeTrips (TRIP/DAY)",
+        "type": "compound",
+        "units": "TRIP/DAY",
+        "unitLabel": "TRIP/DAY",
+        "description": "Average number of bicycle trips per year by household members"
+      }
+    ],
+    "transittrips": [
+      {
+        "key": "Household/TransitTrips",
+        "table": "Household",
+        "name": "TransitTrips",
+        "display": "TransitTrips (TRIP/DAY)",
+        "type": "compound",
+        "units": "TRIP/DAY",
+        "unitLabel": "TRIP/DAY",
+        "description": "Average number of public transit trips per year by household members"
+      }
+    ],
+    "walkavgtripdist": [
+      {
+        "key": "Household/WalkAvgTripDist",
+        "table": "Household",
+        "name": "WalkAvgTripDist",
+        "display": "WalkAvgTripDist (Miles (MI))",
+        "type": "double",
+        "units": "MI",
+        "unitLabel": "Miles",
+        "description": "Daily walking average trip length"
+      }
+    ],
+    "bikeavgtripdist": [
+      {
+        "key": "Household/BikeAvgTripDist",
+        "table": "Household",
+        "name": "BikeAvgTripDist",
+        "display": "BikeAvgTripDist (Miles (MI))",
+        "type": "double",
+        "units": "MI",
+        "unitLabel": "Miles",
+        "description": "Daily biking average trip length"
+      }
+    ],
+    "transitavgtripdist": [
+      {
+        "key": "Household/TransitAvgTripDist",
+        "table": "Household",
+        "name": "TransitAvgTripDist",
+        "display": "TransitAvgTripDist (Miles (MI))",
+        "type": "double",
+        "units": "MI",
+        "unitLabel": "Miles",
+        "description": "Daily transit average trip length"
+      }
+    ],
+    "walkpmt": [
+      {
+        "key": "Household/WalkPMT",
+        "table": "Household",
+        "name": "WalkPMT",
+        "display": "WalkPMT (Miles (MI))",
+        "type": "distance",
+        "units": "MI",
+        "unitLabel": "Miles",
+        "description": "Daily walking person miles traveled by all members of the household"
+      }
+    ],
+    "bikepmt": [
+      {
+        "key": "Household/BikePMT",
+        "table": "Household",
+        "name": "BikePMT",
+        "display": "BikePMT (Miles (MI))",
+        "type": "distance",
+        "units": "MI",
+        "unitLabel": "Miles",
+        "description": "Daily biking person miles traveled by all members of the household"
+      }
+    ],
+    "transitpmt": [
+      {
+        "key": "Household/TransitPMT",
+        "table": "Household",
+        "name": "TransitPMT",
+        "display": "TransitPMT (Miles (MI))",
+        "type": "distance",
+        "units": "MI",
+        "unitLabel": "Miles",
+        "description": "Daily transit person miles traveled by all members of the household"
+      }
+    ],
+    "vehicletrips": [
+      {
+        "key": "Household/VehicleTrips",
+        "table": "Household",
+        "name": "VehicleTrips",
+        "display": "VehicleTrips (TRIP/DAY)",
+        "type": "compound",
+        "units": "TRIP/DAY",
+        "unitLabel": "TRIP/DAY",
+        "description": "Average number of vehicle trips per day by household members"
+      }
+    ],
+    "avevehtriplen": [
+      {
+        "key": "Household/AveVehTripLen",
+        "table": "Household",
+        "name": "AveVehTripLen",
+        "display": "AveVehTripLen (Miles (MI))",
+        "type": "distance",
+        "units": "MI",
+        "unitLabel": "Miles",
+        "description": "Average household vehicle trip length in miles"
+      }
+    ],
+    "propdvmtdiverted": [
+      {
+        "key": "Household/PropDvmtDiverted",
+        "table": "Household",
+        "name": "PropDvmtDiverted",
+        "display": "PropDvmtDiverted (proportion)",
+        "type": "double",
+        "units": "proportion",
+        "unitLabel": "proportion",
+        "description": "Proportion of household DVMT diverted to bicycling, electric bikes, or other 'low-speed' travel modes"
+      }
+    ],
+    "avetrplendiverted": [
+      {
+        "key": "Household/AveTrpLenDiverted",
+        "table": "Household",
+        "name": "AveTrpLenDiverted",
+        "display": "AveTrpLenDiverted (Miles (MI))",
+        "type": "distance",
+        "units": "MI",
+        "unitLabel": "Miles",
+        "description": "Average length in miles of vehicle trips diverted to bicycling, electric bikes, or other 'low-speed' travel modes"
+      }
+    ],
+    "sovdvmtprop": [
+      {
+        "key": "Household/SovDvmtProp",
+        "table": "Household",
+        "name": "SovDvmtProp",
+        "display": "SovDvmtProp (proportion)",
+        "type": "double",
+        "units": "proportion",
+        "unitLabel": "proportion",
+        "description": "Proportion of household DVMT in single-occupant vehicle trips"
+      }
+    ],
+    "hhautofuelci": [
+      {
+        "key": "Region/HhAutoFuelCI",
+        "table": "Region",
+        "name": "HhAutoFuelCI",
+        "display": "HhAutoFuelCI (KG/GGE)",
+        "type": "compound",
+        "units": "KG/GGE",
+        "unitLabel": "KG/GGE",
+        "description": "Average carbon intensity of fuels used by household automobiles (grams CO2e per megajoule)"
+      }
+    ],
+    "hhlttrkfuelci": [
+      {
+        "key": "Region/HhLtTrkFuelCI",
+        "table": "Region",
+        "name": "HhLtTrkFuelCI",
+        "display": "HhLtTrkFuelCI (KG/GGE)",
+        "type": "compound",
+        "units": "KG/GGE",
+        "unitLabel": "KG/GGE",
+        "description": "Average carbon intensity of fuels used by household light trucks (grams CO2e per megajoule)"
+      }
+    ],
+    "carsvcautofuelci": [
+      {
+        "key": "Region/CarSvcAutoFuelCI",
+        "table": "Region",
+        "name": "CarSvcAutoFuelCI",
+        "display": "CarSvcAutoFuelCI (KG/GGE)",
+        "type": "compound",
+        "units": "KG/GGE",
+        "unitLabel": "KG/GGE",
+        "description": "Average carbon intensity of fuels used by car service automobiles (grams CO2e per megajoule)"
+      }
+    ],
+    "carsvclttrkfuelci": [
+      {
+        "key": "Region/CarSvcLtTrkFuelCI",
+        "table": "Region",
+        "name": "CarSvcLtTrkFuelCI",
+        "display": "CarSvcLtTrkFuelCI (KG/GGE)",
+        "type": "compound",
+        "units": "KG/GGE",
+        "unitLabel": "KG/GGE",
+        "description": "Average carbon intensity of fuels used by car service light trucks (grams CO2e per megajoule)"
+      }
+    ],
+    "comsvcautofuelci": [
+      {
+        "key": "Region/ComSvcAutoFuelCI",
+        "table": "Region",
+        "name": "ComSvcAutoFuelCI",
+        "display": "ComSvcAutoFuelCI (KG/GGE)",
+        "type": "compound",
+        "units": "KG/GGE",
+        "unitLabel": "KG/GGE",
+        "description": "Average carbon intensity of fuels used by commercial service automobiles (grams CO2e per megajoule)"
+      }
+    ],
+    "comsvclttrkfuelci": [
+      {
+        "key": "Region/ComSvcLtTrkFuelCI",
+        "table": "Region",
+        "name": "ComSvcLtTrkFuelCI",
+        "display": "ComSvcLtTrkFuelCI (KG/GGE)",
+        "type": "compound",
+        "units": "KG/GGE",
+        "unitLabel": "KG/GGE",
+        "description": "Average carbon intensity of fuels used by commercial service light trucks (grams CO2e per megajoule)"
+      }
+    ],
+    "hvytrkfuelci": [
+      {
+        "key": "Region/HvyTrkFuelCI",
+        "table": "Region",
+        "name": "HvyTrkFuelCI",
+        "display": "HvyTrkFuelCI (KG/GGE)",
+        "type": "compound",
+        "units": "KG/GGE",
+        "unitLabel": "KG/GGE",
+        "description": "Average carbon intensity of fuels used by heavy trucks (grams CO2e per megajoule)"
+      }
+    ],
+    "transitvanfuelci": [
+      {
+        "key": "Marea/TransitVanFuelCI",
+        "table": "Marea",
+        "name": "TransitVanFuelCI",
+        "display": "TransitVanFuelCI (KG/GGE)",
+        "type": "compound",
+        "units": "KG/GGE",
+        "unitLabel": "KG/GGE",
+        "description": "Average carbon intensity of fuel used by transit vans (grams CO2e per megajoule)"
+      }
+    ],
+    "transitbusfuelci": [
+      {
+        "key": "Marea/TransitBusFuelCI",
+        "table": "Marea",
+        "name": "TransitBusFuelCI",
+        "display": "TransitBusFuelCI (KG/GGE)",
+        "type": "compound",
+        "units": "KG/GGE",
+        "unitLabel": "KG/GGE",
+        "description": "Average carbon intensity of fuel used by transit buses (grams CO2e per megajoule)"
+      }
+    ],
+    "transitrailfuelci": [
+      {
+        "key": "Marea/TransitRailFuelCI",
+        "table": "Marea",
+        "name": "TransitRailFuelCI",
+        "display": "TransitRailFuelCI (KG/GGE)",
+        "type": "compound",
+        "units": "KG/GGE",
+        "unitLabel": "KG/GGE",
+        "description": "Average carbon intensity of fuel used by transit rail vehicles (grams CO2e per megajoule)"
+      }
+    ],
+    "powertrain": [
+      {
+        "key": "Vehicle/Powertrain",
+        "table": "Vehicle",
+        "name": "Powertrain",
+        "display": "Powertrain (category)",
+        "type": "character",
+        "units": "category",
+        "unitLabel": "category",
+        "description": "Vehicle powertrain type: ICEV = internal combustion engine vehicle, HEV = hybrid electric vehicle, PHEV = plug-in hybrid electric vehicle, BEV = battery electric vehicle, NA = not applicable because is a car service vehicle"
+      }
+    ],
+    "batrng": [
+      {
+        "key": "Vehicle/BatRng",
+        "table": "Vehicle",
+        "name": "BatRng",
+        "display": "BatRng (Miles (MI))",
+        "type": "distance",
+        "units": "MI",
+        "unitLabel": "Miles",
+        "description": "Miles of travel possible on fully charged battery"
+      }
+    ],
+    "mpg": [
+      {
+        "key": "Vehicle/MPG",
+        "table": "Vehicle",
+        "name": "MPG",
+        "display": "MPG (MI/GGE)",
+        "type": "compound",
+        "units": "MI/GGE",
+        "unitLabel": "MI/GGE",
+        "description": "Average miles of vehicle travel powered by fuel per gasoline equivalent gallon"
+      }
+    ],
+    "gpm": [
+      {
+        "key": "Vehicle/GPM",
+        "table": "Vehicle",
+        "name": "GPM",
+        "display": "GPM (GGE/MI)",
+        "type": "compound",
+        "units": "GGE/MI",
+        "unitLabel": "GGE/MI",
+        "description": "Average gasoline equivalent gallons per mile of vehicle travel powered by fuel"
+      }
+    ],
+    "mpkwh": [
+      {
+        "key": "Vehicle/MPKWH",
+        "table": "Vehicle",
+        "name": "MPKWH",
+        "display": "MPKWH (MI/GGE)",
+        "type": "compound",
+        "units": "MI/GGE",
+        "unitLabel": "MI/GGE",
+        "description": "Average miles of vehicle travel powered by electricity per kilowatt-hour"
+      }
+    ],
+    "kwhpm": [
+      {
+        "key": "Vehicle/KWHPM",
+        "table": "Vehicle",
+        "name": "KWHPM",
+        "display": "KWHPM (GGE/MI)",
+        "type": "compound",
+        "units": "GGE/MI",
+        "unitLabel": "GGE/MI",
+        "description": "Average kilowatt-hours per mile of vehicle travel powered by electricity"
+      }
+    ],
+    "mpge": [
+      {
+        "key": "Vehicle/MPGe",
+        "table": "Vehicle",
+        "name": "MPGe",
+        "display": "MPGe (MI/GGE)",
+        "type": "compound",
+        "units": "MI/GGE",
+        "unitLabel": "MI/GGE",
+        "description": "Average miles of vehicle travel per gasoline equivalent gallon (fuel and electric powered)"
+      }
+    ],
+    "elecdvmtprop": [
+      {
+        "key": "Vehicle/ElecDvmtProp",
+        "table": "Vehicle",
+        "name": "ElecDvmtProp",
+        "display": "ElecDvmtProp (proportion)",
+        "type": "double",
+        "units": "proportion",
+        "unitLabel": "proportion",
+        "description": "Proportion of DVMT powered by electricity"
+      }
+    ],
+    "fuelco2epm": [
+      {
+        "key": "Vehicle/FuelCO2ePM",
+        "table": "Vehicle",
+        "name": "FuelCO2ePM",
+        "display": "FuelCO2ePM (KG/MI)",
+        "type": "compound",
+        "units": "KG/MI",
+        "unitLabel": "KG/MI",
+        "description": "Average grams of carbon-dioxide equivalents produced per mile of travel powered by fuel"
+      }
+    ],
+    "elecco2epm": [
+      {
+        "key": "Vehicle/ElecCO2ePM",
+        "table": "Vehicle",
+        "name": "ElecCO2ePM",
+        "display": "ElecCO2ePM (KG/MI)",
+        "type": "compound",
+        "units": "KG/MI",
+        "unitLabel": "KG/MI",
+        "description": "Average grams of carbon-dioxide equivalents produced per mile of travel powered by electricity"
+      }
+    ],
+    "hvytrkdvmtincomefactor": [
+      {
+        "key": "Region/HvyTrkDvmtIncomeFactor",
+        "table": "Region",
+        "name": "HvyTrkDvmtIncomeFactor",
+        "display": "HvyTrkDvmtIncomeFactor (MI/USD)",
+        "type": "compound",
+        "units": "MI/USD",
+        "unitLabel": "MI/USD",
+        "description": "Ratio of Region base year heavy truck DVMT to household income"
+      },
+      {
+        "key": "Marea/HvyTrkDvmtIncomeFactor",
+        "table": "Marea",
+        "name": "HvyTrkDvmtIncomeFactor",
+        "display": "HvyTrkDvmtIncomeFactor (MI/USD)",
+        "type": "compound",
+        "units": "MI/USD",
+        "unitLabel": "MI/USD",
+        "description": "Ratio of base year heavy truck DVMT to household income"
+      }
+    ],
+    "hvytrkdvmtpopulationfactor": [
+      {
+        "key": "Region/HvyTrkDvmtPopulationFactor",
+        "table": "Region",
+        "name": "HvyTrkDvmtPopulationFactor",
+        "display": "HvyTrkDvmtPopulationFactor (MI/PRSN)",
+        "type": "compound",
+        "units": "MI/PRSN",
+        "unitLabel": "MI/PRSN",
+        "description": "Ratio of Region base year heavy truck DVMT to population"
+      },
+      {
+        "key": "Marea/HvyTrkDvmtPopulationFactor",
+        "table": "Marea",
+        "name": "HvyTrkDvmtPopulationFactor",
+        "display": "HvyTrkDvmtPopulationFactor (MI/PRSN)",
+        "type": "compound",
+        "units": "MI/PRSN",
+        "unitLabel": "MI/PRSN",
+        "description": "Ratio of base year heavy truck DVMT to population"
+      }
+    ],
+    "hvytrkurbandvmt": [
+      {
+        "key": "Region/HvyTrkUrbanDvmt",
+        "table": "Region",
+        "name": "HvyTrkUrbanDvmt",
+        "display": "HvyTrkUrbanDvmt (MI/DAY)",
+        "type": "compound",
+        "units": "MI/DAY",
+        "unitLabel": "MI/DAY",
+        "description": "Region heavy truck daily vehicle miles of travel in urbanized areas"
+      },
+      {
+        "key": "Marea/HvyTrkUrbanDvmt",
+        "table": "Marea",
+        "name": "HvyTrkUrbanDvmt",
+        "display": "HvyTrkUrbanDvmt (MI/DAY)",
+        "type": "compound",
+        "units": "MI/DAY",
+        "unitLabel": "MI/DAY",
+        "description": "Heavy truck daily vehicle miles of travel on urbanized area roadways in the Marea"
+      }
+    ],
+    "hvytrknonurbandvmt": [
+      {
+        "key": "Region/HvyTrkNonUrbanDvmt",
+        "table": "Region",
+        "name": "HvyTrkNonUrbanDvmt",
+        "display": "HvyTrkNonUrbanDvmt (MI/DAY)",
+        "type": "compound",
+        "units": "MI/DAY",
+        "unitLabel": "MI/DAY",
+        "description": "Region heavy truck daily vehicle miles of travel outside of urbanized areas (i.e. in town or rural areas)"
+      }
+    ],
+    "comsvcdvmthhdvmtfactor": [
+      {
+        "key": "Marea/ComSvcDvmtHhDvmtFactor",
+        "table": "Marea",
+        "name": "ComSvcDvmtHhDvmtFactor",
+        "display": "ComSvcDvmtHhDvmtFactor (proportion)",
+        "type": "double",
+        "units": "proportion",
+        "unitLabel": "proportion",
+        "description": "Ratio of Marea base year commercial service DVMT to household DVMT"
+      }
+    ],
+    "comsvcdvmtincomefactor": [
+      {
+        "key": "Marea/ComSvcDvmtIncomeFactor",
+        "table": "Marea",
+        "name": "ComSvcDvmtIncomeFactor",
+        "display": "ComSvcDvmtIncomeFactor (MI/USD)",
+        "type": "compound",
+        "units": "MI/USD",
+        "unitLabel": "MI/USD",
+        "description": "Ratio of base year commercial service vehicle DVMT to household income"
+      }
+    ],
+    "comsvcdvmtpopulationfactor": [
+      {
+        "key": "Marea/ComSvcDvmtPopulationFactor",
+        "table": "Marea",
+        "name": "ComSvcDvmtPopulationFactor",
+        "display": "ComSvcDvmtPopulationFactor (MI/PRSN)",
+        "type": "compound",
+        "units": "MI/PRSN",
+        "unitLabel": "MI/PRSN",
+        "description": "Ratio of base year commercial service vehicle DVMT to population"
+      }
+    ],
+    "ldvurbanroadprop": [
+      {
+        "key": "Marea/LdvUrbanRoadProp",
+        "table": "Marea",
+        "name": "LdvUrbanRoadProp",
+        "display": "LdvUrbanRoadProp (proportion)",
+        "type": "double",
+        "units": "proportion",
+        "unitLabel": "proportion",
+        "description": "The proportion of the DVMT of households residing in the marea and associated commercial service DVMT that occurs on urbanized area roadways in the marea"
+      }
+    ],
+    "comsvcurbandvmt": [
+      {
+        "key": "Marea/ComSvcUrbanDvmt",
+        "table": "Marea",
+        "name": "ComSvcUrbanDvmt",
+        "display": "ComSvcUrbanDvmt (MI/DAY)",
+        "type": "compound",
+        "units": "MI/DAY",
+        "unitLabel": "MI/DAY",
+        "description": "Commercial service daily vehicle miles of travel associated with Marea urbanized household activity"
+      }
+    ],
+    "comsvctowndvmt": [
+      {
+        "key": "Marea/ComSvcTownDvmt",
+        "table": "Marea",
+        "name": "ComSvcTownDvmt",
+        "display": "ComSvcTownDvmt (MI/DAY)",
+        "type": "compound",
+        "units": "MI/DAY",
+        "unitLabel": "MI/DAY",
+        "description": "Commercial service daily vehicle miles of travel associated with Marea town household activity"
+      }
+    ],
+    "comsvcruraldvmt": [
+      {
+        "key": "Marea/ComSvcRuralDvmt",
+        "table": "Marea",
+        "name": "ComSvcRuralDvmt",
+        "display": "ComSvcRuralDvmt (MI/DAY)",
+        "type": "compound",
+        "units": "MI/DAY",
+        "unitLabel": "MI/DAY",
+        "description": "Commercial service daily vehicle miles of travel associated with Marea rural household activity"
+      }
+    ],
+    "ldvfwyartdvmt": [
+      {
+        "key": "Marea/LdvFwyArtDvmt",
+        "table": "Marea",
+        "name": "LdvFwyArtDvmt",
+        "display": "LdvFwyArtDvmt (MI/DAY)",
+        "type": "compound",
+        "units": "MI/DAY",
+        "unitLabel": "MI/DAY",
+        "description": "Light-duty daily vehicle miles of travel in the urbanized portion of the Marea occurring on freeway or arterial roadways"
+      }
+    ],
+    "ldvothdvmt": [
+      {
+        "key": "Marea/LdvOthDvmt",
+        "table": "Marea",
+        "name": "LdvOthDvmt",
+        "display": "LdvOthDvmt (MI/DAY)",
+        "type": "compound",
+        "units": "MI/DAY",
+        "unitLabel": "MI/DAY",
+        "description": "Light-duty daily vehicle miles of travel in the urbanized portion of the Marea occurring on other roadways"
+      }
+    ],
+    "hvytrkfwydvmt": [
+      {
+        "key": "Marea/HvyTrkFwyDvmt",
+        "table": "Marea",
+        "name": "HvyTrkFwyDvmt",
+        "display": "HvyTrkFwyDvmt (MI/DAY)",
+        "type": "compound",
+        "units": "MI/DAY",
+        "unitLabel": "MI/DAY",
+        "description": "Heavy truck daily vehicle miles of travel in the urbanized portion of the Marea occurring on freeways"
+      }
+    ],
+    "hvytrkartdvmt": [
+      {
+        "key": "Marea/HvyTrkArtDvmt",
+        "table": "Marea",
+        "name": "HvyTrkArtDvmt",
+        "display": "HvyTrkArtDvmt (MI/DAY)",
+        "type": "compound",
+        "units": "MI/DAY",
+        "unitLabel": "MI/DAY",
+        "description": "Heavy truck daily vehicle miles of travel in the urbanized portion of the Marea occurring on arterial roadways"
+      }
+    ],
+    "hvytrkothdvmt": [
+      {
+        "key": "Marea/HvyTrkOthDvmt",
+        "table": "Marea",
+        "name": "HvyTrkOthDvmt",
+        "display": "HvyTrkOthDvmt (MI/DAY)",
+        "type": "compound",
+        "units": "MI/DAY",
+        "unitLabel": "MI/DAY",
+        "description": "Heavy truck daily vehicle miles of travel in the urbanized portion of the Marea occurring on other roadways"
+      }
+    ],
+    "busfwydvmt": [
+      {
+        "key": "Marea/BusFwyDvmt",
+        "table": "Marea",
+        "name": "BusFwyDvmt",
+        "display": "BusFwyDvmt (MI/DAY)",
+        "type": "compound",
+        "units": "MI/DAY",
+        "unitLabel": "MI/DAY",
+        "description": "Bus daily vehicle miles of travel in the urbanized portion of the Marea occurring on freeways"
+      }
+    ],
+    "busartdvmt": [
+      {
+        "key": "Marea/BusArtDvmt",
+        "table": "Marea",
+        "name": "BusArtDvmt",
+        "display": "BusArtDvmt (MI/DAY)",
+        "type": "compound",
+        "units": "MI/DAY",
+        "unitLabel": "MI/DAY",
+        "description": "Bus daily vehicle miles of travel in the urbanized portion of the Marea occurring on arterial roadways"
+      }
+    ],
+    "busothdvmt": [
+      {
+        "key": "Marea/BusOthDvmt",
+        "table": "Marea",
+        "name": "BusOthDvmt",
+        "display": "BusOthDvmt (MI/DAY)",
+        "type": "compound",
+        "units": "MI/DAY",
+        "unitLabel": "MI/DAY",
+        "description": "Bus daily vehicle miles of travel in the urbanized portion of the Marea occuring on other roadways"
+      }
+    ],
+    "urbanhhpropurbandvmt": [
+      {
+        "key": "Marea/UrbanHhPropUrbanDvmt",
+        "table": "Marea",
+        "name": "UrbanHhPropUrbanDvmt",
+        "display": "UrbanHhPropUrbanDvmt (proportion)",
+        "type": "double",
+        "units": "proportion",
+        "unitLabel": "proportion",
+        "description": "Average proportion of urban household DVMT traveled on urban roads in the marea where the household resides"
+      }
+    ],
+    "nonurbanhhpropurbandvmt": [
+      {
+        "key": "Marea/NonUrbanHhPropUrbanDvmt",
+        "table": "Marea",
+        "name": "NonUrbanHhPropUrbanDvmt",
+        "display": "NonUrbanHhPropUrbanDvmt (proportion)",
+        "type": "double",
+        "units": "proportion",
+        "unitLabel": "proportion",
+        "description": "Average proportion of non-urban household DVMT traveled on urban roads in the marea where the household resides"
+      }
+    ],
+    "urbandvmtprop": [
+      {
+        "key": "Household/UrbanDvmtProp",
+        "table": "Household",
+        "name": "UrbanDvmtProp",
+        "display": "UrbanDvmtProp (proportion)",
+        "type": "double",
+        "units": "proportion",
+        "unitLabel": "proportion",
+        "description": "Proportion of household DVMT traveled on urban roads in the marea where the household resides"
+      }
+    ],
+    "ldvfwydvmt": [
+      {
+        "key": "Marea/LdvFwyDvmt",
+        "table": "Marea",
+        "name": "LdvFwyDvmt",
+        "display": "LdvFwyDvmt (MI/DAY)",
+        "type": "compound",
+        "units": "MI/DAY",
+        "unitLabel": "MI/DAY",
+        "description": "Light-duty daily vehicle miles of travel in the urbanized portion of the Marea occurring on freeways"
+      }
+    ],
+    "ldvartdvmt": [
+      {
+        "key": "Marea/LdvArtDvmt",
+        "table": "Marea",
+        "name": "LdvArtDvmt",
+        "display": "LdvArtDvmt (MI/DAY)",
+        "type": "compound",
+        "units": "MI/DAY",
+        "unitLabel": "MI/DAY",
+        "description": "Light-duty daily vehicle miles of travel in the urbanized portion of the Marea occurring on arterial roadways"
+      }
+    ],
+    "ldvavespeed": [
+      {
+        "key": "Marea/LdvAveSpeed",
+        "table": "Marea",
+        "name": "LdvAveSpeed",
+        "display": "LdvAveSpeed (MI/DAY)",
+        "type": "compound",
+        "units": "MI/DAY",
+        "unitLabel": "MI/DAY",
+        "description": "Average speed (miles per hour) of light-duty vehicle travel on urban area roads"
+      }
+    ],
+    "hvytrkavespeed": [
+      {
+        "key": "Marea/HvyTrkAveSpeed",
+        "table": "Marea",
+        "name": "HvyTrkAveSpeed",
+        "display": "HvyTrkAveSpeed (MI/DAY)",
+        "type": "compound",
+        "units": "MI/DAY",
+        "unitLabel": "MI/DAY",
+        "description": "Average speed (miles per hour) of heavy truck travel on urban area roads"
+      }
+    ],
+    "busavespeed": [
+      {
+        "key": "Marea/BusAveSpeed",
+        "table": "Marea",
+        "name": "BusAveSpeed",
+        "display": "BusAveSpeed (MI/DAY)",
+        "type": "compound",
+        "units": "MI/DAY",
+        "unitLabel": "MI/DAY",
+        "description": "Average speed (miles per hour) of bus travel on urban area roads"
+      }
+    ],
+    "nonurbanavespeed": [
+      {
+        "key": "Marea/NonUrbanAveSpeed",
+        "table": "Marea",
+        "name": "NonUrbanAveSpeed",
+        "display": "NonUrbanAveSpeed (MI/DAY)",
+        "type": "compound",
+        "units": "MI/DAY",
+        "unitLabel": "MI/DAY",
+        "description": "Average speed (miles per hour) of vehicle travel on non-urban area roads"
+      }
+    ],
+    "ldvtotdelay": [
+      {
+        "key": "Marea/LdvTotDelay",
+        "table": "Marea",
+        "name": "LdvTotDelay",
+        "display": "LdvTotDelay (DAY)",
+        "type": "time",
+        "units": "DAY",
+        "unitLabel": "DAY",
+        "description": "Total light-duty vehicle delay (hours per day) on urban area roads"
+      }
+    ],
+    "hvytrktotdelay": [
+      {
+        "key": "Marea/HvyTrkTotDelay",
+        "table": "Marea",
+        "name": "HvyTrkTotDelay",
+        "display": "HvyTrkTotDelay (DAY)",
+        "type": "time",
+        "units": "DAY",
+        "unitLabel": "DAY",
+        "description": "Total heavy truck vehicle delay (hours per day) on urban area roads"
+      }
+    ],
+    "bustotdelay": [
+      {
+        "key": "Marea/BusTotDelay",
+        "table": "Marea",
+        "name": "BusTotDelay",
+        "display": "BusTotDelay (DAY)",
+        "type": "time",
+        "units": "DAY",
+        "unitLabel": "DAY",
+        "description": "Total bus vehicle delay (hours per day) on urban area roads"
+      }
+    ],
+    "avecongprice": [
+      {
+        "key": "Marea/AveCongPrice",
+        "table": "Marea",
+        "name": "AveCongPrice",
+        "display": "AveCongPrice (USD)",
+        "type": "currency",
+        "units": "USD",
+        "unitLabel": "USD",
+        "description": "Average price paid (dollars per mile) in congestion fees"
+      }
+    ],
+    "fwydvmtpropnonecong": [
+      {
+        "key": "Marea/FwyDvmtPropNoneCong",
+        "table": "Marea",
+        "name": "FwyDvmtPropNoneCong",
+        "display": "FwyDvmtPropNoneCong (proportion)",
+        "type": "double",
+        "units": "proportion",
+        "unitLabel": "proportion",
+        "description": "Proportion of freeway DVMT occurring when there is no congestion"
+      }
+    ],
+    "fwydvmtpropmodcong": [
+      {
+        "key": "Marea/FwyDvmtPropModCong",
+        "table": "Marea",
+        "name": "FwyDvmtPropModCong",
+        "display": "FwyDvmtPropModCong (proportion)",
+        "type": "double",
+        "units": "proportion",
+        "unitLabel": "proportion",
+        "description": "Proportion of freeway DVMT occurring when congestion is moderate"
+      }
+    ],
+    "fwydvmtprophvycong": [
+      {
+        "key": "Marea/FwyDvmtPropHvyCong",
+        "table": "Marea",
+        "name": "FwyDvmtPropHvyCong",
+        "display": "FwyDvmtPropHvyCong (proportion)",
+        "type": "double",
+        "units": "proportion",
+        "unitLabel": "proportion",
+        "description": "Proportion of freeway DVMT occurring when congestion is heavy"
+      }
+    ],
+    "fwydvmtpropsevcong": [
+      {
+        "key": "Marea/FwyDvmtPropSevCong",
+        "table": "Marea",
+        "name": "FwyDvmtPropSevCong",
+        "display": "FwyDvmtPropSevCong (proportion)",
+        "type": "double",
+        "units": "proportion",
+        "unitLabel": "proportion",
+        "description": "Proportion of freeway DVMT occurring when congestion is severe"
+      }
+    ],
+    "fwydvmtpropextcong": [
+      {
+        "key": "Marea/FwyDvmtPropExtCong",
+        "table": "Marea",
+        "name": "FwyDvmtPropExtCong",
+        "display": "FwyDvmtPropExtCong (proportion)",
+        "type": "double",
+        "units": "proportion",
+        "unitLabel": "proportion",
+        "description": "Proportion of freeway DVMT occurring when congestion is extreme"
+      }
+    ],
+    "artdvmtpropnonecong": [
+      {
+        "key": "Marea/ArtDvmtPropNoneCong",
+        "table": "Marea",
+        "name": "ArtDvmtPropNoneCong",
+        "display": "ArtDvmtPropNoneCong (proportion)",
+        "type": "double",
+        "units": "proportion",
+        "unitLabel": "proportion",
+        "description": "Proportion of arterial DVMT occurring when there is no congestion"
+      }
+    ],
+    "artdvmtpropmodcong": [
+      {
+        "key": "Marea/ArtDvmtPropModCong",
+        "table": "Marea",
+        "name": "ArtDvmtPropModCong",
+        "display": "ArtDvmtPropModCong (proportion)",
+        "type": "double",
+        "units": "proportion",
+        "unitLabel": "proportion",
+        "description": "Proportion of arterial DVMT occurring when congestion is moderate"
+      }
+    ],
+    "artdvmtprophvycong": [
+      {
+        "key": "Marea/ArtDvmtPropHvyCong",
+        "table": "Marea",
+        "name": "ArtDvmtPropHvyCong",
+        "display": "ArtDvmtPropHvyCong (proportion)",
+        "type": "double",
+        "units": "proportion",
+        "unitLabel": "proportion",
+        "description": "Proportion of arterial DVMT occurring when congestion is heavy"
+      }
+    ],
+    "artdvmtpropsevcong": [
+      {
+        "key": "Marea/ArtDvmtPropSevCong",
+        "table": "Marea",
+        "name": "ArtDvmtPropSevCong",
+        "display": "ArtDvmtPropSevCong (proportion)",
+        "type": "double",
+        "units": "proportion",
+        "unitLabel": "proportion",
+        "description": "Proportion of arterial DVMT occurring when congestion is severe"
+      }
+    ],
+    "artdvmtpropextcong": [
+      {
+        "key": "Marea/ArtDvmtPropExtCong",
+        "table": "Marea",
+        "name": "ArtDvmtPropExtCong",
+        "display": "ArtDvmtPropExtCong (proportion)",
+        "type": "double",
+        "units": "proportion",
+        "unitLabel": "proportion",
+        "description": "Proportion of arterial DVMT occurring when congestion is extreme"
+      }
+    ],
+    "fwynonecongspeed": [
+      {
+        "key": "Marea/FwyNoneCongSpeed",
+        "table": "Marea",
+        "name": "FwyNoneCongSpeed",
+        "display": "FwyNoneCongSpeed (MI/DAY)",
+        "type": "compound",
+        "units": "MI/DAY",
+        "unitLabel": "MI/DAY",
+        "description": "Average freeway speed (miles per hour) when there is no congestion"
+      }
+    ],
+    "fwymodcongspeed": [
+      {
+        "key": "Marea/FwyModCongSpeed",
+        "table": "Marea",
+        "name": "FwyModCongSpeed",
+        "display": "FwyModCongSpeed (MI/DAY)",
+        "type": "compound",
+        "units": "MI/DAY",
+        "unitLabel": "MI/DAY",
+        "description": "Average freeway speed (miles per hour) when congestion is moderate"
+      }
+    ],
+    "fwyhvycongspeed": [
+      {
+        "key": "Marea/FwyHvyCongSpeed",
+        "table": "Marea",
+        "name": "FwyHvyCongSpeed",
+        "display": "FwyHvyCongSpeed (MI/DAY)",
+        "type": "compound",
+        "units": "MI/DAY",
+        "unitLabel": "MI/DAY",
+        "description": "Average freeway speed (miles per hour) when congestion is heavy"
+      }
+    ],
+    "fwysevcongspeed": [
+      {
+        "key": "Marea/FwySevCongSpeed",
+        "table": "Marea",
+        "name": "FwySevCongSpeed",
+        "display": "FwySevCongSpeed (MI/DAY)",
+        "type": "compound",
+        "units": "MI/DAY",
+        "unitLabel": "MI/DAY",
+        "description": "Average freeway speed (miles per hour) when congestion is severe"
+      }
+    ],
+    "fwyextcongspeed": [
+      {
+        "key": "Marea/FwyExtCongSpeed",
+        "table": "Marea",
+        "name": "FwyExtCongSpeed",
+        "display": "FwyExtCongSpeed (MI/DAY)",
+        "type": "compound",
+        "units": "MI/DAY",
+        "unitLabel": "MI/DAY",
+        "description": "Average freeway speed (miles per hour) when congestion is extreme"
+      }
+    ],
+    "artnonecongspeed": [
+      {
+        "key": "Marea/ArtNoneCongSpeed",
+        "table": "Marea",
+        "name": "ArtNoneCongSpeed",
+        "display": "ArtNoneCongSpeed (MI/DAY)",
+        "type": "compound",
+        "units": "MI/DAY",
+        "unitLabel": "MI/DAY",
+        "description": "Average arterial speed (miles per hour) when there is no congestion"
+      }
+    ],
+    "artmodcongspeed": [
+      {
+        "key": "Marea/ArtModCongSpeed",
+        "table": "Marea",
+        "name": "ArtModCongSpeed",
+        "display": "ArtModCongSpeed (MI/DAY)",
+        "type": "compound",
+        "units": "MI/DAY",
+        "unitLabel": "MI/DAY",
+        "description": "Average arterial speed (miles per hour) when congestion is moderate"
+      }
+    ],
+    "arthvycongspeed": [
+      {
+        "key": "Marea/ArtHvyCongSpeed",
+        "table": "Marea",
+        "name": "ArtHvyCongSpeed",
+        "display": "ArtHvyCongSpeed (MI/DAY)",
+        "type": "compound",
+        "units": "MI/DAY",
+        "unitLabel": "MI/DAY",
+        "description": "Average arterial speed (miles per hour) when congestion is heavy"
+      }
+    ],
+    "artsevcongspeed": [
+      {
+        "key": "Marea/ArtSevCongSpeed",
+        "table": "Marea",
+        "name": "ArtSevCongSpeed",
+        "display": "ArtSevCongSpeed (MI/DAY)",
+        "type": "compound",
+        "units": "MI/DAY",
+        "unitLabel": "MI/DAY",
+        "description": "Average arterial speed (miles per hour) when congestion is severe"
+      }
+    ],
+    "artextcongspeed": [
+      {
+        "key": "Marea/ArtExtCongSpeed",
+        "table": "Marea",
+        "name": "ArtExtCongSpeed",
+        "display": "ArtExtCongSpeed (MI/DAY)",
+        "type": "compound",
+        "units": "MI/DAY",
+        "unitLabel": "MI/DAY",
+        "description": "Average arterial speed (miles per hour) when congestion is extreme"
+      }
+    ],
+    "othspd": [
+      {
+        "key": "Marea/OthSpd",
+        "table": "Marea",
+        "name": "OthSpd",
+        "display": "OthSpd (MI/DAY)",
+        "type": "compound",
+        "units": "MI/DAY",
+        "unitLabel": "MI/DAY",
+        "description": "Average speed (miles per hour) on other roadways"
+      }
+    ],
+    "lambdaadj": [
+      {
+        "key": "Marea/LambdaAdj",
+        "table": "Marea",
+        "name": "LambdaAdj",
+        "display": "LambdaAdj (constant)",
+        "type": "double",
+        "units": "constant",
+        "unitLabel": "constant",
+        "description": "Constant to adjust the modeled lambda parameter to match base year freeway and arterial LDV proportions"
+      }
+    ],
+    "ldvspdsmoothfactor": [
+      {
+        "key": "Marea/LdvSpdSmoothFactor",
+        "table": "Marea",
+        "name": "LdvSpdSmoothFactor",
+        "display": "LdvSpdSmoothFactor (proportion)",
+        "type": "double",
+        "units": "proportion",
+        "unitLabel": "proportion",
+        "description": "Proportional adjustment of light-duty internal combustion engine (ICE) vehicle MPG due to speed smoothing"
+      }
+    ],
+    "hvytrkspdsmoothfactor": [
+      {
+        "key": "Marea/HvyTrkSpdSmoothFactor",
+        "table": "Marea",
+        "name": "HvyTrkSpdSmoothFactor",
+        "display": "HvyTrkSpdSmoothFactor (proportion)",
+        "type": "double",
+        "units": "proportion",
+        "unitLabel": "proportion",
+        "description": "Proportional adjustment of heavy truck internal combustion engine (ICE) vehicle MPG due to speed smoothing"
+      }
+    ],
+    "busspdsmoothfactor": [
+      {
+        "key": "Marea/BusSpdSmoothFactor",
+        "table": "Marea",
+        "name": "BusSpdSmoothFactor",
+        "display": "BusSpdSmoothFactor (proportion)",
+        "type": "double",
+        "units": "proportion",
+        "unitLabel": "proportion",
+        "description": "Proportional adjustment of bus internal combustion engine (ICE) vehicle MPG due to speed smoothing"
+      }
+    ],
+    "ldvecodrivefactor": [
+      {
+        "key": "Marea/LdvEcoDriveFactor",
+        "table": "Marea",
+        "name": "LdvEcoDriveFactor",
+        "display": "LdvEcoDriveFactor (proportion)",
+        "type": "double",
+        "units": "proportion",
+        "unitLabel": "proportion",
+        "description": "Proportional adjustment of light-duty internal combustion engine (ICE) vehicle MPG due to eco-driving"
+      },
+      {
+        "key": "Region/LdvEcoDriveFactor",
+        "table": "Region",
+        "name": "LdvEcoDriveFactor",
+        "display": "LdvEcoDriveFactor (proportion)",
+        "type": "double",
+        "units": "proportion",
+        "unitLabel": "proportion",
+        "description": "Proportional adjustment of light-duty internal combustion engine (ICE) vehicle MPG due to eco-driving in uncongested conditions"
+      }
+    ],
+    "hvytrkecodrivefactor": [
+      {
+        "key": "Marea/HvyTrkEcoDriveFactor",
+        "table": "Marea",
+        "name": "HvyTrkEcoDriveFactor",
+        "display": "HvyTrkEcoDriveFactor (proportion)",
+        "type": "double",
+        "units": "proportion",
+        "unitLabel": "proportion",
+        "description": "Proportional adjustment of heavy truck internal combustion engine (ICE) vehicle MPG due to eco-driving"
+      },
+      {
+        "key": "Region/HvyTrkEcoDriveFactor",
+        "table": "Region",
+        "name": "HvyTrkEcoDriveFactor",
+        "display": "HvyTrkEcoDriveFactor (proportion)",
+        "type": "double",
+        "units": "proportion",
+        "unitLabel": "proportion",
+        "description": "Proportional adjustment of heavy truck internal combustion engine (ICE) vehicle MPG due to eco-driving in uncongested conditions"
+      }
+    ],
+    "busecodrivefactor": [
+      {
+        "key": "Marea/BusEcoDriveFactor",
+        "table": "Marea",
+        "name": "BusEcoDriveFactor",
+        "display": "BusEcoDriveFactor (proportion)",
+        "type": "double",
+        "units": "proportion",
+        "unitLabel": "proportion",
+        "description": "Proportional adjustment of bus internal combustion engine (ICE) vehicle MPG due to eco-driving"
+      },
+      {
+        "key": "Region/BusEcoDriveFactor",
+        "table": "Region",
+        "name": "BusEcoDriveFactor",
+        "display": "BusEcoDriveFactor (proportion)",
+        "type": "double",
+        "units": "proportion",
+        "unitLabel": "proportion",
+        "description": "Proportional adjustment of bus internal combustion engine (ICE) vehicle MPG due to eco-driving in uncongested conditions"
+      }
+    ],
+    "ldicefactor": [
+      {
+        "key": "Marea/LdIceFactor",
+        "table": "Marea",
+        "name": "LdIceFactor",
+        "display": "LdIceFactor (proportion)",
+        "type": "double",
+        "units": "proportion",
+        "unitLabel": "proportion",
+        "description": "Proportional adjustment of light-duty internal combustion engine (ICE) vehicle MPG due to congestion"
+      },
+      {
+        "key": "Region/LdIceFactor",
+        "table": "Region",
+        "name": "LdIceFactor",
+        "display": "LdIceFactor (proportion)",
+        "type": "double",
+        "units": "proportion",
+        "unitLabel": "proportion",
+        "description": "Proportional adjustment of light-duty internal combustion engine (ICE) vehicle MPG in uncongested conditions"
+      }
+    ],
+    "ldhevfactor": [
+      {
+        "key": "Marea/LdHevFactor",
+        "table": "Marea",
+        "name": "LdHevFactor",
+        "display": "LdHevFactor (proportion)",
+        "type": "double",
+        "units": "proportion",
+        "unitLabel": "proportion",
+        "description": "Proportional adjustment of light-duty hybrid-electric vehicle (HEV) MPG due to congestion"
+      },
+      {
+        "key": "Region/LdHevFactor",
+        "table": "Region",
+        "name": "LdHevFactor",
+        "display": "LdHevFactor (proportion)",
+        "type": "double",
+        "units": "proportion",
+        "unitLabel": "proportion",
+        "description": "Proportional adjustment of light-duty hybrid-electric vehicle (HEV) MPG in uncongested conditions"
+      }
+    ],
+    "ldevfactor": [
+      {
+        "key": "Marea/LdEvFactor",
+        "table": "Marea",
+        "name": "LdEvFactor",
+        "display": "LdEvFactor (proportion)",
+        "type": "double",
+        "units": "proportion",
+        "unitLabel": "proportion",
+        "description": "Proportional adjustment of light-duty battery electric vehicle (EV) MPkWh due to congestion"
+      },
+      {
+        "key": "Region/LdEvFactor",
+        "table": "Region",
+        "name": "LdEvFactor",
+        "display": "LdEvFactor (proportion)",
+        "type": "double",
+        "units": "proportion",
+        "unitLabel": "proportion",
+        "description": "Proportional adjustment of light-duty battery electric vehicle (EV) MPkWh in uncongested conditions"
+      }
+    ],
+    "ldfcvfactor": [
+      {
+        "key": "Marea/LdFcvFactor",
+        "table": "Marea",
+        "name": "LdFcvFactor",
+        "display": "LdFcvFactor (proportion)",
+        "type": "double",
+        "units": "proportion",
+        "unitLabel": "proportion",
+        "description": "Proportional adjustment of light-duty fuel cell vehicle (FCV) MPkWh due to congestion"
+      },
+      {
+        "key": "Region/LdFcvFactor",
+        "table": "Region",
+        "name": "LdFcvFactor",
+        "display": "LdFcvFactor (proportion)",
+        "type": "double",
+        "units": "proportion",
+        "unitLabel": "proportion",
+        "description": "Proportional adjustment of light-duty fuel cell vehicle (FCV) MPkWh in uncongested conditions"
+      }
+    ],
+    "hdicefactor": [
+      {
+        "key": "Marea/HdIceFactor",
+        "table": "Marea",
+        "name": "HdIceFactor",
+        "display": "HdIceFactor (proportion)",
+        "type": "double",
+        "units": "proportion",
+        "unitLabel": "proportion",
+        "description": "Proportional adjustment of heavy-duty internal combustion engine (ICE) vehicle MPG due to congestion"
+      },
+      {
+        "key": "Region/HdIceFactor",
+        "table": "Region",
+        "name": "HdIceFactor",
+        "display": "HdIceFactor (proportion)",
+        "type": "double",
+        "units": "proportion",
+        "unitLabel": "proportion",
+        "description": "Proportional adjustment of heavy-duty internal combustion engine (ICE) vehicle MPG in uncongested conditions"
+      }
+    ],
+    "isecodrive": [
+      {
+        "key": "Household/IsEcoDrive",
+        "table": "Household",
+        "name": "IsEcoDrive",
+        "display": "IsEcoDrive (binary)",
+        "type": "integer",
+        "units": "binary",
+        "unitLabel": "binary",
+        "description": "Flag identifying whether drivers in household are eco-drivers"
+      }
+    ],
+    "avevehcostpm": [
+      {
+        "key": "Household/AveVehCostPM",
+        "table": "Household",
+        "name": "AveVehCostPM",
+        "display": "AveVehCostPM (USD)",
+        "type": "currency",
+        "units": "USD",
+        "unitLabel": "USD",
+        "description": "Average out-of-pocket cost in dollars per mile of vehicle travel"
+      }
+    ],
+    "avesocenvcostpm": [
+      {
+        "key": "Household/AveSocEnvCostPM",
+        "table": "Household",
+        "name": "AveSocEnvCostPM",
+        "display": "AveSocEnvCostPM (USD)",
+        "type": "currency",
+        "units": "USD",
+        "unitLabel": "USD",
+        "description": "Average cost in dollars of the social and environmental impacts per mile of vehicle travel"
+      }
+    ],
+    "averoadusetaxpm": [
+      {
+        "key": "Household/AveRoadUseTaxPM",
+        "table": "Household",
+        "name": "AveRoadUseTaxPM",
+        "display": "AveRoadUseTaxPM (USD)",
+        "type": "currency",
+        "units": "USD",
+        "unitLabel": "USD",
+        "description": "Average road use taxes in dollars collected per mile of vehicle travel"
+      }
+    ],
+    "dvmtprop": [
+      {
+        "key": "Vehicle/DvmtProp",
+        "table": "Vehicle",
+        "name": "DvmtProp",
+        "display": "DvmtProp (proportion)",
+        "type": "double",
+        "units": "proportion",
+        "unitLabel": "proportion",
+        "description": "Proportion of household DVMT allocated to vehicle"
+      }
+    ],
+    "avegpm": [
+      {
+        "key": "Household/AveGPM",
+        "table": "Household",
+        "name": "AveGPM",
+        "display": "AveGPM (GGE/MI)",
+        "type": "compound",
+        "units": "GGE/MI",
+        "unitLabel": "GGE/MI",
+        "description": "Average gasoline equivalent gallons per mile of household vehicle travel"
+      }
+    ],
+    "avekwhpm": [
+      {
+        "key": "Household/AveKWHPM",
+        "table": "Household",
+        "name": "AveKWHPM",
+        "display": "AveKWHPM (GGE/MI)",
+        "type": "compound",
+        "units": "GGE/MI",
+        "unitLabel": "GGE/MI",
+        "description": "Average kilowatt-hours per mile of household vehicle travel"
+      }
+    ],
+    "aveco2epm": [
+      {
+        "key": "Household/AveCO2ePM",
+        "table": "Household",
+        "name": "AveCO2ePM",
+        "display": "AveCO2ePM (KG/MI)",
+        "type": "compound",
+        "units": "KG/MI",
+        "unitLabel": "KG/MI",
+        "description": "Average grams of carbon-dioxide equivalents produced per mile of household vehicle travel"
+      }
+    ],
+    "dailygge": [
+      {
+        "key": "Household/DailyGGE",
+        "table": "Household",
+        "name": "DailyGGE",
+        "display": "DailyGGE (GGE/DAY)",
+        "type": "compound",
+        "units": "GGE/DAY",
+        "unitLabel": "GGE/DAY",
+        "description": "Gasoline equivalent gallons consumed per day by household vehicle travel"
+      }
+    ],
+    "dailykwh": [
+      {
+        "key": "Household/DailyKWH",
+        "table": "Household",
+        "name": "DailyKWH",
+        "display": "DailyKWH (GGE/DAY)",
+        "type": "compound",
+        "units": "GGE/DAY",
+        "unitLabel": "GGE/DAY",
+        "description": "Kilowatt-hours consumed per day by household vehicle travel"
+      }
+    ],
+    "dailyco2e": [
+      {
+        "key": "Household/DailyCO2e",
+        "table": "Household",
+        "name": "DailyCO2e",
+        "display": "DailyCO2e (KG/DAY)",
+        "type": "compound",
+        "units": "KG/DAY",
+        "unitLabel": "KG/DAY",
+        "description": "Grams of carbon-dioxide equivalents produced per day by household vehicle travel"
+      }
+    ],
+    "extravmttax": [
+      {
+        "key": "Region/ExtraVmtTax",
+        "table": "Region",
+        "name": "ExtraVmtTax",
+        "display": "ExtraVmtTax (USD)",
+        "type": "currency",
+        "units": "USD",
+        "unitLabel": "USD",
+        "description": "Added vehicle mile tax for household vehicle use to pay for any deficit between road costs and road revenues (dollars per vehicle mile)"
+      }
+    ],
+    "comsvcurbangge": [
+      {
+        "key": "Marea/ComSvcUrbanGGE",
+        "table": "Marea",
+        "name": "ComSvcUrbanGGE",
+        "display": "ComSvcUrbanGGE (GGE/DAY)",
+        "type": "compound",
+        "units": "GGE/DAY",
+        "unitLabel": "GGE/DAY",
+        "description": "Average daily amount of hydrocarbon fuels consumed by commercial service vehicles associated with urban household activity in gas gallon equivalents"
+      }
+    ],
+    "comsvcnonurbangge": [
+      {
+        "key": "Marea/ComSvcNonUrbanGGE",
+        "table": "Marea",
+        "name": "ComSvcNonUrbanGGE",
+        "display": "ComSvcNonUrbanGGE (GGE/DAY)",
+        "type": "compound",
+        "units": "GGE/DAY",
+        "unitLabel": "GGE/DAY",
+        "description": "Average daily amount of hydrocarbon fuels consumed by commercial service vehicles associated with rural and town household activity in gas gallon equivalents"
+      }
+    ],
+    "hvytrkurbangge": [
+      {
+        "key": "Marea/HvyTrkUrbanGGE",
+        "table": "Marea",
+        "name": "HvyTrkUrbanGGE",
+        "display": "HvyTrkUrbanGGE (GGE/DAY)",
+        "type": "compound",
+        "units": "GGE/DAY",
+        "unitLabel": "GGE/DAY",
+        "description": "Average daily amount of hydrocarbon fuels consumed by heavy trucks on urbanized area roadways in the Marea in gas gallon equivalents"
+      },
+      {
+        "key": "Region/HvyTrkUrbanGGE",
+        "table": "Region",
+        "name": "HvyTrkUrbanGGE",
+        "display": "HvyTrkUrbanGGE (GGE/DAY)",
+        "type": "compound",
+        "units": "GGE/DAY",
+        "unitLabel": "GGE/DAY",
+        "description": "Average daily amount of hydrocarbon fuels consumed by heavy trucks on urbanized area roadways in the Region in gas gallon equivalents"
+      }
+    ],
+    "comsvcurbankwh": [
+      {
+        "key": "Marea/ComSvcUrbanKWH",
+        "table": "Marea",
+        "name": "ComSvcUrbanKWH",
+        "display": "ComSvcUrbanKWH (GGE/DAY)",
+        "type": "compound",
+        "units": "GGE/DAY",
+        "unitLabel": "GGE/DAY",
+        "description": "Average daily amount of electricity consumed by commercial service vehicles associated with urban household activity in kilowatt-hours"
+      }
+    ],
+    "comsvcnonurbankwh": [
+      {
+        "key": "Marea/ComSvcNonUrbanKWH",
+        "table": "Marea",
+        "name": "ComSvcNonUrbanKWH",
+        "display": "ComSvcNonUrbanKWH (GGE/DAY)",
+        "type": "compound",
+        "units": "GGE/DAY",
+        "unitLabel": "GGE/DAY",
+        "description": "Average daily amount of electricity consumed by commercial service vehicles associated with rural and town household activity in kilowatt-hours"
+      }
+    ],
+    "hvytrkurbankwh": [
+      {
+        "key": "Marea/HvyTrkUrbanKWH",
+        "table": "Marea",
+        "name": "HvyTrkUrbanKWH",
+        "display": "HvyTrkUrbanKWH (GGE/DAY)",
+        "type": "compound",
+        "units": "GGE/DAY",
+        "unitLabel": "GGE/DAY",
+        "description": "Average daily amount of electricity consumed by heavy trucks on urbanized area roadways in the Marea in kilowatt-hours"
+      },
+      {
+        "key": "Region/HvyTrkUrbanKWH",
+        "table": "Region",
+        "name": "HvyTrkUrbanKWH",
+        "display": "HvyTrkUrbanKWH (GGE/DAY)",
+        "type": "compound",
+        "units": "GGE/DAY",
+        "unitLabel": "GGE/DAY",
+        "description": "Average daily amount of electricity consumed by heavy trucks on urbanized area roadways in the Region in kilowatt-hours"
+      }
+    ],
+    "comsvcurbanco2e": [
+      {
+        "key": "Marea/ComSvcUrbanCO2e",
+        "table": "Marea",
+        "name": "ComSvcUrbanCO2e",
+        "display": "ComSvcUrbanCO2e (KG/DAY)",
+        "type": "compound",
+        "units": "KG/DAY",
+        "unitLabel": "KG/DAY",
+        "description": "Average daily amount of carbon-dioxide equivalents produced by commercial service vehicles associated with urban household activity in grams"
+      }
+    ],
+    "comsvcnonurbanco2e": [
+      {
+        "key": "Marea/ComSvcNonUrbanCO2e",
+        "table": "Marea",
+        "name": "ComSvcNonUrbanCO2e",
+        "display": "ComSvcNonUrbanCO2e (KG/DAY)",
+        "type": "compound",
+        "units": "KG/DAY",
+        "unitLabel": "KG/DAY",
+        "description": "Average daily amount of carbon-dioxide equivalents produced by commercial service vehicles associated with rural and town household activity in grams"
+      }
+    ],
+    "hvytrkurbanco2e": [
+      {
+        "key": "Marea/HvyTrkUrbanCO2e",
+        "table": "Marea",
+        "name": "HvyTrkUrbanCO2e",
+        "display": "HvyTrkUrbanCO2e (KG/DAY)",
+        "type": "compound",
+        "units": "KG/DAY",
+        "unitLabel": "KG/DAY",
+        "description": "Average daily amount of carbon-dioxide equivalents produced by heavy trucks on urbanized area roadways in the Marea in grams"
+      },
+      {
+        "key": "Region/HvyTrkUrbanCO2e",
+        "table": "Region",
+        "name": "HvyTrkUrbanCO2e",
+        "display": "HvyTrkUrbanCO2e (KG/DAY)",
+        "type": "compound",
+        "units": "KG/DAY",
+        "unitLabel": "KG/DAY",
+        "description": "Average daily amount of carbon-dioxide equivalents produced by heavy trucks on urbanized area roadways in the Region in grams"
+      }
+    ],
+    "comsvcaveurbanautoco2erate": [
+      {
+        "key": "Marea/ComSvcAveUrbanAutoCO2eRate",
+        "table": "Marea",
+        "name": "ComSvcAveUrbanAutoCO2eRate",
+        "display": "ComSvcAveUrbanAutoCO2eRate (KG/MI)",
+        "type": "compound",
+        "units": "KG/MI",
+        "unitLabel": "KG/MI",
+        "description": "Average amount of carbon-dioxide equivalents produced by commercial service automobiles per mile of travel on urbanized area roadways in grams per mile"
+      }
+    ],
+    "comsvcaveurbanlttrkco2erate": [
+      {
+        "key": "Marea/ComSvcAveUrbanLtTrkCO2eRate",
+        "table": "Marea",
+        "name": "ComSvcAveUrbanLtTrkCO2eRate",
+        "display": "ComSvcAveUrbanLtTrkCO2eRate (KG/MI)",
+        "type": "compound",
+        "units": "KG/MI",
+        "unitLabel": "KG/MI",
+        "description": "Average amount of carbon-dioxide equivalents produced by commercial service light trucks per mile of travel on urbanized area roadways in grams per mile"
+      }
+    ],
+    "hvytrkaveurbanco2erate": [
+      {
+        "key": "Marea/HvyTrkAveUrbanCO2eRate",
+        "table": "Marea",
+        "name": "HvyTrkAveUrbanCO2eRate",
+        "display": "HvyTrkAveUrbanCO2eRate (KG/MI)",
+        "type": "compound",
+        "units": "KG/MI",
+        "unitLabel": "KG/MI",
+        "description": "Average amount of carbon-dioxide equivalents produced by heavy trucks per mile of travel on urbanized area roadways in grams per mile"
+      }
+    ],
+    "hvytrknonurbangge": [
+      {
+        "key": "Region/HvyTrkNonUrbanGGE",
+        "table": "Region",
+        "name": "HvyTrkNonUrbanGGE",
+        "display": "HvyTrkNonUrbanGGE (GGE/DAY)",
+        "type": "compound",
+        "units": "GGE/DAY",
+        "unitLabel": "GGE/DAY",
+        "description": "Average daily amount of hydrocarbon fuels consumed by heavy trucks on rural and town roadways in the Region in gas gallon equivalents"
+      }
+    ],
+    "hvytrknonurbankwh": [
+      {
+        "key": "Region/HvyTrkNonUrbanKWH",
+        "table": "Region",
+        "name": "HvyTrkNonUrbanKWH",
+        "display": "HvyTrkNonUrbanKWH (GGE/DAY)",
+        "type": "compound",
+        "units": "GGE/DAY",
+        "unitLabel": "GGE/DAY",
+        "description": "Average daily amount of electricity consumed by heavy trucks on rural and town roadways in the Region in kilowatt-hours"
+      }
+    ],
+    "hvytrknonurbanco2e": [
+      {
+        "key": "Region/HvyTrkNonUrbanCO2e",
+        "table": "Region",
+        "name": "HvyTrkNonUrbanCO2e",
+        "display": "HvyTrkNonUrbanCO2e (KG/DAY)",
+        "type": "compound",
+        "units": "KG/DAY",
+        "unitLabel": "KG/DAY",
+        "description": "Average daily amount of carbon-dioxide equivalents produced by heavy trucks on rural and town roadways in the Region in grams"
+      }
+    ],
+    "busgge": [
+      {
+        "key": "Marea/BusGGE",
+        "table": "Marea",
+        "name": "BusGGE",
+        "display": "BusGGE (GGE/DAY)",
+        "type": "compound",
+        "units": "GGE/DAY",
+        "unitLabel": "GGE/DAY",
+        "description": "Average daily amount of hydrocarbon fuels consumed by bus transit vehicles in urbanized area in gas gallon equivalents"
+      }
+    ],
+    "railgge": [
+      {
+        "key": "Marea/RailGGE",
+        "table": "Marea",
+        "name": "RailGGE",
+        "display": "RailGGE (GGE/DAY)",
+        "type": "compound",
+        "units": "GGE/DAY",
+        "unitLabel": "GGE/DAY",
+        "description": "Average daily amount of hydrocarbon fuels consumed by rail transit vehicles in urbanized area in gas gallon equivalents"
+      }
+    ],
+    "vangge": [
+      {
+        "key": "Marea/VanGGE",
+        "table": "Marea",
+        "name": "VanGGE",
+        "display": "VanGGE (GGE/DAY)",
+        "type": "compound",
+        "units": "GGE/DAY",
+        "unitLabel": "GGE/DAY",
+        "description": "Average daily amount of hydrocarbon fuels consumed by van transit vehicles in urbanized area in gas gallon equivalents"
+      }
+    ],
+    "buskwh": [
+      {
+        "key": "Marea/BusKWH",
+        "table": "Marea",
+        "name": "BusKWH",
+        "display": "BusKWH (GGE/DAY)",
+        "type": "compound",
+        "units": "GGE/DAY",
+        "unitLabel": "GGE/DAY",
+        "description": "Average daily amount of electricity consumed by bus transit vehicles in urbanized area in kilowatt-hours"
+      }
+    ],
+    "railkwh": [
+      {
+        "key": "Marea/RailKWH",
+        "table": "Marea",
+        "name": "RailKWH",
+        "display": "RailKWH (GGE/DAY)",
+        "type": "compound",
+        "units": "GGE/DAY",
+        "unitLabel": "GGE/DAY",
+        "description": "Average daily amount of electricity consumed by rail transit vehicles in urbanized area in kilowatt-hours"
+      }
+    ],
+    "vankwh": [
+      {
+        "key": "Marea/VanKWH",
+        "table": "Marea",
+        "name": "VanKWH",
+        "display": "VanKWH (GGE/DAY)",
+        "type": "compound",
+        "units": "GGE/DAY",
+        "unitLabel": "GGE/DAY",
+        "description": "Average daily amount of electricity consumed by van transit vehicles in urbanized area in kilowatt-hours"
+      }
+    ],
+    "busco2e": [
+      {
+        "key": "Marea/BusCO2e",
+        "table": "Marea",
+        "name": "BusCO2e",
+        "display": "BusCO2e (KG/DAY)",
+        "type": "compound",
+        "units": "KG/DAY",
+        "unitLabel": "KG/DAY",
+        "description": "Average daily amount of carbon-dioxide equivalents produced by bus transit vehicles in urbanized area in grams"
+      }
+    ],
+    "railco2e": [
+      {
+        "key": "Marea/RailCO2e",
+        "table": "Marea",
+        "name": "RailCO2e",
+        "display": "RailCO2e (KG/DAY)",
+        "type": "compound",
+        "units": "KG/DAY",
+        "unitLabel": "KG/DAY",
+        "description": "Average daily amount of carbon-dioxide equivalents produced by rail transit vehicles in urbanized area in grams"
+      }
+    ],
+    "vanco2e": [
+      {
+        "key": "Marea/VanCO2e",
+        "table": "Marea",
+        "name": "VanCO2e",
+        "display": "VanCO2e (KG/DAY)",
+        "type": "compound",
+        "units": "KG/DAY",
+        "unitLabel": "KG/DAY",
+        "description": "Average daily amount of carbon-dioxide equivalents produced by van transit vehicles in urbanized area in grams"
+      }
+    ],
+    "busco2erate": [
+      {
+        "key": "Marea/BusCO2eRate",
+        "table": "Marea",
+        "name": "BusCO2eRate",
+        "display": "BusCO2eRate (KG/MI)",
+        "type": "compound",
+        "units": "KG/MI",
+        "unitLabel": "KG/MI",
+        "description": "Average amount of carbon-dioxide equivalents produced by bus transit vehicles per mile of travel in urbanized area in grams per mile"
+      }
+    ],
+    "railco2erate": [
+      {
+        "key": "Marea/RailCO2eRate",
+        "table": "Marea",
+        "name": "RailCO2eRate",
+        "display": "RailCO2eRate (KG/MI)",
+        "type": "compound",
+        "units": "KG/MI",
+        "unitLabel": "KG/MI",
+        "description": "Average amount of carbon-dioxide equivalents produced by rail transit vehicles per mile of travel in urbanized area in grams per mile"
+      }
+    ],
+    "vanco2erate": [
+      {
+        "key": "Marea/VanCO2eRate",
+        "table": "Marea",
+        "name": "VanCO2eRate",
+        "display": "VanCO2eRate (KG/MI)",
+        "type": "compound",
+        "units": "KG/MI",
+        "unitLabel": "KG/MI",
+        "description": "Average amount of carbon-dioxide equivalents produced by van transit vehicles per mile of travel in urbanized area in grams per mile"
+      }
+    ]
+  }
+}

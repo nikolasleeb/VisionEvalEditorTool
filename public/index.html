@@ -1,0 +1,342 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>VisionEval Data Editor</title>
+    <link rel="stylesheet" href="/styles.css?v=editor-20260630-10">
+  </head>
+  <body>
+    <header>
+      <div class="headerTitle">
+        <h1>VisionEval Data Editor</h1>
+        <p>Draft VisionEval simulation input scenarios and compare file-level changes.</p>
+        <p id="workspaceLabel"></p>
+      </div>
+      <label class="themeSwitch" aria-label="Toggle night mode">
+        <span>Night mode</span>
+        <input id="themeToggleButton" type="checkbox">
+        <i></i>
+      </label>
+    </header>
+
+    <nav class="tabs" aria-label="Editor modes">
+      <button id="guideTab" class="tabButton active" type="button" data-tab="guidePanel">User Guide</button>
+      <button id="fileExplanationsTab" class="tabButton" type="button" data-tab="fileExplanationsPanel">File Explanations</button>
+      <button id="simulationSetupTab" class="tabButton" type="button" data-tab="simulationSetupPanel">Simulation Setup</button>
+      <button id="simulationEditorTab" class="tabButton" type="button" data-tab="simulationEditorPanel">Simulation/File Editor</button>
+      <button id="overviewSubmitTab" class="tabButton" type="button" data-tab="overviewSubmitPanel">Overview/Submit</button>
+    </nav>
+
+    <main class="shell">
+      <section id="guidePanel" class="tab-panel guide-panel active">
+        <article id="guideContent" class="guide-card guide-content">
+          <p class="muted">Loading user guide...</p>
+        </article>
+      </section>
+
+      <section id="fileExplanationsPanel" class="tab-panel sim-panel">
+        <section class="sim-card file-explanations-card">
+          <div class="card-title">
+            <strong>File Explanations</strong>
+            <span id="explanationsLibraryLabel">Choose an input library in Simulation Setup to view linked file explanations.</span>
+          </div>
+          <div class="form-grid two">
+            <label>
+              Search files
+              <input id="fileExplanationSearch" type="search" placeholder="Type a CSV name">
+            </label>
+            <div class="muted explanation-source-note">Explanations are loaded from <code>Clean Explanations/DOCX</code>.</div>
+          </div>
+          <div class="sim-table-wrap compact explanation-table-wrap">
+            <table>
+              <thead>
+                <tr>
+                  <th>CSV file</th>
+                  <th>Variables</th>
+                  <th>Description</th>
+                  <th>Open Explanation</th>
+                </tr>
+              </thead>
+              <tbody id="simFilesBody"></tbody>
+            </table>
+          </div>
+        </section>
+
+        <section id="explanationViewer" class="sim-card explanation-viewer" hidden>
+          <div class="card-title">
+            <strong id="explanationViewerTitle">Explanation</strong>
+            <button id="closeExplanationButton" type="button" class="secondary icon-button" aria-label="Close explanation">×</button>
+          </div>
+          <div id="explanationContent" class="explanation-content"></div>
+        </section>
+      </section>
+
+      <section id="simulationSetupPanel" class="tab-panel sim-panel">
+        <section class="sim-card setup-card">
+          <div class="card-title">
+            <strong>New Scenario</strong>
+            <span>Choose a project name and input library.</span>
+          </div>
+          <div class="form-grid two">
+            <label>
+              Project name
+              <input id="simProjectName" type="text" placeholder="Example: PlanRVA Scenario Test">
+            </label>
+            <label>
+              Input library
+              <select id="simProjectSelect"></select>
+            </label>
+          </div>
+          <div class="sim-actions setup-actions">
+            <button id="startNewScenarioButton" type="button">Start New Scenario</button>
+          </div>
+          <p class="muted">Input libraries are loaded from <code id="inputLibraryRootLabel"></code>.</p>
+          <p class="muted">Scenario project root: <span id="simOutputRoot"></span></p>
+        </section>
+
+        <section class="sim-card setup-card">
+          <div class="card-title">
+            <strong>Load Existing Scenario</strong>
+            <span>Open a saved scenario and restore its simulation/file editor state.</span>
+          </div>
+          <div class="form-grid two">
+            <label>
+              Existing scenario
+              <select id="scenarioProjectSelect"></select>
+            </label>
+            <label>
+              Load scenario
+              <button id="loadScenarioButton" type="button" class="secondary">Load Selected Scenario</button>
+            </label>
+          </div>
+        </section>
+      </section>
+
+      <section id="simulationEditorPanel" class="tab-panel sim-panel">
+        <section id="iterationWorkspace" class="iteration-workspace">
+          <aside id="iterationSidebar" class="iteration-sidebar">
+            <div class="sidebar-header">
+              <strong>Simulations</strong>
+              <button id="toggleSidebarButton" type="button" class="secondary icon-button" aria-label="Collapse simulations sidebar" title="Collapse sidebar">☰</button>
+            </div>
+            <div class="sidebar-actions">
+              <button id="addSidebarSimButton" type="button">+ New Sim</button>
+              <button id="duplicateSimButton" type="button" class="secondary">Duplicate Sim</button>
+            </div>
+            <div id="iterationTree" class="iteration-tree"></div>
+          </aside>
+          <div id="sidebarResizeHandle" class="sidebar-resize-handle" role="separator" aria-orientation="vertical" aria-label="Resize simulations sidebar"></div>
+
+          <section class="iteration-main">
+            <section id="simToolsPage" class="sim-page" hidden>
+              <section class="sim-card">
+                <div class="card-title">
+                  <strong id="activeSimToolsTitle">Sim Tools</strong>
+                  <span>Default locations and batch edits apply only to this sim.</span>
+                </div>
+              </section>
+              <section class="sim-card sim-default-locations">
+                <div class="card-title">
+                  <strong>Default Locations</strong>
+                  <span>Used for new file edits created inside this sim.</span>
+                </div>
+                <label class="advanced-toggle">
+                  <input id="simDefaultLocationToggle" type="checkbox">
+                  <span>Preselect default locations for new file edits</span>
+                </label>
+                <div id="simDefaultLocationBody" class="advanced-pane" hidden>
+                  <label>
+                    Default location level
+                    <select id="simDefaultLocationLevelSelect"></select>
+                  </label>
+                  <label>
+                    Search locations
+                    <input id="simDefaultLocationSearchInput" type="search" placeholder="Type to filter locations">
+                  </label>
+                  <div class="field-label">
+                    <span>Default locations</span>
+                    <select id="simDefaultLocationValueSelect" class="native-multi-select" multiple size="4"></select>
+                    <div id="simDefaultLocationDropdown" class="multi-check-dropdown"></div>
+                  </div>
+                  <p id="simDefaultLocationSummary" class="muted">All locations selected for new file edits.</p>
+                </div>
+              </section>
+              <section class="sim-card batch-card">
+                <div class="card-title">
+                  <strong>Batch Change Active Sim</strong>
+                  <span>Uses the controls in this card only. No folders or files are written.</span>
+                </div>
+                <p class="muted">Select files first, then choose the numeric columns to change for each selected file.</p>
+                <section class="batch-grid">
+                  <label class="batch-files-control">
+                    Files
+                    <select id="batchFileSelect" multiple size="6"></select>
+                  </label>
+                  <div class="field-label batch-columns-control">
+                    <span>Columns</span>
+                    <div id="batchColumnChecklist" class="batch-checklist"></div>
+                  </div>
+                  <label class="batch-location-level">
+                    Location level
+                    <select id="batchLocationLevelSelect"></select>
+                  </label>
+                  <label class="batch-location-search">
+                    Location search
+                    <input id="batchLocationSearchInput" type="search" placeholder="Type to filter locations">
+                  </label>
+                  <div class="field-label batch-location-values">
+                    <span>Locations</span>
+                    <select id="batchFilterSelect" class="native-multi-select" multiple size="4"></select>
+                    <div id="batchFilterDropdown" class="multi-check-dropdown"></div>
+                  </div>
+                  <label class="batch-year">
+                    Target year
+                    <select id="batchYearSelect">
+                      <option value="2024">2024</option>
+                      <option value="2045" selected>2045</option>
+                    </select>
+                  </label>
+                  <label class="batch-operation">
+                    Operation
+                    <select id="batchOperationSelect">
+                      <option value="set">Set to</option>
+                      <option value="add">Increase by</option>
+                      <option value="subtract">Decrease by</option>
+                      <option value="multiply">Multiply by</option>
+                      <option value="percent">Increase by %</option>
+                      <option value="decrease_percent">Decrease by %</option>
+                    </select>
+                  </label>
+                  <label class="batch-value">
+                    Value
+                    <input id="batchValueInput" type="number" step="any" placeholder="Value">
+                  </label>
+                  <button id="applyBatchPreviewButton" class="batch-apply" type="button">Apply Batch Preview</button>
+                </section>
+              </section>
+            </section>
+
+            <section id="fileEditorPage" class="file-page">
+            <section class="sim-card">
+              <div class="card-title">
+                <strong id="activeIterationTitle">Sim1 file 1</strong>
+                <span>Draft file editor. No folders or files are written.</span>
+              </div>
+              <label>
+                Input file
+                <select id="iterationFileSelect"></select>
+              </label>
+              <label class="auto-rename-toggle">
+                <input id="iterationUseFileNameCheckbox" type="checkbox">
+                <span>Use input file name for file edit</span>
+              </label>
+            </section>
+
+            <section class="sim-card iteration-editor-card">
+              <div class="card-title">
+                <strong>Filters and Change Function</strong>
+                <span>Filter the selected file, choose a year, and preview one change function for this file edit.</span>
+              </div>
+              <section class="controls iteration-controls">
+                <label class="iteration-control-location-level">
+                  Location level
+                  <select id="iterationLocationLevelSelect"></select>
+                </label>
+                <label class="iteration-control-location-search">
+                  Location search
+                  <input id="iterationLocationSearchInput" type="search" placeholder="Type to filter locations">
+                </label>
+                <div class="field-label iteration-control-location-values">
+                  <span>Locations</span>
+                  <select id="iterationFilterSelect" class="native-multi-select" multiple size="4"></select>
+                  <div id="iterationFilterDropdown" class="multi-check-dropdown"></div>
+                </div>
+                <label class="iteration-control-year">
+                  Target year
+                  <select id="iterationYearSelect">
+                    <option value="2024">2024</option>
+                    <option value="2045">2045</option>
+                  </select>
+                </label>
+                <div class="field-label iteration-control-column">
+                  <span>Columns</span>
+                  <select id="iterationColumnSelect" class="native-multi-select" multiple size="4"></select>
+                  <div id="iterationColumnDropdown" class="multi-check-dropdown"></div>
+                </div>
+                <label class="iteration-control-operation">
+                  Operation
+                  <select id="iterationOperationSelect">
+                    <option value="set">Set to</option>
+                    <option value="add">Increase by</option>
+                    <option value="subtract">Decrease by</option>
+                    <option value="multiply">Multiply by</option>
+                    <option value="percent">Increase by %</option>
+                    <option value="decrease_percent">Decrease by %</option>
+                  </select>
+                </label>
+                <label class="iteration-control-value">
+                  Value
+                  <input id="iterationValueInput" type="number" step="any" placeholder="Value">
+                </label>
+                <div class="iteration-action-buttons">
+                  <button id="applyIterationPreviewButton" class="iteration-control-apply" type="button">Apply Preview</button>
+                  <button id="resetIterationButton" class="iteration-control-reset danger" type="button" disabled>Reset File</button>
+                  <button id="undoIterationPreviewButton" class="iteration-control-undo secondary" type="button" disabled>Undo</button>
+                  <button id="redoIterationPreviewButton" class="iteration-control-redo secondary" type="button" disabled>Redo</button>
+                </div>
+              </section>
+              <div class="table-wrap iteration-table-wrap">
+                <table>
+                  <thead id="iterationTableHead"></thead>
+                  <tbody id="iterationTableBody"></tbody>
+                </table>
+              </div>
+            </section>
+
+            <section class="sim-card notes-card">
+              <div class="card-title">
+                <strong>Notes</strong>
+                <span>Use this to track included files, assumptions, and what changed.</span>
+              </div>
+              <textarea id="iterationNotesInput" rows="5" placeholder="Notes for this sim file"></textarea>
+            </section>
+            </section>
+          </section>
+        </section>
+      </section>
+
+      <section id="overviewSubmitPanel" class="tab-panel sim-panel">
+        <section class="sim-card preview-card">
+          <div class="card-title">
+            <strong>Scenario Output</strong>
+            <span>Create the scenario folder, sim input folders, modified files, and concise change log.</span>
+          </div>
+          <div class="scenario-output-actions">
+            <button id="previewScenarioButton" type="button" class="secondary">Preview</button>
+            <button id="createPreviewButton" type="button">Create Scenario</button>
+          </div>
+          <div id="previewErrors" class="preview-errors"></div>
+          <pre id="folderPreview" class="preview-output"></pre>
+          <pre id="logPreview" class="preview-output"></pre>
+        </section>
+      </section>
+
+      <div id="status" role="status"></div>
+    </main>
+    <footer class="app-footer">
+      Last update to this tool: June 30, 2026
+    </footer>
+    <dialog id="resetConfirmDialog" class="confirm-dialog">
+      <form method="dialog">
+        <strong>Reset file edit?</strong>
+        <p>This will restore the active file edit to its original loaded values and clear the recorded changes for this file edit.</p>
+        <div class="confirm-actions">
+          <button id="cancelResetButton" class="secondary" value="cancel" type="submit">Cancel</button>
+          <button id="confirmResetButton" class="danger" value="confirm" type="submit">Reset File</button>
+        </div>
+      </form>
+    </dialog>
+    <script src="/app.js?v=editor-20260630-10"></script>
+  </body>
+</html>

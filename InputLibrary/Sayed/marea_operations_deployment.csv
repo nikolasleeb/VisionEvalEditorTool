@@ -1,0 +1,3 @@
+Geo,Year,RampMeterDeployProp,IncidentMgtDeployProp,SignalCoordDeployProp,AccessMgtDeployProp,OtherFwyOpsDeployProp,OtherArtOpsDeployProp
+HYPO,2019,0,0.5,0.4,0,0,0
+HYPO,2045,0.95,0.95,0.95,0.24,0,0
