@@ -177,7 +177,14 @@ function resetBatchState({ keepLocations = false } = {}) {
   state.batchColumnSelection = {};
   state.batchFileCache = {};
   if (!keepLocations) state.batchFilterValue = [];
+  if (el.batchFileChecklist) {
+    el.batchFileChecklist.querySelectorAll("input[type='checkbox']").forEach((input) => {
+      input.checked = false;
+    });
+  }
   if (el.batchLocationSearchInput) el.batchLocationSearchInput.value = "";
+  if (el.batchYearSelect) el.batchYearSelect.value = "2045";
+  if (el.batchOperationSelect) el.batchOperationSelect.value = "set";
   if (el.batchValueInput) el.batchValueInput.value = "";
 }
 
@@ -328,7 +335,7 @@ async function startNewScenario() {
   state.activeSimIndex = 0;
   state.activeIterationIndex = 0;
   state.scenarioStarted = true;
-  state.batchFilterValue = [...simLocationDefaults(activeSim())];
+  resetBatchState();
   renderSimFiles();
   renderIterationEditor();
   clearPreview();
@@ -364,7 +371,7 @@ async function loadSelectedScenario() {
   state.activeSimIndex = 0;
   state.activeIterationIndex = 0;
   state.scenarioStarted = true;
-  state.batchFilterValue = [...simLocationDefaults(activeSim())];
+  resetBatchState();
   renderSimFiles();
   renderIterationEditor();
   clearPreview();
@@ -1481,14 +1488,20 @@ function selectedBatchColumnsByFile() {
 }
 
 async function prepareBatchIteration(sim, file) {
-  const name = `Batch - ${file.name}`;
-  let iteration = sim.iterations.find((item) => item.filePath === file.path && String(item.name || "").startsWith("Batch - "));
+  const name = file.name;
+  let iteration = sim.iterations.find((item) => {
+    const iterationName = String(item.name || "");
+    return item.filePath === file.path && (iterationName === file.name || iterationName === `Batch - ${file.name}`);
+  });
   if (!iteration) {
     iteration = createIteration(name, state.batchFilterValue);
     iteration.filePath = file.path;
     iteration.name = name;
-    iteration.useInputFileName = false;
+    iteration.useInputFileName = true;
     sim.iterations.push(iteration);
+  } else if (String(iteration.name || "").startsWith("Batch - ")) {
+    iteration.name = name;
+    iteration.useInputFileName = true;
   }
   const payload = await loadFilePayloadForBatch(file);
   if (!iteration.loaded || iteration.loaded.path !== file.path) {
@@ -1723,7 +1736,7 @@ function duplicateActiveSim() {
   state.activeSimIndex = state.simDefinitions.length - 1;
   state.activeIterationIndex = 0;
   state.editorMode = "sim";
-  state.batchFilterValue = [...simLocationDefaults(copy)];
+  resetBatchState();
   renderIterationEditor();
   clearPreview();
 }
@@ -2039,7 +2052,6 @@ el.simDefaultLocationToggle.addEventListener("change", () => {
   ensureSimDefaults(sim);
   sim.locationDefaultsEnabled = el.simDefaultLocationToggle.checked;
   el.simDefaultLocationBody.hidden = !sim.locationDefaultsEnabled;
-  state.batchFilterValue = [...simLocationDefaults(sim)];
   renderSimDefaultLocationValues(false);
   clearPreview();
 });
@@ -2118,7 +2130,7 @@ el.addSidebarSimButton.addEventListener("click", () => {
   state.simDefinitions.push({ name: nextSimName(), locationDefaults: [], locationDefaultsEnabled: false, iterations: [createIteration(defaultIterationName(1))] });
   state.activeSimIndex = state.simDefinitions.length - 1;
   state.activeIterationIndex = 0;
-  state.batchFilterValue = [];
+  resetBatchState();
   renderIterationEditor();
   clearPreview();
 });
@@ -2193,7 +2205,7 @@ el.iterationTree.addEventListener("click", (event) => {
     state.activeSimIndex = Number(simToolsButton.dataset.openSimTools);
     state.activeIterationIndex = Math.min(state.activeIterationIndex, activeSim()?.iterations.length - 1 || 0);
     state.editorMode = "sim";
-    state.batchFilterValue = [...simLocationDefaults(activeSim())];
+    resetBatchState();
     renderIterationEditor();
     clearPreview();
     return;
@@ -2206,7 +2218,7 @@ el.iterationTree.addEventListener("click", (event) => {
     state.activeSimIndex = Number(iterationButton.dataset.sim);
     state.activeIterationIndex = Number(iterationButton.dataset.iteration);
     state.editorMode = "file";
-    state.batchFilterValue = [...simLocationDefaults(activeSim())];
+    resetBatchState();
     renderIterationEditor();
   }
   if (addButton) addIteration(Number(addButton.dataset.addIteration));
