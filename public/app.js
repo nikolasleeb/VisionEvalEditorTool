@@ -444,7 +444,10 @@ function setMultiSelectValues(select, values) {
 function rowMatchesFilterValue(row, filterValue) {
   const filter = parseFilterValue(filterValue);
   if (!filter) return true;
-  if (filter.type === "county") return String(row.Geo || "").startsWith(filter.value);
+  if (filter.type === "county") {
+    const geo = String(row.Geo || "");
+    return geo.startsWith(filter.value) || (filter.label && geo === String(filter.label));
+  }
   if (filter.field) return String(row[filter.field] ?? "") === String(filter.value);
   return true;
 }
@@ -557,7 +560,7 @@ function updateCheckDropdownSelection(container, select, checkbox) {
 
 function encodeLocationValue(level, item) {
   if (!level || !item) return "";
-  if (level.type === "county") return JSON.stringify({ type: level.type, field: level.field, value: item.value });
+  if (level.type === "county") return JSON.stringify({ type: level.type, field: level.field, value: item.value, label: item.label ?? item.value });
   return JSON.stringify({ type: level.type, field: level.field, value: item.value });
 }
 
