@@ -184,6 +184,102 @@ COUNTY_PREFIXES = {
     "51840": "Winchester City",
 }
 
+VIRGINIA_MPOS = [
+    {
+        "value": "bristol-mpo",
+        "label": "Bristol Metropolitan Planning Organization",
+        "prefixes": ["51520", "51191"],
+    },
+    {
+        "value": "central-virginia-tpo",
+        "label": "Central Virginia Transportation Planning Organization",
+        "prefixes": ["51680", "51009", "51019", "51031"],
+    },
+    {
+        "value": "charlottesville-albemarle-mpo",
+        "label": "Charlottesville-Albemarle Metropolitan Planning Organization",
+        "prefixes": ["51540", "51003"],
+    },
+    {
+        "value": "danville-pittsylvania-mpo",
+        "label": "Danville-Pittsylvania Metropolitan Planning Organization",
+        "prefixes": ["51590", "51143"],
+    },
+    {
+        "value": "fredericksburg-area-mpo",
+        "label": "Fredericksburg Area Metropolitan Planning Organization",
+        "prefixes": ["51630", "51177", "51179"],
+    },
+    {
+        "value": "hampton-roads-tpo",
+        "label": "Hampton Roads Transportation Planning Organization",
+        "prefixes": ["51550", "51650", "51700", "51710", "51740", "51735", "51800", "51810", "51830", "51093", "51095", "51199", "51620", "51073", "51175"],
+    },
+    {
+        "value": "harrisonburg-rockingham-mpo",
+        "label": "Harrisonburg-Rockingham Metropolitan Planning Organization",
+        "prefixes": ["51660", "51165"],
+    },
+    {
+        "value": "kingsport-tn-va-mpo",
+        "label": "Kingsport, TN-VA Metropolitan Planning Organization",
+        "prefixes": ["51169"],
+    },
+    {
+        "value": "national-capital-region-tpb",
+        "label": "National Capital Region Transportation Planning Board",
+        "prefixes": ["51510", "51600", "51610", "51683", "51685", "51013", "51059", "51107", "51153", "51061"],
+    },
+    {
+        "value": "new-river-valley-mpo",
+        "label": "New River Valley Metropolitan Planning Organization",
+        "prefixes": ["51750", "51121", "51155"],
+    },
+    {
+        "value": "richmond-regional-tpo-planrva",
+        "label": "Richmond Regional Transportation Planning Organization (PlanRVA)",
+        "prefixes": ["51760", "51085", "51087", "51041", "51036", "51075", "51127", "51145"],
+    },
+    {
+        "value": "roanoke-valley-tpo",
+        "label": "Roanoke Valley Transportation Planning Organization",
+        "prefixes": ["51770", "51775", "51019", "51023", "51161", "51121"],
+    },
+    {
+        "value": "staunton-augusta-waynesboro-mpo",
+        "label": "Staunton-Augusta-Waynesboro Metropolitan Planning Organization",
+        "prefixes": ["51790", "51820", "51015"],
+    },
+    {
+        "value": "tri-cities-mpo",
+        "label": "Tri-Cities Metropolitan Planning Organization",
+        "prefixes": ["51570", "51670", "51730", "51041", "51053", "51149"],
+    },
+    {
+        "value": "winchester-frederick-county-mpo",
+        "label": "Winchester-Frederick County Metropolitan Planning Organization",
+        "prefixes": ["51840", "51069"],
+    },
+]
+
+
+def mpo_filter_values(prefixes):
+    available = set(prefixes.keys() if isinstance(prefixes, dict) else prefixes)
+    values = []
+    for mpo in VIRGINIA_MPOS:
+        matched = [prefix for prefix in mpo["prefixes"] if prefix in available]
+        if not matched:
+            continue
+        values.append(
+            {
+                "value": mpo["value"],
+                "label": mpo["label"],
+                "prefixes": matched,
+                "localities": [COUNTY_PREFIXES.get(prefix, f"County FIPS {prefix}") for prefix in matched],
+            }
+        )
+    return values
+
 
 def json_response(handler, payload, status=200):
     body = json.dumps(payload, ensure_ascii=False).encode("utf-8")
@@ -678,6 +774,16 @@ def setup_location_options(inputs_path):
             levels.append({"type": "geo", "field": "Geo", "label": label, "values": [{"value": value, "label": value} for value in values]})
 
     if prefixes:
+        mpo_values = mpo_filter_values(prefixes)
+        if mpo_values:
+            levels.append(
+                {
+                    "type": "mpo",
+                    "field": "MPO",
+                    "label": "MPO",
+                    "values": mpo_values,
+                }
+            )
         levels.append(
             {
                 "type": "county",
@@ -742,6 +848,9 @@ def geo_options(geo_path, input_filename, input_rows):
         if len(geo) >= 5 and geo[:5].isdigit():
             prefixes.setdefault(geo[:5], COUNTY_PREFIXES.get(geo[:5], f"County FIPS {geo[:5]}"))
     if prefixes:
+        mpo_values = mpo_filter_values(prefixes)
+        if mpo_values:
+            options.append({"type": "mpo", "field": "MPO", "label": "MPO", "values": mpo_values, "target": "Geo"})
         values = [{"value": prefix, "label": name} for prefix, name in sorted(prefixes.items(), key=lambda item: item[1])]
         options.append({"type": "county", "field": "County", "label": "County", "values": values, "target": "Geo"})
     return options

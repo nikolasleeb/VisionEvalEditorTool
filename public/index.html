@@ -4,13 +4,13 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>VisionEval Data Editor</title>
-    <link rel="stylesheet" href="/styles.css?v=editor-20260701-1">
+    <link rel="stylesheet" href="/styles.css?v=editor-20260701-2">
   </head>
   <body>
     <header>
       <div class="headerTitle">
         <h1>VisionEval Data Editor</h1>
-        <p>Draft VisionEval simulation input scenarios and compare file-level changes.</p>
+        <p>Draft VisionEval scenario input edits and compare file-level changes.</p>
         <p id="workspaceLabel"></p>
       </div>
       <label class="themeSwitch" aria-label="Toggle night mode">
@@ -23,8 +23,8 @@
     <nav class="tabs" aria-label="Editor modes">
       <button id="guideTab" class="tabButton active" type="button" data-tab="guidePanel">User Guide</button>
       <button id="fileExplanationsTab" class="tabButton" type="button" data-tab="fileExplanationsPanel">File Explanations</button>
-      <button id="simulationSetupTab" class="tabButton" type="button" data-tab="simulationSetupPanel">Simulation Setup</button>
-      <button id="simulationEditorTab" class="tabButton" type="button" data-tab="simulationEditorPanel">Simulation/File Editor</button>
+      <button id="simulationSetupTab" class="tabButton" type="button" data-tab="simulationSetupPanel">Scenario Setup</button>
+      <button id="simulationEditorTab" class="tabButton" type="button" data-tab="simulationEditorPanel">Scenario/File Editor</button>
       <button id="overviewSubmitTab" class="tabButton" type="button" data-tab="overviewSubmitPanel">Overview/Submit</button>
     </nav>
 
@@ -39,7 +39,7 @@
         <section class="sim-card file-explanations-card">
           <div class="card-title">
             <strong>File Explanations</strong>
-            <span id="explanationsLibraryLabel">Choose an input library in Simulation Setup to view linked file explanations.</span>
+            <span id="explanationsLibraryLabel">Choose an input library in Scenario Setup to view linked file explanations.</span>
           </div>
           <div class="form-grid two">
             <label>
@@ -98,7 +98,7 @@
         <section class="sim-card setup-card">
           <div class="card-title">
             <strong>Load Existing Scenario</strong>
-            <span>Open a saved scenario and restore its simulation/file editor state.</span>
+            <span>Open a saved scenario and restore its scenario/file editor state.</span>
           </div>
           <div class="form-grid two">
             <label>
@@ -117,29 +117,29 @@
         <section id="iterationWorkspace" class="iteration-workspace">
           <aside id="iterationSidebar" class="iteration-sidebar">
             <div class="sidebar-header">
-              <strong>Simulations</strong>
-              <button id="toggleSidebarButton" type="button" class="secondary icon-button" aria-label="Collapse simulations sidebar" title="Collapse sidebar">☰</button>
+              <strong>Scenarios</strong>
+              <button id="toggleSidebarButton" type="button" class="secondary icon-button" aria-label="Collapse scenarios sidebar" title="Collapse sidebar">☰</button>
             </div>
             <div class="sidebar-actions">
-              <button id="addSidebarSimButton" type="button">+ New Sim</button>
-              <button id="duplicateSimButton" type="button" class="secondary">Duplicate Sim</button>
+              <button id="addSidebarSimButton" type="button">+ New Scenario</button>
+              <button id="duplicateSimButton" type="button" class="secondary">Duplicate Scenario</button>
             </div>
             <div id="iterationTree" class="iteration-tree"></div>
           </aside>
-          <div id="sidebarResizeHandle" class="sidebar-resize-handle" role="separator" aria-orientation="vertical" aria-label="Resize simulations sidebar"></div>
+          <div id="sidebarResizeHandle" class="sidebar-resize-handle" role="separator" aria-orientation="vertical" aria-label="Resize scenarios sidebar"></div>
 
           <section class="iteration-main">
             <section id="simToolsPage" class="sim-page" hidden>
               <section class="sim-card">
                 <div class="card-title">
-                  <strong id="activeSimToolsTitle">Sim Tools</strong>
-                  <span>Default locations and batch edits apply only to this sim.</span>
+                  <strong id="activeSimToolsTitle">Scenario Tools</strong>
+                  <span>Default locations and batch edits apply only to this scenario.</span>
                 </div>
               </section>
               <section class="sim-card sim-default-locations">
                 <div class="card-title">
                   <strong>Default Locations</strong>
-                  <span>Used for new file edits created inside this sim.</span>
+                  <span>Used for new file edits created inside this scenario.</span>
                 </div>
                 <label class="advanced-toggle">
                   <input id="simDefaultLocationToggle" type="checkbox">
@@ -164,7 +164,7 @@
               </section>
               <section class="sim-card batch-card">
                 <div class="card-title">
-                  <strong>Batch Change Active Sim</strong>
+                  <strong>Batch Change Active Scenario</strong>
                   <span>Uses the controls in this card only. No folders or files are written.</span>
                 </div>
                 <p class="muted">Select files first, then choose the numeric columns to change for each selected file.</p>
@@ -174,7 +174,13 @@
                     <div id="batchFileChecklist" class="batch-checklist batch-file-checklist"></div>
                   </div>
                   <div class="field-label batch-columns-control">
-                    <span>Columns</span>
+                    <div class="batch-column-heading">
+                      <span>Columns</span>
+                      <label class="batch-select-all-columns">
+                        <input id="batchSelectAllColumnsToggle" type="checkbox">
+                        <span>Select all columns</span>
+                      </label>
+                    </div>
                     <div id="batchColumnChecklist" class="batch-checklist"></div>
                   </div>
                   <label class="batch-location-level">
@@ -299,7 +305,7 @@
                 <strong>Notes</strong>
                 <span>Use this to track included files, assumptions, and what changed.</span>
               </div>
-              <textarea id="iterationNotesInput" rows="5" placeholder="Notes for this sim file"></textarea>
+              <textarea id="iterationNotesInput" rows="5" placeholder="Notes for this scenario file"></textarea>
             </section>
             </section>
           </section>
@@ -337,6 +343,6 @@
         </div>
       </form>
     </dialog>
-    <script src="/app.js?v=editor-20260701-1"></script>
+    <script src="/app.js?v=editor-20260701-2"></script>
   </body>
 </html>

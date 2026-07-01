@@ -815,6 +815,27 @@ button:disabled {
   grid-column: 5 / 13;
 }
 
+.batch-column-heading {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+.batch-select-all-columns {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 12px;
+  font-weight: 700;
+  color: var(--muted);
+}
+
+.batch-select-all-columns input {
+  width: auto;
+  height: auto;
+}
+
 .batch-location-level {
   grid-column: 1 / 4;
 }

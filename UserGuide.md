@@ -1,6 +1,6 @@
 # VisionEval Data Editor User Guide
 
-Use this tool to build and preview VisionEval input scenario edits before creating scenario folders. The editor is organized around an input library, one or more simulations, and one or more file edits inside each simulation.
+Use this tool to build and preview VisionEval input scenario edits before creating scenario folders. The editor is organized around an input library, one or more scenarios, and one or more file edits inside each scenario.
 
 ## Important Refresh Notice
 
@@ -8,7 +8,7 @@ Refreshing the browser page resets the current browser session. Unsaved draft ch
 
 ## Folder Layout
 
-- `InputLibrary` contains the source VisionEval input libraries that appear in Simulation Setup.
+- `InputLibrary` contains the source VisionEval input libraries that appear in Scenario Setup.
 - `Scenarios` stores saved scenario drafts and generated scenario outputs.
 - `UserGuide.md` is this guide. Edit this Markdown file to update the User Guide tab.
 - `public` contains the browser interface.
@@ -18,7 +18,7 @@ Refreshing the browser page resets the current browser session. Unsaved draft ch
 
 The File Explanations tab helps connect input CSV files to their documentation.
 
-- Choose an input library in Simulation Setup first.
+- Choose an input library in Scenario Setup first.
 - Use search to narrow the CSV list.
 - The Variables column shows variables detected for each CSV.
 - The Description column uses metadata bundled in the editor under `Metadata/metadata.json`.
@@ -26,43 +26,44 @@ The File Explanations tab helps connect input CSV files to their documentation.
 
 Word explanations are loaded from the editor-local `Clean Explanations/DOCX` folder. If that folder is missing, the rest of the editor still works, but Word explanation buttons may be unavailable.
 
-## Simulation Setup
+## Scenario Setup
 
-Use Simulation Setup to start a new scenario draft or reopen a saved scenario.
+Use Scenario Setup to start a new scenario draft or reopen a saved scenario.
 
 1. Enter a project name.
 2. Choose an input library.
 3. Select Start New Scenario to initialize the editor.
 
-The Load Existing Scenario block restores a saved draft from the local `Scenarios` folder. Loading a scenario restores simulations, file edits, filters, selected columns, operations, values, notes, and preview state where available.
+The Load Existing Scenario block restores a saved draft from the local `Scenarios` folder. Loading a scenario restores scenario variants, file edits, filters, selected columns, operations, values, notes, and preview state where available.
 
-## Simulation/File Editor
+## Scenario/File Editor
 
 This is the main editing workspace.
 
-- Use the left sidebar to add, duplicate, remove, and switch between simulations.
-- Each simulation can contain multiple file edits.
-- Select the arrow beside a simulation name to open the sim tools page.
+- Use the left sidebar to add, duplicate, remove, and switch between scenarios.
+- Each scenario can contain multiple file edits.
+- Select the arrow beside a scenario name to open the scenario tools page.
 - Select the arrow beside a file edit to open the single-file editor.
-- Drag the divider beside the simulations sidebar to make the sidebar wider or skinnier.
-- Drag the move handle beside a file edit to reorder file edits within the same simulation.
+- Drag the divider beside the scenarios sidebar to make the sidebar wider or skinnier.
+- Drag the move handle beside a file edit to reorder file edits within the same scenario.
 - Choose an input file for the active file edit.
 - Keep Use input file name checked when the output edit should keep the same CSV filename.
 - Uncheck it when you need to rename the output file edit.
 
-### Sim Tools Page
+### Scenario Tools Page
 
-The sim tools page contains settings and batch previews that apply only to the active simulation.
+The scenario tools page contains settings and batch previews that apply only to the active scenario.
 
 - Check Preselect default locations for new file edits to open Default Locations.
-- Default Locations sets the starting location selection for new file edits created inside that simulation.
+- Default Locations sets the starting location selection for new file edits created inside that scenario.
 - Select all locations selects every location at the chosen location level, even when search text is filtering the visible list.
 - Individual locations can then be unchecked, which is useful for editing all counties except one.
-- Duplicating a simulation also duplicates its default location selection.
-- Batch Change Active Sim applies one operation/value/year across selected files and selected numeric columns in the active simulation.
+- Duplicating a scenario also duplicates its default location selection.
+- Batch Change Active Scenario applies one operation/value/year across selected files and selected numeric columns in the active scenario.
+- Select all columns checks every editable numeric column for the currently selected batch files.
 - Batch column choices exclude `Year`, `Geo`, and geography/id-style columns so those identifiers are not edited by mistake.
 
-Batch changes are previews only. They create or update normal file-edit entries inside the active simulation, so they appear in Overview/Submit the same way as single-file edits. Select files first, then check one or more numeric columns for each selected file. The first batch-created file edit opens automatically after Apply Batch Preview.
+Batch changes are previews only. They create or update normal file-edit entries inside the active scenario, so they appear in Overview/Submit the same way as single-file edits. Select files first, then check one or more numeric columns for each selected file, or use Select all columns. The first batch-created file edit opens automatically after Apply Batch Preview.
 
 ### Filters
 
@@ -71,6 +72,8 @@ Filters determine which rows the change function targets.
 - Location level controls the geographic level used for filtering.
 - Location search narrows long location lists.
 - Locations selects one or more areas.
+- MPO is available for Virginia input libraries when the loaded files contain matching Virginia locality FIPS codes. MPO selections match numeric Bzone-style rows by FIPS prefix and Azone/name-style rows by locality name.
+- MPO entries that are partial in the source list, such as urbanized area or most of a county, are treated as the whole locality because the editor currently filters by county/city and zone IDs rather than MPO boundary geometry.
 - Target year limits the preview and change to the selected year when a Year column exists. The year list is read from the selected file, so a file with `2020` and `2050` rows shows those years.
 - Files with a Year column sort later years first by default, so 2045 or 2050 rows appear above earlier years.
 
@@ -124,7 +127,7 @@ Use Overview/Submit to review the scenario structure before creating outputs.
 - Preview Scenario checks the current draft and shows the planned folder and log output.
 - Create Scenario writes the scenario files and logs to the local `Scenarios` folder.
 
-The log output lists each change made to each file, including separate entries when a scenario changes more than one column or file. Notes entered for simulations or file edits are saved with the scenario draft and included in the generated log so the reason for a change stays with the output.
+The log output lists each change made to each file, including separate entries when a scenario changes more than one column or file. Notes entered for scenarios or file edits are saved with the scenario draft and included in the generated log so the reason for a change stays with the output.
 
 Review errors and warnings before creating a scenario. Missing input files, empty project names, or incomplete file edits should be corrected first.
 

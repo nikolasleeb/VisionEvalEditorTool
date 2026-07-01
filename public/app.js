@@ -6,8 +6,8 @@ const state = {
   simFiles: [],
   fileExplanations: [],
   simDefinitions: [
-    { name: "Sim1", locationDefaults: [], locationDefaultsEnabled: false, iterations: [createIteration(defaultIterationName(1))] },
-    { name: "Sim2", locationDefaults: [], locationDefaultsEnabled: false, iterations: [createIteration(defaultIterationName(1))] },
+    { name: "Scenario 1", locationDefaults: [], locationDefaultsEnabled: false, iterations: [createIteration(defaultIterationName(1))] },
+    { name: "Scenario 2", locationDefaults: [], locationDefaultsEnabled: false, iterations: [createIteration(defaultIterationName(1))] },
   ],
   nextSimNumber: 3,
   activeSimIndex: 0,
@@ -60,6 +60,7 @@ const el = {
   simDefaultLocationSummary: document.getElementById("simDefaultLocationSummary"),
   batchFileChecklist: document.getElementById("batchFileChecklist"),
   batchColumnChecklist: document.getElementById("batchColumnChecklist"),
+  batchSelectAllColumnsToggle: document.getElementById("batchSelectAllColumnsToggle"),
   batchLocationLevelSelect: document.getElementById("batchLocationLevelSelect"),
   batchLocationSearchInput: document.getElementById("batchLocationSearchInput"),
   batchFilterSelect: document.getElementById("batchFilterSelect"),
@@ -297,7 +298,7 @@ async function loadMetadata() {
 async function loadSimFiles() {
   const project = selectedSimProject();
   if (!project) return;
-  setStatus("Loading simulation input library...");
+  setStatus("Loading scenario input library...");
   const payload = await getJson(`/api/files?inputsPath=${encodeURIComponent(project.inputsPath)}`);
   state.simFiles = payload.files;
   resetBatchState();
@@ -312,7 +313,7 @@ async function loadSimFiles() {
   await loadFileExplanations();
   renderIterationEditor();
   clearPreview();
-  setStatus(`Loaded ${state.simFiles.length} simulation input files from ${project.name}.`);
+  setStatus(`Loaded ${state.simFiles.length} scenario input files from ${project.name}.`);
 }
 
 async function startNewScenario() {
@@ -330,7 +331,7 @@ async function startNewScenario() {
   const payload = await getJson(`/api/files?inputsPath=${encodeURIComponent(project.inputsPath)}`);
   state.simFiles = payload.files;
   resetBatchState();
-  state.simDefinitions = [{ name: "Sim1", locationDefaults: [], locationDefaultsEnabled: false, iterations: [createIteration(defaultIterationName(1))] }];
+  state.simDefinitions = [{ name: "Scenario 1", locationDefaults: [], locationDefaultsEnabled: false, iterations: [createIteration(defaultIterationName(1))] }];
   state.nextSimNumber = 2;
   state.activeSimIndex = 0;
   state.activeIterationIndex = 0;
@@ -358,14 +359,14 @@ async function loadSelectedScenario() {
     const edits = sim.fileEdits && sim.fileEdits.length ? sim.fileEdits : [{ name: defaultIterationName(1) }];
     const locationDefaults = normalizeFilterValues(sim.locationDefaults || sim.defaultLocations || []);
     return {
-      name: sim.name || `Sim${simIndex + 1}`,
+      name: sim.name || `Scenario ${simIndex + 1}`,
       locationDefaults,
       locationDefaultsEnabled: typeof sim.locationDefaultsEnabled === "boolean" ? sim.locationDefaultsEnabled : locationDefaults.length > 0,
       iterations: edits.map((edit, index) => scenarioEditToIteration(edit, index)),
     };
   });
   if (!state.simDefinitions.length) {
-    state.simDefinitions = [{ name: "Sim1", locationDefaults: [], locationDefaultsEnabled: false, iterations: [createIteration(defaultIterationName(1))] }];
+    state.simDefinitions = [{ name: "Scenario 1", locationDefaults: [], locationDefaultsEnabled: false, iterations: [createIteration(defaultIterationName(1))] }];
   }
   resetSimCounterAfterNames(state.simDefinitions);
   state.activeSimIndex = 0;
@@ -447,6 +448,12 @@ function rowMatchesFilterValue(row, filterValue) {
   if (filter.type === "county") {
     const geo = String(row.Geo || "");
     return geo.startsWith(filter.value) || (filter.label && geo === String(filter.label));
+  }
+  if (filter.type === "mpo") {
+    const geo = String(row.Geo || "");
+    const prefixes = Array.isArray(filter.prefixes) ? filter.prefixes : [];
+    const localities = Array.isArray(filter.localities) ? filter.localities : [];
+    return prefixes.some((prefix) => geo.startsWith(String(prefix))) || localities.some((locality) => geo === String(locality));
   }
   if (filter.field) return String(row[filter.field] ?? "") === String(filter.value);
   return true;
@@ -561,6 +568,16 @@ function updateCheckDropdownSelection(container, select, checkbox) {
 function encodeLocationValue(level, item) {
   if (!level || !item) return "";
   if (level.type === "county") return JSON.stringify({ type: level.type, field: level.field, value: item.value, label: item.label ?? item.value });
+  if (level.type === "mpo") {
+    return JSON.stringify({
+      type: level.type,
+      field: level.field,
+      value: item.value,
+      label: item.label ?? item.value,
+      prefixes: item.prefixes || [],
+      localities: item.localities || [],
+    });
+  }
   return JSON.stringify({ type: level.type, field: level.field, value: item.value });
 }
 
@@ -570,7 +587,7 @@ function locationItemLabel(item) {
 
 function normalizedLocationItems(level) {
   return (level?.values || []).map((item) => {
-    if (typeof item === "object" && item !== null) return { value: item.value, label: item.label ?? item.value };
+    if (typeof item === "object" && item !== null) return { ...item, value: item.value, label: item.label ?? item.value };
     return { value: item, label: item };
   });
 }
@@ -686,7 +703,7 @@ function renderSimFiles() {
   if (el.explanationsLibraryLabel) {
     el.explanationsLibraryLabel.textContent = project
       ? `Linked explanations for ${project.name}.`
-      : "Choose an input library in Simulation Setup to view linked file explanations.";
+      : "Choose an input library in Scenario Setup to view linked file explanations.";
   }
   if (!state.fileExplanations.length) {
     el.simFilesBody.innerHTML = `<tr><td class="empty" colspan="4">No input files found for this library.</td></tr>`;
@@ -776,14 +793,14 @@ function fileDescription(file) {
 }
 
 function nextSimName() {
-  const name = `Sim${state.nextSimNumber}`;
+  const name = `Scenario ${state.nextSimNumber}`;
   state.nextSimNumber += 1;
   return name;
 }
 
 function resetSimCounterAfterNames(sims) {
   const highest = (sims || []).reduce((max, sim) => {
-    const match = String(sim?.name || "").trim().match(/^Sim(\d+)$/i);
+    const match = String(sim?.name || "").trim().match(/^(?:Sim|Scenario)\s*(\d+)$/i);
     return match ? Math.max(max, Number(match[1])) : max;
   }, 0);
   state.nextSimNumber = highest + 1;
@@ -813,7 +830,7 @@ function batchColumnKey(filePath, column) {
 }
 
 function iterationDisplayName(sim, iteration, iterationIndex = 0) {
-  return `${String(sim?.name || "Sim").trim()} ${iterationNameOrDefault(iteration, iterationIndex)}`;
+  return `${String(sim?.name || "Scenario").trim()} ${iterationNameOrDefault(iteration, iterationIndex)}`;
 }
 
 function renderIterationTree() {
@@ -824,9 +841,9 @@ function renderIterationTree() {
       const activeSimClass = simIndex === state.activeSimIndex ? " active-sim" : "";
       return `<div class="sim-tree-group">
       <div class="sim-title-row${activeSimClass}">
-        <input class="sim-title-input" data-sim-name="${simIndex}" value="${escapeHtml(sim.name)}" aria-label="Simulation name">
-        <button class="sim-tools-button" type="button" data-open-sim-tools="${simIndex}" aria-label="Open tools for ${escapeHtml(sim.name)}" title="Open sim tools">›</button>
-        <button class="remove-sim-button" type="button" data-remove-sim="${simIndex}" aria-label="Remove ${escapeHtml(sim.name)}" title="Remove sim"${removeSimDisabled}>×</button>
+        <input class="sim-title-input" data-sim-name="${simIndex}" value="${escapeHtml(sim.name)}" aria-label="Scenario name">
+        <button class="sim-tools-button" type="button" data-open-sim-tools="${simIndex}" aria-label="Open tools for ${escapeHtml(sim.name)}" title="Open scenario tools">›</button>
+        <button class="remove-sim-button" type="button" data-remove-sim="${simIndex}" aria-label="Remove ${escapeHtml(sim.name)}" title="Remove scenario"${removeSimDisabled}>×</button>
       </div>
       <div class="iteration-branch">
         ${sim.iterations
@@ -887,7 +904,7 @@ function renderIterationEditor() {
 function renderActiveSimTools() {
   const sim = activeSim();
   ensureSimDefaults(sim);
-  if (el.activeSimToolsTitle) el.activeSimToolsTitle.textContent = `${sim?.name || "Active Sim"} Tools`;
+  if (el.activeSimToolsTitle) el.activeSimToolsTitle.textContent = `${sim?.name || "Active Scenario"} Tools`;
   if (el.simDefaultLocationToggle) el.simDefaultLocationToggle.checked = Boolean(sim?.locationDefaultsEnabled);
   if (el.simDefaultLocationBody) el.simDefaultLocationBody.hidden = !sim?.locationDefaultsEnabled;
   renderSimDefaultLocationLevels();
@@ -967,9 +984,11 @@ async function renderBatchColumns() {
   const files = selectedBatchFiles();
   if (!files.length) {
     el.batchColumnChecklist.innerHTML = `<div class="muted">Select one or more files to choose columns.</div>`;
+    syncBatchSelectAllColumnsToggle();
     return;
   }
   el.batchColumnChecklist.innerHTML = `<div class="muted">Loading columns...</div>`;
+  syncBatchSelectAllColumnsToggle();
   const groups = [];
   const batchYears = new Set();
   for (const file of files) {
@@ -997,6 +1016,20 @@ async function renderBatchColumns() {
       </section>`;
     })
     .join("");
+  syncBatchSelectAllColumnsToggle();
+}
+
+function batchColumnCheckboxes() {
+  return [...(el.batchColumnChecklist?.querySelectorAll("input[type='checkbox'][data-batch-file][data-batch-column]") || [])];
+}
+
+function syncBatchSelectAllColumnsToggle() {
+  if (!el.batchSelectAllColumnsToggle) return;
+  const boxes = batchColumnCheckboxes();
+  const checkedCount = boxes.filter((box) => box.checked).length;
+  el.batchSelectAllColumnsToggle.disabled = boxes.length === 0;
+  el.batchSelectAllColumnsToggle.checked = boxes.length > 0 && checkedCount === boxes.length;
+  el.batchSelectAllColumnsToggle.indeterminate = checkedCount > 0 && checkedCount < boxes.length;
 }
 
 function clearIterationData(iteration) {
@@ -1707,7 +1740,7 @@ function removeSim(simIndex) {
   if (active) state.activeIterationIndex = Math.min(state.activeIterationIndex, active.iterations.length - 1);
   renderIterationEditor();
   clearPreview();
-  setStatus(`Removed ${removed.name || "sim"}.`);
+  setStatus(`Removed ${removed.name || "scenario"}.`);
 }
 
 function duplicateActiveSim() {
@@ -1761,7 +1794,7 @@ function validatePreview() {
   if (!completeIterations.length) errors.push("Add at least one file edit with a bulk change or direct cell edits.");
   sims.forEach((sim) => {
     if (!sim.iterations.length) {
-      errors.push(`${sim.name || "Sim"} needs at least one file edit.`);
+      errors.push(`${sim.name || "Scenario"} needs at least one file edit.`);
     }
   });
   state.simDefinitions.forEach((sim) => {
@@ -1856,7 +1889,7 @@ function fileEditSummary(sim, iteration, iterationIndex, directEdits = iteration
 
 function fileEditSummaryLines(sim, iteration, iterationIndex, directEdits = iterationChangedCellCount(iteration)) {
   const file = fileByPath(iteration.filePath);
-  const label = `${sim.name || "Sim"} ${iterationNameOrDefault(iteration, iterationIndex)}`;
+  const label = `${sim.name || "Scenario"} ${iterationNameOrDefault(iteration, iterationIndex)}`;
   const fileName = file?.name || iteration.filePath || "input file";
   const lines = [];
   const appliedChanges = iteration.appliedChanges || [];
@@ -1928,7 +1961,7 @@ function scenarioRootPath(projectName) {
 }
 
 function simLogRCode(simName) {
-  const modelName = safeFolderName(simName, "Sim").toLowerCase();
+  const modelName = safeFolderName(simName, "Scenario").toLowerCase();
   return ["", "", `newMod <- openModel("${modelName}")`, "newMod$run()", "results <- newMod$results()", "results$export()"];
 }
 
@@ -1944,20 +1977,20 @@ function previewScenarioOutput() {
 
   const payload = createScenarioPayload();
   const targetRoot = scenarioRootPath(payload.projectName);
-  const simOutputs = payload.sims.map((sim) => `${targetRoot}/${safeFolderName(sim.name, "Sim")}`);
+  const simOutputs = payload.sims.map((sim) => `${targetRoot}/${safeFolderName(sim.name, "Scenario")}`);
   const logLines = [`Scenario: ${safeFolderName(payload.projectName)}`, `Location: ${targetRoot}`, ""];
   payload.sims.forEach((sim, index) => {
     if (index) logLines.push("", "");
-    logLines.push(index === 0 ? "=".repeat(48) : "-".repeat(48), safeFolderName(sim.name, "Sim"), "", "");
+    logLines.push(index === 0 ? "=".repeat(48) : "-".repeat(48), safeFolderName(sim.name, "Scenario"), "", "");
     if (sim.fileEdits.length) {
       sim.fileEdits.forEach((edit) => {
         const lines = Array.isArray(edit.summaryLines) && edit.summaryLines.length ? edit.summaryLines : [edit.summary || `${sim.name}: updated input file`];
         logLines.push(...lines);
       });
     } else {
-      logLines.push(`${safeFolderName(sim.name, "Sim")}: no file edits`);
+      logLines.push(`${safeFolderName(sim.name, "Scenario")}: no file edits`);
     }
-    logLines.push(`${safeFolderName(sim.name, "Sim")}: wrote ${payload.files.length} input files`);
+    logLines.push(`${safeFolderName(sim.name, "Scenario")}: wrote ${payload.files.length} input files`);
     logLines.push(...simLogRCode(sim.name));
   });
   if (payload.sims.length) logLines.push("", "", "-".repeat(48));
@@ -1974,7 +2007,7 @@ async function createPreview() {
     el.previewErrors.innerHTML = errors.map((error) => `<div>${escapeHtml(error)}</div>`).join("");
     el.folderPreview.textContent = "";
     el.logPreview.textContent = "";
-    setStatus("Simulation preview has validation errors.");
+    setStatus("Scenario preview has validation errors.");
     return;
   }
 
@@ -2106,7 +2139,7 @@ el.loadScenarioButton.addEventListener("click", () => loadSelectedScenario().cat
 el.toggleSidebarButton.addEventListener("click", () => {
   el.iterationWorkspace.classList.toggle("sidebar-collapsed");
   const collapsed = el.iterationWorkspace.classList.contains("sidebar-collapsed");
-  el.toggleSidebarButton.setAttribute("aria-label", collapsed ? "Expand simulations sidebar" : "Collapse simulations sidebar");
+  el.toggleSidebarButton.setAttribute("aria-label", collapsed ? "Expand scenarios sidebar" : "Collapse scenarios sidebar");
   el.toggleSidebarButton.title = collapsed ? "Expand sidebar" : "Collapse sidebar";
 });
 el.sidebarResizeHandle.addEventListener("pointerdown", (event) => {
@@ -2156,6 +2189,17 @@ el.batchColumnChecklist.addEventListener("change", (event) => {
   if (!event.target.matches("input[type='checkbox'][data-batch-file]")) return;
   const key = batchColumnKey(event.target.dataset.batchFile, event.target.dataset.batchColumn);
   state.batchColumnSelection[key] = event.target.checked;
+  syncBatchSelectAllColumnsToggle();
+  clearPreview();
+});
+el.batchSelectAllColumnsToggle.addEventListener("change", () => {
+  const checked = el.batchSelectAllColumnsToggle.checked;
+  batchColumnCheckboxes().forEach((box) => {
+    box.checked = checked;
+    const key = batchColumnKey(box.dataset.batchFile, box.dataset.batchColumn);
+    state.batchColumnSelection[key] = checked;
+  });
+  syncBatchSelectAllColumnsToggle();
   clearPreview();
 });
 el.batchLocationLevelSelect.addEventListener("change", () => {

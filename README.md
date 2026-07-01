@@ -4,9 +4,10 @@ A local browser-based tool for previewing and creating VisionEval input scenario
 
 ## What It Does
 
-- Draft multiple simulations and file edits in one scenario.
+- Draft multiple scenario variants and file edits in one project.
 - Filter edits by geography and target year.
-- Apply single-file edits or batch changes across selected files and columns.
+- Filter Virginia inputs by county, zone, or MPO preset where matching locality codes are available.
+- Apply single-file edits or batch changes across selected files and columns, including select-all editable columns for batch work.
 - Preview changes in the browser before any files are written.
 - Create scenario folders, edited input files, and change logs.
 - Open bundled file explanations for supported VisionEval input files.
@@ -46,7 +47,7 @@ http://127.0.0.1:3000
 
 1. Start a new scenario.
 2. Choose an input library.
-3. Add simulations and file edits.
+3. Add scenarios and file edits.
 4. Select locations, years, columns, operations, and values.
 5. Preview changes in the browser.
 6. Review the planned output in Overview/Submit.
@@ -58,6 +59,7 @@ http://127.0.0.1:3000
 - Refreshing the browser can clear unsaved in-browser draft state.
 - The editor automatically preserves original value formatting where possible, including rounding integer-looking values back to integers.
 - Very small percentage changes may not visibly change integer cells if the calculated value rounds back to the original integer.
+- Virginia MPO presets select whole localities from the MPO listing; partial or urbanized-area MPO entries are treated as the whole county/city because this editor does not include MPO boundary geometry.
 - Scenario outputs are local and are not committed to this repository.
 
 ## Upcoming/Planned Features
