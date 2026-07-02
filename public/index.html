@@ -8,11 +8,6 @@
   </head>
   <body>
     <header>
-      <div class="headerTitle">
-        <h1>VisionEval Data Editor</h1>
-        <p>Draft VisionEval scenario input edits and compare file-level changes.</p>
-        <p id="workspaceLabel"></p>
-      </div>
       <label class="themeSwitch" aria-label="Toggle night mode">
         <span>Night mode</span>
         <input id="themeToggleButton" type="checkbox">
@@ -46,7 +41,9 @@
               Search files
               <input id="fileExplanationSearch" type="search" placeholder="Type a CSV name">
             </label>
-            <div class="muted explanation-source-note">Explanations are loaded from <code>Clean Explanations/DOCX</code>.</div>
+          </div>
+          <div class="scenario-output-actions">
+            <button id="openExplanationsFolderButton" type="button" class="secondary">Open Explanations Folder</button>
           </div>
           <div class="sim-table-wrap compact explanation-table-wrap">
             <table>
@@ -90,6 +87,7 @@
           </div>
           <div class="sim-actions setup-actions">
             <button id="startNewScenarioButton" type="button">Start New Scenario</button>
+            <button id="openInputLibraryButton" type="button" class="secondary">Open InputLibrary Folder</button>
           </div>
           <p class="muted">Input libraries are loaded from <code id="inputLibraryRootLabel"></code>.</p>
           <p class="muted">Scenario project root: <span id="simOutputRoot"></span></p>
@@ -98,17 +96,23 @@
         <section class="sim-card setup-card">
           <div class="card-title">
             <strong>Load Existing Scenario</strong>
-            <span>Open a saved scenario and restore its scenario/file editor state.</span>
+            <span>Open, export, or delete saved scenarios.</span>
           </div>
           <div class="form-grid two">
             <label>
               Existing scenario
               <select id="scenarioProjectSelect"></select>
             </label>
-            <label>
-              Load scenario
+            <div class="load-scenario-action">
+              <span class="control-label">Load scenario</span>
               <button id="loadScenarioButton" type="button" class="secondary">Load Selected Scenario</button>
-            </label>
+            </div>
+          </div>
+          <div class="scenario-output-actions">
+            <button id="openScenariosFolderButton" type="button" class="secondary">Open Scenarios Folder</button>
+            <button id="exportScenarioZipButton" type="button" class="secondary" disabled>Export Selected ZIP...</button>
+            <button id="deleteScenarioButton" type="button" class="danger" disabled>Delete Selected Scenario</button>
+            <button id="emptyScenariosButton" type="button" class="danger">Empty Scenarios Folder</button>
           </div>
         </section>
       </section>
@@ -321,6 +325,8 @@
           <div class="scenario-output-actions">
             <button id="previewScenarioButton" type="button" class="secondary">Preview</button>
             <button id="createPreviewButton" type="button">Create Scenario</button>
+            <button id="openScenariosFolderFromOutputButton" type="button" class="secondary">Open Scenarios Folder</button>
+            <button id="exportCreatedScenarioButton" type="button" class="secondary" disabled>Export Scenario ZIP...</button>
           </div>
           <div id="previewErrors" class="preview-errors"></div>
           <pre id="folderPreview" class="preview-output"></pre>
@@ -331,7 +337,7 @@
       <div id="status" role="status"></div>
     </main>
     <footer class="app-footer">
-      Last update to this tool: June 30, 2026
+      Last update to this tool: July 2, 2026
     </footer>
     <dialog id="resetConfirmDialog" class="confirm-dialog">
       <form method="dialog">
@@ -343,6 +349,16 @@
         </div>
       </form>
     </dialog>
-    <script src="/app.js?v=editor-20260701-2"></script>
+    <dialog id="emptyScenariosConfirmDialog" class="confirm-dialog">
+      <form method="dialog">
+        <strong>Empty Scenarios Folder?</strong>
+        <p>This will delete every saved scenario in the workspace Scenarios folder. Existing exported ZIP files outside that folder will not be changed.</p>
+        <div class="confirm-actions">
+          <button class="secondary" value="cancel" type="submit">Cancel</button>
+          <button id="confirmEmptyScenariosButton" class="danger" value="confirm" type="submit">Empty Scenarios Folder</button>
+        </div>
+      </form>
+    </dialog>
+    <script src="/app.js?v=editor-20260702-4"></script>
   </body>
 </html>

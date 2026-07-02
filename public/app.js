@@ -19,10 +19,10 @@ const state = {
   workspace: "",
   sidebarWidth: 280,
   scenarioStarted: false,
+  latestScenarioPath: "",
 };
 
 const el = {
-  workspaceLabel: document.getElementById("workspaceLabel"),
   guideContent: document.getElementById("guideContent"),
   themeToggleButton: document.getElementById("themeToggleButton"),
   tabButtons: document.querySelectorAll(".tabButton"),
@@ -32,10 +32,16 @@ const el = {
   startNewScenarioButton: document.getElementById("startNewScenarioButton"),
   scenarioProjectSelect: document.getElementById("scenarioProjectSelect"),
   loadScenarioButton: document.getElementById("loadScenarioButton"),
+  openScenariosFolderButton: document.getElementById("openScenariosFolderButton"),
+  exportScenarioZipButton: document.getElementById("exportScenarioZipButton"),
+  deleteScenarioButton: document.getElementById("deleteScenarioButton"),
+  emptyScenariosButton: document.getElementById("emptyScenariosButton"),
   simOutputRoot: document.getElementById("simOutputRoot"),
   inputLibraryRootLabel: document.getElementById("inputLibraryRootLabel"),
+  openInputLibraryButton: document.getElementById("openInputLibraryButton"),
   simFilesBody: document.getElementById("simFilesBody"),
   fileExplanationSearch: document.getElementById("fileExplanationSearch"),
+  openExplanationsFolderButton: document.getElementById("openExplanationsFolderButton"),
   explanationsLibraryLabel: document.getElementById("explanationsLibraryLabel"),
   explanationViewer: document.getElementById("explanationViewer"),
   explanationViewerTitle: document.getElementById("explanationViewerTitle"),
@@ -87,11 +93,15 @@ const el = {
   resetIterationButton: document.getElementById("resetIterationButton"),
   resetConfirmDialog: document.getElementById("resetConfirmDialog"),
   confirmResetButton: document.getElementById("confirmResetButton"),
+  emptyScenariosConfirmDialog: document.getElementById("emptyScenariosConfirmDialog"),
+  confirmEmptyScenariosButton: document.getElementById("confirmEmptyScenariosButton"),
   iterationTableHead: document.getElementById("iterationTableHead"),
   iterationTableBody: document.getElementById("iterationTableBody"),
   iterationNotesInput: document.getElementById("iterationNotesInput"),
   previewScenarioButton: document.getElementById("previewScenarioButton"),
   createPreviewButton: document.getElementById("createPreviewButton"),
+  openScenariosFolderFromOutputButton: document.getElementById("openScenariosFolderFromOutputButton"),
+  exportCreatedScenarioButton: document.getElementById("exportCreatedScenarioButton"),
   previewErrors: document.getElementById("previewErrors"),
   folderPreview: document.getElementById("folderPreview"),
   logPreview: document.getElementById("logPreview"),
@@ -168,6 +178,10 @@ function setTheme(isDark) {
 
 function selectedSimProject() {
   return state.inputLibraries.find((project) => project.inputsPath === el.simProjectSelect.value);
+}
+
+function selectedScenarioPath() {
+  return el.scenarioProjectSelect.value || "";
 }
 
 function updateStartNewScenarioButton() {
@@ -256,7 +270,6 @@ async function loadConfig() {
   const config = await getJson("/api/config");
   state.inputLibraries = config.inputLibraries || [];
   state.workspace = config.workspace;
-  el.workspaceLabel.textContent = `Workspace: ${config.workspace}`;
   el.simOutputRoot.textContent = config.scenariosRoot || `${config.workspace}/Scenarios`;
   if (el.inputLibraryRootLabel) el.inputLibraryRootLabel.textContent = config.inputLibraryRoot || `${config.workspace}/InputLibrary`;
 
@@ -284,6 +297,68 @@ async function loadScenarios() {
     .join("");
   el.scenarioProjectSelect.value = "";
   el.loadScenarioButton.disabled = true;
+  updateScenarioOutputActions();
+}
+
+function updateScenarioOutputActions() {
+  const hasSelectedScenario = Boolean(selectedScenarioPath());
+  if (el.exportScenarioZipButton) el.exportScenarioZipButton.disabled = !hasSelectedScenario;
+  if (el.deleteScenarioButton) el.deleteScenarioButton.disabled = !hasSelectedScenario;
+  const hasCreatedScenario = Boolean(state.latestScenarioPath);
+  if (el.exportCreatedScenarioButton) el.exportCreatedScenarioButton.disabled = !hasCreatedScenario;
+}
+
+async function revealInputLibraryRoot() {
+  const payload = await getJson("/api/input-library-root");
+  await postJson("/api/reveal-path", { path: payload.path });
+  setStatus("Opened InputLibrary folder in Finder.");
+}
+
+async function revealScenariosRoot() {
+  const payload = await getJson("/api/scenarios-root");
+  await postJson("/api/reveal-path", { path: payload.path });
+  setStatus("Opened Scenarios folder in Finder.");
+}
+
+async function exportScenario(path) {
+  if (!path) throw new Error("Choose or create a scenario first.");
+  const result = await postJson("/api/export-scenario", { path, reveal: true });
+  if (result.canceled) {
+    setStatus("Scenario ZIP export was canceled. The scenario folder was still created.");
+    return result;
+  }
+  setStatus(`Exported scenario ZIP: ${result.zipPath}`);
+  return result;
+}
+
+async function deleteSelectedScenario() {
+  const path = selectedScenarioPath();
+  if (!path) throw new Error("Choose a saved scenario first.");
+  const scenario = state.scenarios.find((item) => item.path === path);
+  const name = scenario?.name || "selected scenario";
+  const ok = window.confirm(`Delete "${name}" from the Scenarios folder?`);
+  if (!ok) return;
+  await postJson("/api/delete-scenario", { path });
+  if (state.latestScenarioPath === path) state.latestScenarioPath = "";
+  await loadScenarios();
+  clearPreview();
+  setStatus(`Deleted scenario ${name}.`);
+}
+
+async function emptyScenariosFolder() {
+  const result = await postJson("/api/empty-scenarios", {});
+  state.latestScenarioPath = "";
+  await loadScenarios();
+  clearPreview();
+  setStatus(`Deleted ${result.deleted?.length || 0} saved scenarios.`);
+}
+
+function openEmptyScenariosConfirmation() {
+  if (el.emptyScenariosConfirmDialog?.showModal) {
+    el.emptyScenariosConfirmDialog.showModal();
+  } else if (window.confirm("Delete every saved scenario from the Scenarios folder?")) {
+    emptyScenariosFolder().catch((error) => setStatus(error.message));
+  }
 }
 
 async function loadMetadata() {
@@ -293,6 +368,12 @@ async function loadMetadata() {
   } catch {
     state.metadata = {};
   }
+}
+
+async function revealExplanationsRoot() {
+  const payload = await getJson("/api/explanations-root");
+  await postJson("/api/reveal-path", { path: payload.path });
+  setStatus("Opened explanations folder in Finder.");
 }
 
 async function loadSimFiles() {
@@ -702,7 +783,7 @@ function renderSimFiles() {
   const project = selectedSimProject();
   if (el.explanationsLibraryLabel) {
     el.explanationsLibraryLabel.textContent = project
-      ? `Linked explanations for ${project.name}.`
+      ? `Linked PlanRVA explanations for ${project.name}.`
       : "Choose an input library in Scenario Setup to view linked file explanations.";
   }
   if (!state.fileExplanations.length) {
@@ -779,6 +860,8 @@ function columnLabel(file, column) {
 }
 
 function fileDescription(file) {
+  const apiDescription = String(file?.description || "").trim();
+  if (apiDescription) return apiDescription;
   const seen = new Set();
   const descriptions = [];
   for (const column of file.columns || []) {
@@ -1523,6 +1606,19 @@ function selectedBatchColumnsByFile() {
   return selected;
 }
 
+function untouchedStarterIteration(sim) {
+  if (!sim || sim.iterations.length !== 1) return null;
+  const iteration = sim.iterations[0];
+  const name = String(iteration?.name || "").trim();
+  const isDefaultName = !name || name === defaultIterationName(1);
+  if (!isDefaultName) return null;
+  if (iteration.filePath || iteration.loaded) return null;
+  if ((iteration.notes || "").trim()) return null;
+  if ((iteration.appliedChanges || []).length) return null;
+  if ((iteration.rows || []).length || (iteration.originalRows || []).length) return null;
+  return iteration;
+}
+
 async function prepareBatchIteration(sim, file) {
   const name = file.name;
   let iteration = sim.iterations.find((item) => {
@@ -1530,11 +1626,11 @@ async function prepareBatchIteration(sim, file) {
     return item.filePath === file.path && (iterationName === file.name || iterationName === `Batch - ${file.name}`);
   });
   if (!iteration) {
-    iteration = createIteration(name, state.batchFilterValue);
+    iteration = untouchedStarterIteration(sim) || createIteration(name, state.batchFilterValue);
     iteration.filePath = file.path;
     iteration.name = name;
     iteration.useInputFileName = true;
-    sim.iterations.push(iteration);
+    if (!sim.iterations.includes(iteration)) sim.iterations.push(iteration);
   } else if (String(iteration.name || "").startsWith("Batch - ")) {
     iteration.name = name;
     iteration.useInputFileName = true;
@@ -2023,11 +2119,16 @@ async function createPreview() {
     payload.overwrite = true;
   }
   const result = await postJson("/api/create-scenario", payload);
+  state.latestScenarioPath = result.path || "";
+  updateScenarioOutputActions();
   el.previewErrors.innerHTML = "";
   el.folderPreview.textContent = `Scenario created:\n${result.path}\n\nSim folders:\n${(result.simOutputs || []).join("\n")}`;
   el.logPreview.textContent = `Scenario log:\n${(result.logLines || []).join("\n")}`;
   await loadScenarios();
-  setStatus(`Scenario created at ${result.label}.`);
+  const exportResult = await exportScenario(result.path);
+  if (exportResult?.canceled) {
+    setStatus(`Scenario created at ${result.label}. ZIP export was canceled.`);
+  }
 }
 
 function csvCell(value) {
@@ -2078,6 +2179,8 @@ el.simProjectSelect.addEventListener("change", () => {
   loadSetupLocationOptions().catch((error) => setStatus(error.message));
   closeExplanation();
 });
+el.openInputLibraryButton.addEventListener("click", () => revealInputLibraryRoot().catch((error) => setStatus(error.message)));
+el.openExplanationsFolderButton.addEventListener("click", () => revealExplanationsRoot().catch((error) => setStatus(error.message)));
 el.fileExplanationSearch.addEventListener("input", renderSimFiles);
 el.simFilesBody.addEventListener("click", (event) => {
   const button = event.target.closest(".open-explanation-button");
@@ -2134,8 +2237,13 @@ el.simDefaultLocationDropdown.addEventListener("change", (event) => {
 el.startNewScenarioButton.addEventListener("click", () => startNewScenario().catch((error) => setStatus(error.message)));
 el.scenarioProjectSelect.addEventListener("change", () => {
   el.loadScenarioButton.disabled = !el.scenarioProjectSelect.value;
+  updateScenarioOutputActions();
 });
 el.loadScenarioButton.addEventListener("click", () => loadSelectedScenario().catch((error) => setStatus(error.message)));
+el.openScenariosFolderButton.addEventListener("click", () => revealScenariosRoot().catch((error) => setStatus(error.message)));
+el.exportScenarioZipButton.addEventListener("click", () => exportScenario(selectedScenarioPath()).catch((error) => setStatus(error.message)));
+el.deleteScenarioButton.addEventListener("click", () => deleteSelectedScenario().catch((error) => setStatus(error.message)));
+el.emptyScenariosButton.addEventListener("click", openEmptyScenariosConfirmation);
 el.toggleSidebarButton.addEventListener("click", () => {
   el.iterationWorkspace.classList.toggle("sidebar-collapsed");
   const collapsed = el.iterationWorkspace.classList.contains("sidebar-collapsed");
@@ -2445,6 +2553,12 @@ el.resetConfirmDialog.addEventListener("close", () => {
   if (el.resetConfirmDialog.returnValue === "confirm") resetActiveIterationToOriginal();
   el.resetConfirmDialog.returnValue = "";
 });
+el.emptyScenariosConfirmDialog.addEventListener("close", () => {
+  if (el.emptyScenariosConfirmDialog.returnValue === "confirm") {
+    emptyScenariosFolder().catch((error) => setStatus(error.message));
+  }
+  el.emptyScenariosConfirmDialog.returnValue = "";
+});
 el.iterationTableHead.addEventListener("click", (event) => {
   const button = event.target.closest("[data-sort-column]");
   if (!button) return;
@@ -2479,6 +2593,8 @@ document.addEventListener(
 );
 el.previewScenarioButton.addEventListener("click", previewScenarioOutput);
 el.createPreviewButton.addEventListener("click", () => createPreview().catch((error) => setStatus(error.message)));
+el.openScenariosFolderFromOutputButton.addEventListener("click", () => revealScenariosRoot().catch((error) => setStatus(error.message)));
+el.exportCreatedScenarioButton.addEventListener("click", () => exportScenario(state.latestScenarioPath).catch((error) => setStatus(error.message)));
 
 setSidebarWidth(state.sidebarWidth);
 setTheme(false);

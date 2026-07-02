@@ -6,6 +6,7 @@ import os
 import re
 import shutil
 import subprocess
+import sys
 import zipfile
 from functools import lru_cache
 from http.server import SimpleHTTPRequestHandler, ThreadingHTTPServer
@@ -14,11 +15,13 @@ from urllib.parse import parse_qs, urlparse
 from xml.etree import ElementTree as ET
 
 
-APP_ROOT = Path(__file__).resolve().parent
-PUBLIC_ROOT = APP_ROOT / "public"
-GUIDE_PATH = APP_ROOT / "UserGuide.md"
-INSTALL_ROOT = Path(os.environ.get("VE_TOOLS_ROOT", APP_ROOT.parent)).expanduser().resolve()
-CONFIG_PATH = Path(os.environ.get("VE_TOOLS_CONFIG", INSTALL_ROOT / "config.json")).expanduser()
+APP_ROOT = Path(sys.executable).resolve().parent if getattr(sys, "frozen", False) else Path(__file__).resolve().parent
+RESOURCE_ROOT = Path(getattr(sys, "_MEIPASS", APP_ROOT)).resolve()
+PUBLIC_ROOT = RESOURCE_ROOT / "public"
+GUIDE_PATH = RESOURCE_ROOT / "UserGuide.md"
+WORKSPACE_ROOT = Path(os.environ["VISIONEVAL_WORKSPACE_ROOT"]).expanduser().resolve() if os.environ.get("VISIONEVAL_WORKSPACE_ROOT") else None
+INSTALL_ROOT = Path(os.environ.get("VE_TOOLS_ROOT", WORKSPACE_ROOT or APP_ROOT.parent)).expanduser().resolve()
+CONFIG_PATH = Path(os.environ.get("VE_TOOLS_CONFIG", (WORKSPACE_ROOT or INSTALL_ROOT) / "config.json")).expanduser()
 
 
 def load_portable_config():
@@ -38,14 +41,43 @@ def config_path(key, fallback):
     return Path(value).expanduser() if value else Path(fallback).expanduser()
 
 
-DEFAULT_EXTERNAL_ROOT = config_path("installRoot", APP_ROOT)
-INPUT_LIBRARY_ROOT = APP_ROOT / "InputLibrary"
-SCENARIOS_ROOT = APP_ROOT / "Scenarios"
-LOCAL_METADATA_PATH = config_path("metadataPath", APP_ROOT / "Metadata" / "metadata.json")
-COMPARISON_ROOT = config_path("comparisonRoot", APP_ROOT / "ComparisonReference")
-CLEAN_EXPLANATIONS_ROOT = config_path("cleanExplanationsRoot", APP_ROOT / "Clean Explanations" / "DOCX")
+DEFAULT_EXTERNAL_ROOT = config_path("installRoot", WORKSPACE_ROOT or APP_ROOT)
+INPUT_LIBRARY_ROOT = config_path("inputLibraryRoot", (WORKSPACE_ROOT / "InputLibrary") if WORKSPACE_ROOT else RESOURCE_ROOT / "InputLibrary")
+SCENARIOS_ROOT = config_path("scenariosRoot", (WORKSPACE_ROOT / "Scenarios") if WORKSPACE_ROOT else APP_ROOT / "Scenarios")
+LOCAL_METADATA_PATH = config_path("metadataPath", (WORKSPACE_ROOT / "Metadata" / "metadata.json") if WORKSPACE_ROOT else RESOURCE_ROOT / "Metadata" / "metadata.json")
+COMPARISON_ROOT = config_path("comparisonRoot", (WORKSPACE_ROOT.parent / "VisionEvalComparison") if WORKSPACE_ROOT else RESOURCE_ROOT / "ComparisonReference")
+CLEAN_EXPLANATIONS_ROOT = config_path("cleanExplanationsRoot", (WORKSPACE_ROOT / "Clean Explanations" / "DOCX") if WORKSPACE_ROOT else RESOURCE_ROOT / "Clean Explanations" / "DOCX")
+EXPLANATIONS_ROOT = CLEAN_EXPLANATIONS_ROOT.parent if CLEAN_EXPLANATIONS_ROOT.name.lower() == "docx" else CLEAN_EXPLANATIONS_ROOT
 R_HELPER = COMPARISON_ROOT / "rda_reader.R"
 RSCRIPT_PATH = os.environ.get("RSCRIPT") or PORTABLE_CONFIG.get("rscriptPath", "")
+
+
+def seed_dir(source, target):
+    source = Path(source)
+    target = Path(target)
+    if not source.exists() or target.exists():
+        return
+    target.parent.mkdir(parents=True, exist_ok=True)
+    shutil.copytree(source, target)
+
+
+def seed_file(source, target):
+    source = Path(source)
+    target = Path(target)
+    if not source.exists() or target.exists():
+        return
+    target.parent.mkdir(parents=True, exist_ok=True)
+    shutil.copy2(source, target)
+
+
+def seed_workspace_assets():
+    if not WORKSPACE_ROOT:
+        return
+    seed_dir(RESOURCE_ROOT / "InputLibrary", WORKSPACE_ROOT / "InputLibrary")
+    seed_dir(RESOURCE_ROOT / "Metadata", WORKSPACE_ROOT / "Metadata")
+    seed_dir(RESOURCE_ROOT / "Clean Explanations" / "PlanRVA", WORKSPACE_ROOT / "Clean Explanations" / "PlanRVA")
+    seed_dir(RESOURCE_ROOT / "Clean Explanations" / "DOCX", WORKSPACE_ROOT / "Clean Explanations" / "PlanRVA")
+    seed_file(RESOURCE_ROOT / "UserGuide.md", WORKSPACE_ROOT / "UserGuide.md")
 
 COUNTY_PREFIXES = {
     "51001": "Accomack County",
@@ -365,8 +397,10 @@ def rscript_command():
 
 
 def allowed_roots():
-    roots = [APP_ROOT]
-    for configured_root in [DEFAULT_EXTERNAL_ROOT, COMPARISON_ROOT, CLEAN_EXPLANATIONS_ROOT]:
+    roots = [APP_ROOT, RESOURCE_ROOT]
+    if WORKSPACE_ROOT:
+        roots.append(WORKSPACE_ROOT)
+    for configured_root in [DEFAULT_EXTERNAL_ROOT, INPUT_LIBRARY_ROOT, SCENARIOS_ROOT, LOCAL_METADATA_PATH.parent, COMPARISON_ROOT, CLEAN_EXPLANATIONS_ROOT]:
         if configured_root.exists():
             roots.append(configured_root)
     extra = os.environ.get("VE_EDITOR_ALLOWED_ROOTS", "")
@@ -628,6 +662,96 @@ def list_input_files(inputs_path):
     return files
 
 
+def input_library_root_payload():
+    INPUT_LIBRARY_ROOT.mkdir(parents=True, exist_ok=True)
+    return {"path": str(INPUT_LIBRARY_ROOT)}
+
+
+def scenarios_root_payload():
+    SCENARIOS_ROOT.mkdir(parents=True, exist_ok=True)
+    return {"path": str(SCENARIOS_ROOT)}
+
+
+def reveal_path(payload):
+    path = resolve_allowed_path(payload.get("path", ""))
+    if not path.exists():
+        raise ValueError("Path does not exist")
+    command = ["open", "-R", str(path)] if path.is_file() else ["open", str(path)]
+    subprocess.run(command, check=False)
+    return {"path": str(path)}
+
+
+def scenario_folder_from_payload(payload):
+    scenario_path = resolve_allowed_path(payload.get("path", ""))
+    scenarios_root = SCENARIOS_ROOT.resolve()
+    try:
+        scenario_path.relative_to(scenarios_root)
+    except ValueError as exc:
+        raise ValueError("Path is not inside the scenario root") from exc
+    if scenario_path == scenarios_root:
+        raise ValueError("Choose a specific scenario folder")
+    if not scenario_path.is_dir():
+        raise ValueError("Scenario path is not a folder")
+    return scenario_path
+
+
+def prompt_for_zip_path(default_name):
+    default_name = safe_folder_name(default_name, "Scenario") + ".zip"
+    script = (
+        'set chosenFile to choose file name with prompt "Save scenario ZIP as:" '
+        f'default name "{default_name}"\n'
+        "POSIX path of chosenFile"
+    )
+    result = subprocess.run(["osascript", "-e", script], capture_output=True, text=True, check=False)
+    if result.returncode != 0:
+        return None
+    path = Path(result.stdout.strip()).expanduser()
+    if path.suffix.lower() != ".zip":
+        path = path.with_suffix(".zip")
+    return path
+
+
+def export_scenario(payload):
+    scenario_path = scenario_folder_from_payload(payload)
+    target_value = payload.get("targetPath", "")
+    zip_path = Path(target_value).expanduser() if target_value else prompt_for_zip_path(scenario_path.name)
+    if not zip_path:
+        return {"scenarioPath": str(scenario_path), "zipPath": "", "canceled": True}
+    if zip_path.suffix.lower() != ".zip":
+        zip_path = zip_path.with_suffix(".zip")
+    zip_path.parent.mkdir(parents=True, exist_ok=True)
+    archive_base = zip_path.with_suffix("")
+    created_path = Path(shutil.make_archive(str(archive_base), "zip", root_dir=scenario_path.parent, base_dir=scenario_path.name))
+    if created_path != zip_path:
+        if zip_path.exists():
+            zip_path.unlink()
+        created_path.rename(zip_path)
+    if payload.get("reveal", True):
+        subprocess.run(["open", "-R", str(zip_path)], check=False)
+    return {"scenarioPath": str(scenario_path), "zipPath": str(zip_path), "canceled": False}
+
+
+def delete_scenario(payload):
+    scenario_path = scenario_folder_from_payload(payload)
+    shutil.rmtree(scenario_path)
+    return {"deleted": str(scenario_path), "scenarios": list_scenarios()}
+
+
+def empty_scenarios():
+    SCENARIOS_ROOT.mkdir(parents=True, exist_ok=True)
+    deleted = []
+    for child in SCENARIOS_ROOT.iterdir():
+        if child.is_dir():
+            shutil.rmtree(child)
+            deleted.append(str(child))
+    return {"deleted": deleted, "scenarios": list_scenarios()}
+
+
+def explanations_root_payload():
+    EXPLANATIONS_ROOT.mkdir(parents=True, exist_ok=True)
+    return {"path": str(EXPLANATIONS_ROOT)}
+
+
 EXPLANATION_ALIASES = {
     "azone_hh_av_veh_per_driver": "azone_hh_ave_veh_per_driver",
     "bzone_travel_demand_mgt": "bzone_travel_demand_management",
@@ -650,31 +774,111 @@ def csv_explanation_key(csv_name):
     return EXPLANATION_ALIASES.get(key, key)
 
 
-def explanation_doc_map():
+def safe_set_id(value):
+    return re.sub(r"[^a-z0-9_-]+", "-", str(value or "").strip().lower()).strip("-")
+
+
+def explanation_set_name(path):
+    name = path.name.strip()
+    if name.lower() == "docx":
+        return "PlanRVA"
+    return name
+
+
+def explanation_set_id(path):
+    return safe_set_id(explanation_set_name(path))
+
+
+def folder_has_docx(path):
+    return path.is_dir() and any(path.glob("*.docx"))
+
+
+def explanation_sets():
+    EXPLANATIONS_ROOT.mkdir(parents=True, exist_ok=True)
+    planrva = EXPLANATIONS_ROOT / "PlanRVA"
+    docx = EXPLANATIONS_ROOT / "DOCX"
+    if folder_has_docx(planrva):
+        path = planrva
+    elif folder_has_docx(docx):
+        path = docx
+    else:
+        return []
+    return [{"id": "planrva", "name": "PlanRVA", "path": str(path)}]
+
+
+def explanation_set_path(set_id=""):
+    sets = explanation_sets()
+    if not sets:
+        return CLEAN_EXPLANATIONS_ROOT
+    return Path(sets[0]["path"])
+
+
+def explanation_doc_map(set_id=""):
     docs = {}
-    if not CLEAN_EXPLANATIONS_ROOT.exists():
+    root = explanation_set_path(set_id)
+    if not root.exists():
         return docs
-    for path in sorted(CLEAN_EXPLANATIONS_ROOT.glob("*.docx"), key=lambda item: item.name.lower()):
+    for path in sorted(root.glob("*.docx"), key=lambda item: item.name.lower()):
         docs.setdefault(clean_explanation_stem(path), path)
     return docs
 
 
-def explanation_for_csv(csv_name):
+def explanation_for_csv(csv_name, set_id=""):
     key = csv_explanation_key(csv_name)
     if not key:
         return None
-    return explanation_doc_map().get(key)
+    return explanation_doc_map(set_id).get(key)
 
 
-def list_file_explanations(inputs_path):
+def table_name_for_file(filename):
+    name = str(filename or "").lower()
+    if name.startswith("azone"):
+        return "Azone"
+    if name.startswith("bzone"):
+        return "Bzone"
+    if name.startswith("marea"):
+        return "Marea"
+    if name.startswith("region"):
+        return "Region"
+    if name.startswith("vehicle"):
+        return "Vehicle"
+    if name.startswith("worker"):
+        return "Worker"
+    if name.startswith("household"):
+        return "Household"
+    return ""
+
+
+def metadata_description_for_file(file_item, metadata_variables):
+    table = table_name_for_file(file_item.get("name", ""))
+    seen = set()
+    descriptions = []
+    for column in file_item.get("columns", []):
+        entries = metadata_variables.get(str(column or "").lower(), [])
+        match = next((entry for entry in entries if entry.get("table") == table), None) or (entries[0] if entries else None)
+        description = str((match or {}).get("description") or "").strip()
+        if not description or description in seen:
+            continue
+        seen.add(description)
+        descriptions.append(f"{column}: {description}")
+        if len(descriptions) >= 4:
+            break
+    return " | ".join(descriptions)
+
+
+def list_file_explanations(inputs_path, set_id=""):
     files = []
+    metadata_variables = load_metadata().get("variables", {})
     for item in list_input_files(inputs_path):
         doc = explanation_for_csv(item["name"])
+        description = metadata_description_for_file(item, metadata_variables)
         files.append(
             {
                 **item,
                 "hasExplanation": bool(doc),
                 "docName": doc.name if doc else "",
+                "description": description,
+                "descriptionSource": "Metadata",
             }
         )
     return files
@@ -727,11 +931,11 @@ def docx_to_html(doc_path):
     return "\n".join(chunks) or "<p>No readable content found.</p>"
 
 
-def load_explanation(csv_name):
-    doc = explanation_for_csv(csv_name)
+def load_explanation(csv_name, set_id=""):
+    doc = explanation_for_csv(csv_name, set_id)
     if not doc:
         raise ValueError(f"No explanation found for {csv_name}")
-    return {"csvName": csv_name, "docName": doc.name, "html": docx_to_html(doc)}
+    return {"csvName": csv_name, "docName": doc.name, "setId": explanation_set_id(doc.parent), "setName": explanation_set_name(doc.parent), "html": docx_to_html(doc)}
 
 
 def zone_level_from_filename(filename):
@@ -1028,27 +1232,42 @@ class Handler(SimpleHTTPRequestHandler):
         parsed = urlparse(self.path)
         params = {key: values[-1] for key, values in parse_qs(parsed.query).items()}
         try:
-            if parsed.path == "/api/config":
+            if parsed.path == "/api/health":
+                json_response(
+                    self,
+                    {
+                        "ok": True,
+                        "app": "VisionEval Editor",
+                        "workspaceRoot": str(WORKSPACE_ROOT) if WORKSPACE_ROOT else "",
+                        "resourceRoot": str(RESOURCE_ROOT),
+                    },
+                )
+            elif parsed.path == "/api/config":
                 json_response(
                     self,
                     {
                         "inputLibraries": find_input_libraries(),
-                        "workspace": str(APP_ROOT),
+                        "workspace": str(WORKSPACE_ROOT or APP_ROOT),
                         "installRoot": str(DEFAULT_EXTERNAL_ROOT),
                         "inputLibraryRoot": str(INPUT_LIBRARY_ROOT),
                         "scenariosRoot": str(SCENARIOS_ROOT),
                         "metadataPath": str(LOCAL_METADATA_PATH),
                         "cleanExplanationsRoot": str(CLEAN_EXPLANATIONS_ROOT),
+                        "explanationsRoot": str(EXPLANATIONS_ROOT),
                     },
                 )
             elif parsed.path == "/api/files":
                 json_response(self, {"files": list_input_files(params.get("inputsPath", ""))})
             elif parsed.path == "/api/explanations":
-                json_response(self, {"files": list_file_explanations(params.get("inputsPath", ""))})
+                json_response(self, {"files": list_file_explanations(params.get("inputsPath", ""), params.get("setId", ""))})
+            elif parsed.path == "/api/explanation-sets":
+                json_response(self, {"sets": explanation_sets()})
+            elif parsed.path == "/api/explanations-root":
+                json_response(self, explanations_root_payload())
             elif parsed.path == "/api/guide":
                 json_response(self, load_user_guide())
             elif parsed.path == "/api/explanation":
-                json_response(self, load_explanation(params.get("csvName", "")))
+                json_response(self, load_explanation(params.get("csvName", ""), params.get("setId", "")))
             elif parsed.path == "/api/location-options":
                 json_response(self, setup_location_options(params.get("inputsPath", "")))
             elif parsed.path == "/api/load":
@@ -1057,6 +1276,10 @@ class Handler(SimpleHTTPRequestHandler):
                 json_response(self, load_metadata())
             elif parsed.path == "/api/scenarios":
                 json_response(self, {"scenarios": list_scenarios()})
+            elif parsed.path == "/api/scenarios-root":
+                json_response(self, scenarios_root_payload())
+            elif parsed.path == "/api/input-library-root":
+                json_response(self, input_library_root_payload())
             elif parsed.path == "/api/scenario":
                 json_response(self, load_scenario(params.get("path", "")))
             else:
@@ -1070,6 +1293,17 @@ class Handler(SimpleHTTPRequestHandler):
             if parsed.path == "/api/create-scenario":
                 payload = parse_body(self)
                 json_response(self, create_scenario(payload))
+            elif parsed.path == "/api/reveal-path":
+                payload = parse_body(self)
+                json_response(self, reveal_path(payload))
+            elif parsed.path == "/api/export-scenario":
+                payload = parse_body(self)
+                json_response(self, export_scenario(payload))
+            elif parsed.path == "/api/delete-scenario":
+                payload = parse_body(self)
+                json_response(self, delete_scenario(payload))
+            elif parsed.path == "/api/empty-scenarios":
+                json_response(self, empty_scenarios())
             else:
                 bad_request(self, "Unknown endpoint", 404)
         except Exception as exc:
@@ -1077,6 +1311,7 @@ class Handler(SimpleHTTPRequestHandler):
 
 
 def main():
+    seed_workspace_assets()
     port = int(os.environ.get("PORT", "3000"))
     server = ThreadingHTTPServer(("127.0.0.1", port), Handler)
     print(f"Vision Eval Data Editor running at http://127.0.0.1:{port}", flush=True)

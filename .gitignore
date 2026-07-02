@@ -3,3 +3,11 @@ __pycache__/
 *.py[cod]
 edited/*.csv
 Scenarios/
+build/
+dist/
+*.spec~
+desktop/node_modules/
+desktop/src-tauri/target/
+desktop/src-tauri/binaries/
+Clean Explanations/PlanRVA/
+Clean Explanations/VA/

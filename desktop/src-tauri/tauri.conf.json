@@ -1,0 +1,47 @@
+{
+  "$schema": "https://schema.tauri.app/config/2",
+  "productName": "VisionEval Editor",
+  "version": "0.1.0",
+  "identifier": "com.visioneval.editor",
+  "build": {
+    "frontendDist": "../src",
+    "beforeBuildCommand": "npm run build:backend"
+  },
+  "app": {
+    "windows": [
+      {
+        "title": "VisionEval Editor",
+        "width": 1440,
+        "height": 950,
+        "minWidth": 1100,
+        "minHeight": 760
+      }
+    ],
+    "security": {
+      "csp": null
+    }
+  },
+  "bundle": {
+    "active": true,
+    "targets": [
+      "dmg",
+      "nsis"
+    ],
+    "externalBin": [
+      "binaries/vision-eval-editor-backend"
+    ],
+    "resources": [],
+    "macOS": {
+      "minimumSystemVersion": "12.0"
+    },
+    "windows": {
+      "nsis": {
+        "installMode": "perMachine",
+        "displayLanguageSelector": true
+      }
+    },
+    "icon": [
+      "icons/icon.icns"
+    ]
+  }
+}

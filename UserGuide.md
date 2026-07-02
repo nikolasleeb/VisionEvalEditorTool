@@ -8,8 +8,8 @@ Refreshing the browser page resets the current browser session. Unsaved draft ch
 
 ## Folder Layout
 
-- `InputLibrary` contains the source VisionEval input libraries that appear in Scenario Setup.
-- `Scenarios` stores saved scenario drafts and generated scenario outputs.
+- `InputLibrary` contains the source VisionEval input libraries that appear in Scenario Setup. Use Open InputLibrary Folder to add or remove whole input-library folders.
+- `Scenarios` stores saved scenario drafts and generated scenario outputs. Use the built-in scenario buttons to open, export, or delete these folders.
 - `UserGuide.md` is this guide. Edit this Markdown file to update the User Guide tab.
 - `public` contains the browser interface.
 - `app.py` runs the local Python server and provides the API used by the interface.
@@ -22,9 +22,10 @@ The File Explanations tab helps connect input CSV files to their documentation.
 - Use search to narrow the CSV list.
 - The Variables column shows variables detected for each CSV.
 - The Description column uses metadata bundled in the editor under `Metadata/metadata.json`.
-- The Open Explanation column opens the linked Word explanation for that CSV when one exists.
+- The Open Explanation column opens the linked PlanRVA Word explanation for that CSV when one exists.
+- Open Explanations Folder opens the workspace folder where the PlanRVA explanation DOCX files are stored.
 
-Word explanations are loaded from the editor-local `Clean Explanations/DOCX` folder. If that folder is missing, the rest of the editor still works, but Word explanation buttons may be unavailable.
+Word explanations are loaded from the `Clean Explanations/PlanRVA` folder. If that folder is missing, the rest of the editor still works, but Word explanation buttons may be unavailable.
 
 ## Scenario Setup
 
@@ -34,7 +35,16 @@ Use Scenario Setup to start a new scenario draft or reopen a saved scenario.
 2. Choose an input library.
 3. Select Start New Scenario to initialize the editor.
 
+Use Open InputLibrary Folder to open the workspace `InputLibrary` folder in Finder. Add a new input library by dragging a complete input-library folder into that folder. Remove an input library by deleting its folder from Finder. Restart or refresh the editor after changing input-library folders so the dropdown reloads.
+
 The Load Existing Scenario block restores a saved draft from the local `Scenarios` folder. Loading a scenario restores scenario variants, file edits, filters, selected columns, operations, values, notes, and preview state where available.
+
+The same block also manages saved scenario outputs:
+
+- Open Scenarios Folder opens the workspace `Scenarios` folder in Finder.
+- Export Selected ZIP prompts for a save location and writes a ZIP copy of the selected scenario.
+- Delete Selected Scenario removes only the selected scenario after confirmation.
+- Empty Scenarios Folder removes all saved scenarios after confirmation.
 
 ## Scenario/File Editor
 
@@ -63,11 +73,11 @@ The scenario tools page contains settings and batch previews that apply only to 
 - Select all columns checks every editable numeric column for the currently selected batch files.
 - Batch column choices exclude `Year`, `Geo`, and geography/id-style columns so those identifiers are not edited by mistake.
 
-Batch changes are previews only. They create or update normal file-edit entries inside the active scenario, so they appear in Overview/Submit the same way as single-file edits. Select files first, then check one or more numeric columns for each selected file, or use Select all columns. The first batch-created file edit opens automatically after Apply Batch Preview.
+Batch changes are previews only. They create or update normal file-edit entries inside the active scenario, so they appear in Overview/Submit the same way as single-file edits. Select files first, then check one or more numeric columns for each selected file, or use Select all columns. If the active scenario still has an untouched starter `file 1`, the first batch file reuses that starter entry instead of leaving a blank file edit behind. The first batch-created file edit opens automatically after Apply Batch Preview.
 
 ### Filters
 
-Filters determine which rows the change function targets.
+Filters determine which rows the change function shows and targets.
 
 - Location level controls the geographic level used for filtering.
 - Location search narrows long location lists.
@@ -76,6 +86,8 @@ Filters determine which rows the change function targets.
 - MPO entries that are partial in the source list, such as urbanized area or most of a county, are treated as the whole locality because the editor currently filters by county/city and zone IDs rather than MPO boundary geometry.
 - Target year limits the preview and change to the selected year when a Year column exists. The year list is read from the selected file, so a file with `2020` and `2050` rows shows those years.
 - Files with a Year column sort later years first by default, so 2045 or 2050 rows appear above earlier years.
+
+Filtering does not remove the other locales from the output CSV. Rows outside the selected locations or year remain in the file and are copied through unchanged when the scenario is created. Only the rows shown by the active filter and matching the selected year/columns are changed.
 
 If no location levels appear, confirm the selected input library includes usable geography files or metadata. If rows still display in the table, the file can still be inspected even when location filtering is limited.
 
@@ -126,6 +138,9 @@ Use Overview/Submit to review the scenario structure before creating outputs.
 
 - Preview Scenario checks the current draft and shows the planned folder and log output.
 - Create Scenario writes the scenario files and logs to the local `Scenarios` folder.
+- After Create Scenario finishes, the editor prompts you to save a ZIP copy of the created scenario. If you cancel that prompt, the scenario still remains in the local `Scenarios` folder and can be exported later.
+- Open Scenarios Folder opens the scenario output folder in Finder.
+- Export Scenario ZIP prompts for a save location for the most recently created scenario.
 
 The log output lists each change made to each file, including separate entries when a scenario changes more than one column or file. Notes entered for scenarios or file edits are saved with the scenario draft and included in the generated log so the reason for a change stays with the output.
 
@@ -138,14 +153,17 @@ Night mode is off by default. The bottom of the page shows the last update date 
 ## Upcoming/Planned Features
 
 - Input file variable tagging and grouping.
+- Custom region builder for creating user-defined regions similar to MPO filters from Virginia data.
 
 ## Developed By
+
+Nikolas Lee-Bishop, VDOT intern at the Virginia Transportation Research Council, Summer 2026.
 
 ## Contact
 
 ## Portability
 
-The editor is designed to run independently from the comparison tool. Move the full `VisionEvalEditor` folder to another device to keep the same editor features.
+The editor is designed to run independently from the comparison tool. In the desktop app, input libraries and generated scenarios live in the workspace shown at the top of the window.
 
 Required for normal editor use:
 
@@ -153,15 +171,31 @@ Required for normal editor use:
 - `public`
 - `InputLibrary`
 - `Metadata/metadata.json` for variable descriptions and units
-- `Clean Explanations/DOCX` for Word explanation files
+- `Clean Explanations/PlanRVA` for Word explanation files
 - `Scenarios` if you want existing saved drafts
 
 The comparison tool is not required for the editor to start, load input libraries, show file explanations, display descriptions, draft scenarios, preview edits, or create scenario folders. Advanced users can still point the editor at external metadata or explanation folders through configuration, but the default setup uses the local bundled copies.
 
+## Desktop App Install
+
+The editor can be packaged as a standalone VisionEval Editor desktop app. In desktop mode, the app opens in its own window and starts the local Python backend automatically. Users do not need to open Terminal, manually visit a localhost URL, or press Start App after a workspace has already been created.
+
+On first launch, the app creates a default workspace unless you choose a different workspace. The workspace stores generated scenario outputs and local configuration. Bundled input libraries, metadata, Word explanations, and the user guide seed the workspace, while generated scenario outputs stay in the workspace.
+
+Developer mode still works from the repository:
+
+```bash
+python3 app.py
+```
+
+The desktop build files live under `desktop` and `packaging`. Building installers requires Rust/Cargo, Node/npm, Python, PyInstaller, and the platform-specific Tauri prerequisites.
+
 ## Troubleshooting
 
 - If no input libraries appear, confirm CSV libraries exist under `InputLibrary`.
+- If you added or removed input-library folders while the app was open, refresh or restart the editor so the dropdown reloads.
 - If a CSV loads but no editable columns appear, confirm the data columns contain numeric values.
-- If Word explanations do not open, confirm the explanation DOCX folder exists and the CSV has a matching explanation document.
+- If Word explanations do not open, confirm the PlanRVA explanation folder exists and the CSV has a matching explanation document.
+- If scenario outputs are taking too much disk space, use Delete Selected Scenario or Empty Scenarios Folder in Scenario Setup.
 - If the browser shows old behavior after an update, refresh the page. The app includes cache-busting version strings, but a hard refresh can still help.
 - If the server is not running, start it with `python3 app.py` from the VisionEvalEditor folder and open `http://127.0.0.1:3000`.
