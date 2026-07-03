@@ -17,7 +17,30 @@ For V1, the desktop app is the supported release. The older local browser workfl
 
 ## Quick Start
 
-Download the latest macOS DMG from the GitHub Releases page, open it, and install **VisionEval Editor.app**.
+Download the installer for your computer from the [GitHub Releases page](https://github.com/nikolasleeb/VisionEvalEditorTool/releases/latest).
+
+For Macs:
+
+- Apple Silicon Macs, such as M1, M2, M3, or M4: download `VisionEval-Editor-v1.0.0-mac-arm64.dmg` or `VisionEval-Editor-v1.0.0-mac-universal.dmg`.
+- Intel Macs: download `VisionEval-Editor-v1.0.0-mac-universal.dmg`.
+- If you are unsure which Mac you have, use the universal DMG.
+
+To install on macOS:
+
+1. Download the DMG from GitHub Releases.
+2. Open the DMG.
+3. Drag **VisionEval Editor.app** into the **Applications** folder.
+4. Eject the disk image.
+5. Open **VisionEval Editor** from the Applications folder.
+
+The V1 Mac app is not Apple-notarized yet. If macOS says the app is "damaged" or cannot be opened after downloading it from GitHub, click **Cancel** and run this once in Terminal:
+
+```bash
+xattr -dr com.apple.quarantine "/Applications/VisionEval Editor.app"
+open "/Applications/VisionEval Editor.app"
+```
+
+This removes the download quarantine flag from the local installed copy. It is only needed because the V1 app is unsigned/not notarized for public Mac distribution.
 
 On first launch, the app creates a workspace under Application Support unless you choose a different workspace. The workspace contains:
 
@@ -26,6 +49,14 @@ On first launch, the app creates a workspace under Application Support unless yo
 - `Clean Explanations/PlanRVA` for Word explanation files.
 
 Use **Open InputLibrary Folder** to add or remove whole input-library folders. Use **Create Scenario** or **Export Scenario ZIP** to produce scenario outputs that can be moved to the computer where VisionEval will run.
+
+The Editor normally does not ask where to put its workspace. It automatically uses:
+
+```text
+~/Library/Application Support/com.visioneval.editor/Workspace
+```
+
+Use the buttons inside the app to open the `InputLibrary` and `Scenarios` folders instead of browsing to that hidden folder manually.
 
 ## Local Development / Legacy Web Mode
 
