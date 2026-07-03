@@ -6,7 +6,12 @@ cd "$ROOT"
 
 BIN_NAME="vision-eval-editor-backend"
 BIN_DIR="desktop/src-tauri/binaries"
+PYTHON_BIN="${PYTHON:-python3}"
 mkdir -p "$BIN_DIR"
+
+if [[ "${OS:-}" == "Windows_NT" ]] && command -v python >/dev/null 2>&1; then
+  PYTHON_BIN="${PYTHON:-python}"
+fi
 
 build_backend() {
   local arch_name="$1"
@@ -17,9 +22,9 @@ build_backend() {
   fi
 
   if [[ "${#runner[@]}" -gt 0 ]]; then
-    "${runner[@]}" python3 -m PyInstaller --clean --noconfirm packaging/editor-backend.spec
+    "${runner[@]}" "$PYTHON_BIN" -m PyInstaller --clean --noconfirm packaging/editor-backend.spec
   else
-    python3 -m PyInstaller --clean --noconfirm packaging/editor-backend.spec
+    "$PYTHON_BIN" -m PyInstaller --clean --noconfirm packaging/editor-backend.spec
   fi
 }
 
