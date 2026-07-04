@@ -21,9 +21,9 @@ Download the installer for your computer from the [GitHub Releases page](https:/
 
 For Macs:
 
-- Apple Silicon Macs, such as M1, M2, M3, or M4: download `VisionEval-Editor-v1.0.0-mac-arm64.dmg` or `VisionEval-Editor-v1.0.0-mac-universal.dmg`.
-- Intel Macs: download `VisionEval-Editor-v1.0.0-mac-universal.dmg`.
-- If you are unsure which Mac you have, use the universal DMG.
+- Apple Silicon Macs, such as M1, M2, M3, or M4: download `VisionEval-Editor-v1.0.0-mac-arm64.dmg`.
+- Intel Macs: download `VisionEval-Editor-v1.0.0-mac-x64.dmg`.
+- If you are unsure which Mac you have, open **Apple menu > About This Mac**. Macs labeled with an Apple chip use `mac-arm64`; Macs labeled with an Intel processor use `mac-x64`.
 
 To install on macOS:
 
@@ -47,6 +47,20 @@ On first launch, the app creates a workspace under Application Support unless yo
 - `InputLibrary` for input-library folders.
 - `Scenarios` for generated scenario folders and saved drafts.
 - `Clean Explanations/PlanRVA` for Word explanation files.
+
+If the app asks you where to put the workspace, choose a local folder inside your Mac user folder. A simple choice is:
+
+```text
+/Users/yourname/VisionEvalEditor
+```
+
+or:
+
+```text
+/Users/yourname/Documents/VisionEvalEditor
+```
+
+This workspace is separate from the app install location. **VisionEval Editor.app** belongs in `/Applications`, but the workspace should be somewhere writable where the app can store input libraries, scenarios, and exported files. Do not choose `/Applications` as the workspace. Avoid iCloud folders when possible because sync/eviction can make large local input and scenario files harder to manage.
 
 Use **Open InputLibrary Folder** to add or remove whole input-library folders. Use **Create Scenario** or **Export Scenario ZIP** to produce scenario outputs that can be moved to the computer where VisionEval will run.
 
@@ -105,7 +119,7 @@ npm install
 npm run tauri:build
 ```
 
-macOS builds produce a `.app`/`.dmg`. Windows builds should be produced on Windows or in a Windows CI runner and produce an NSIS installer.
+macOS builds produce a `.app`/`.dmg`. Build separate Apple Silicon and Intel Mac installers so the bundled Python backend matches the target Mac architecture. Windows builds should be produced on Windows or in a Windows CI runner and produce an NSIS installer.
 
 ## Repository Contents
 

@@ -14,6 +14,8 @@ Refreshing the browser page resets the current browser session. Unsaved draft ch
 - `public` contains the browser interface.
 - `app.py` runs the local Python server and provides the API used by the interface.
 
+In the desktop app, the app itself should be installed in `/Applications`, but the workspace should be a writable folder in the user's account. If the app asks where to put the workspace, choose a local folder such as `/Users/yourname/VisionEvalEditor` or `/Users/yourname/Documents/VisionEvalEditor`. Do not choose `/Applications` for the workspace. Avoid iCloud folders when possible because input libraries and generated scenarios can be large local files.
+
 ## File Explanations
 
 The File Explanations tab helps connect input CSV files to their documentation.
@@ -181,6 +183,10 @@ The comparison tool is not required for the editor to start, load input librarie
 The editor can be packaged as a standalone VisionEval Editor desktop app. In desktop mode, the app opens in its own window and starts the local Python backend automatically. Users do not need to open Terminal, manually visit a localhost URL, or press Start App after a workspace has already been created.
 
 On first launch, the app creates a default workspace unless you choose a different workspace. The workspace stores generated scenario outputs and local configuration. Bundled input libraries, metadata, Word explanations, and the user guide seed the workspace, while generated scenario outputs stay in the workspace.
+
+Install **VisionEval Editor.app** in `/Applications`. If macOS asks where the editor workspace should go, choose a local folder in the user's home folder, such as `/Users/yourname/VisionEvalEditor`. This keeps the app installation separate from the files the app edits and writes.
+
+Use the Mac installer that matches the computer: `mac-arm64` for Apple Silicon Macs and `mac-x64` for Intel Macs. Do not use the old V1 universal DMG for Intel testing because its bundled Python backend may still contain Apple Silicon-only runtime files.
 
 Developer mode still works from the repository:
 

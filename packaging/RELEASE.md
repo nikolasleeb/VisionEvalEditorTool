@@ -23,18 +23,20 @@ cd desktop
 npm run tauri:build -- --target aarch64-apple-darwin
 ```
 
-Universal Mac, for both Apple Silicon and Intel Macs:
+Intel Mac:
 
 ```bash
 rustup target add x86_64-apple-darwin
 cd desktop
-npm run tauri:build -- --target universal-apple-darwin
+npm run tauri:build -- --target x86_64-apple-darwin
 ```
 
-The universal build creates:
+The Intel build should be produced on an Intel macOS runner or another environment where PyInstaller uses an x86_64 Python runtime. Building a universal Tauri wrapper on Apple Silicon is not enough, because the embedded PyInstaller Python runtime can still be arm64-only.
+
+The Intel build creates:
 
 ```text
-desktop/src-tauri/target/universal-apple-darwin/release/bundle/dmg/VisionEval Editor_0.1.0_universal.dmg
+desktop/src-tauri/target/x86_64-apple-darwin/release/bundle/dmg/VisionEval Editor_0.1.0_x64.dmg
 ```
 
 ## Windows
@@ -63,7 +65,12 @@ Useful V1 upload commands:
 
 ```bash
 gh release upload v1.0.0 \
-  "desktop/src-tauri/target/universal-apple-darwin/release/bundle/dmg/VisionEval Editor_0.1.0_universal.dmg#VisionEval-Editor-v1.0.0-mac-universal.dmg"
+  "desktop/src-tauri/target/aarch64-apple-darwin/release/bundle/dmg/VisionEval Editor_0.1.0_aarch64.dmg#VisionEval-Editor-v1.0.0-mac-arm64.dmg"
+```
+
+```bash
+gh release upload v1.0.0 \
+  "desktop/src-tauri/target/x86_64-apple-darwin/release/bundle/dmg/VisionEval Editor_0.1.0_x64.dmg#VisionEval-Editor-v1.0.0-mac-x64.dmg"
 ```
 
 ```powershell

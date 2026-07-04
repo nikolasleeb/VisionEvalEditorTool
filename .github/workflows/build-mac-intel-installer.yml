@@ -1,0 +1,65 @@
+name: Build Mac Intel Installer
+
+on:
+  workflow_dispatch:
+    inputs:
+      release_tag:
+        description: "GitHub release tag to build from and upload to"
+        required: true
+        default: "v1.0.0"
+
+permissions:
+  contents: write
+
+jobs:
+  build-mac-intel:
+    runs-on: macos-13
+
+    steps:
+      - name: Check out source
+        uses: actions/checkout@v4
+        with:
+          ref: ${{ inputs.release_tag }}
+
+      - name: Set up Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+          cache: npm
+          cache-dependency-path: desktop/package-lock.json
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Set up Rust
+        uses: dtolnay/rust-toolchain@stable
+        with:
+          targets: x86_64-apple-darwin
+
+      - name: Install Python packaging dependencies
+        run: python3 -m pip install --upgrade pyinstaller
+
+      - name: Install desktop dependencies
+        working-directory: desktop
+        run: npm ci
+
+      - name: Build Intel macOS installer
+        working-directory: desktop
+        run: npm run tauri:build -- --target x86_64-apple-darwin
+
+      - name: Copy release asset
+        run: |
+          set -euo pipefail
+          dmg="$(find desktop/src-tauri/target/x86_64-apple-darwin/release/bundle/dmg -name '*.dmg' -print -quit)"
+          if [[ -z "${dmg}" ]]; then
+            echo "No Intel DMG was produced." >&2
+            exit 1
+          fi
+          cp "${dmg}" "VisionEval-Editor-${{ inputs.release_tag }}-mac-x64.dmg"
+
+      - name: Upload installer to release
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: gh release upload "${{ inputs.release_tag }}" "VisionEval-Editor-${{ inputs.release_tag }}-mac-x64.dmg" --clobber
