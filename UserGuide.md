@@ -186,7 +186,7 @@ On first launch, the app creates a default workspace unless you choose a differe
 
 Install **VisionEval Editor.app** in `/Applications`. If macOS asks where the editor workspace should go, choose a local folder in the user's home folder, such as `/Users/yourname/VisionEvalEditor`. This keeps the app installation separate from the files the app edits and writes.
 
-Use the Mac installer that matches the computer: `mac-arm64` for Apple Silicon Macs and `mac-x64` for Intel Macs. Do not use the old V1 universal DMG for Intel testing because its bundled Python backend may still contain Apple Silicon-only runtime files.
+Use the installer that matches the computer: `mac-arm64` for Apple Silicon Macs, `mac-x64` for Intel Macs, and `windows-x64` for 64-bit Windows PCs. The old V1 universal Mac DMG was removed from the release because its bundled Python backend could fail on Intel Macs.
 
 Developer mode still works from the repository:
 

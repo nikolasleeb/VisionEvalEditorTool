@@ -25,6 +25,10 @@ For Macs:
 - Intel Macs: download `VisionEval-Editor-v1.0.0-mac-x64.dmg`.
 - If you are unsure which Mac you have, open **Apple menu > About This Mac**. Macs labeled with an Apple chip use `mac-arm64`; Macs labeled with an Intel processor use `mac-x64`.
 
+For Windows:
+
+- 64-bit Windows PCs: download `VisionEval-Editor-v1.0.0-windows-x64.exe`.
+
 To install on macOS:
 
 1. Download the DMG from GitHub Releases.
@@ -41,6 +45,8 @@ open "/Applications/VisionEval Editor.app"
 ```
 
 This removes the download quarantine flag from the local installed copy. It is only needed because the V1 app is unsigned/not notarized for public Mac distribution.
+
+To install on Windows, download the Windows installer, open it, and follow the prompts. Windows may show a security warning because the V1 installer is not code-signed yet.
 
 On first launch, the app creates a workspace under Application Support unless you choose a different workspace. The workspace contains:
 
