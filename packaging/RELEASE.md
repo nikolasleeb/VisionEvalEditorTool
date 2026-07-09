@@ -43,6 +43,8 @@ desktop/src-tauri/target/x86_64-apple-darwin/release/bundle/dmg/VisionEval Edito
 
 Build on Windows or a Windows GitHub Actions runner to produce the NSIS installer. Windows builds require Rust, Node, Python, PyInstaller, and the Tauri Windows prerequisites.
 
+The Windows NSIS installer is configured as `currentUser`, so it installs into the user's profile instead of requiring machine-wide admin elevation.
+
 From a Windows checkout:
 
 ```powershell
@@ -75,5 +77,5 @@ gh release upload v1.0.0 \
 
 ```powershell
 gh release upload v1.0.0 `
-  "desktop\src-tauri\target\release\bundle\nsis\VisionEval Editor_0.1.0_x64-setup.exe#VisionEval-Editor-v1.0.0-windows-x64.exe"
+  "desktop\src-tauri\target\release\bundle\nsis\VisionEval Editor_0.1.0_x64-setup.exe#VisionEval-Editor-v1.0.0-windows-x64-user.exe"
 ```

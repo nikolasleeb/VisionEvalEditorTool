@@ -1,4 +1,4 @@
-name: Build Windows Installer
+name: Build Windows Per-User Installer
 
 on:
   workflow_dispatch:
@@ -41,7 +41,7 @@ jobs:
         working-directory: desktop
         run: npm ci
 
-      - name: Build Windows installer
+      - name: Build Windows per-user installer
         working-directory: desktop
         run: npm run tauri:build
 
@@ -52,9 +52,9 @@ jobs:
           if (-not $installer) {
             throw "No NSIS installer was produced."
           }
-          Copy-Item $installer.FullName "VisionEval-Editor-${{ inputs.release_tag }}-windows-x64.exe"
+          Copy-Item $installer.FullName "VisionEval-Editor-${{ inputs.release_tag }}-windows-x64-user.exe"
 
       - name: Upload installer to release
         env:
           GH_TOKEN: ${{ github.token }}
-        run: gh release upload "${{ inputs.release_tag }}" "VisionEval-Editor-${{ inputs.release_tag }}-windows-x64.exe" --clobber
+        run: gh release upload "${{ inputs.release_tag }}" "VisionEval-Editor-${{ inputs.release_tag }}-windows-x64-user.exe" --clobber
