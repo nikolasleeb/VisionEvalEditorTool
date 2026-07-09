@@ -672,12 +672,26 @@ def scenarios_root_payload():
     return {"path": str(SCENARIOS_ROOT)}
 
 
-def reveal_path(payload):
-    path = resolve_allowed_path(payload.get("path", ""))
+def open_system_path(path):
+    path = Path(path)
     if not path.exists():
         raise ValueError("Path does not exist")
-    command = ["open", "-R", str(path)] if path.is_file() else ["open", str(path)]
-    subprocess.run(command, check=False)
+    if sys.platform == "darwin":
+        command = ["open", "-R", str(path)] if path.is_file() else ["open", str(path)]
+        subprocess.run(command, check=False)
+    elif sys.platform == "win32":
+        if path.is_file():
+            subprocess.run(["explorer", "/select,", str(path)], check=False)
+        else:
+            os.startfile(str(path))  # type: ignore[attr-defined]
+    else:
+        target = path.parent if path.is_file() else path
+        subprocess.run(["xdg-open", str(target)], check=False)
+
+
+def reveal_path(payload):
+    path = resolve_allowed_path(payload.get("path", ""))
+    open_system_path(path)
     return {"path": str(path)}
 
 
@@ -697,6 +711,37 @@ def scenario_folder_from_payload(payload):
 
 def prompt_for_zip_path(default_name):
     default_name = safe_folder_name(default_name, "Scenario") + ".zip"
+    if sys.platform == "win32":
+        powershell_default_name = default_name.replace("'", "''")
+        script = (
+            "Add-Type -AssemblyName System.Windows.Forms; "
+            "$dialog = New-Object System.Windows.Forms.SaveFileDialog; "
+            "$dialog.Title = 'Save scenario ZIP as'; "
+            "$dialog.Filter = 'ZIP files (*.zip)|*.zip|All files (*.*)|*.*'; "
+            f"$dialog.FileName = '{powershell_default_name}'; "
+            "$dialog.DefaultExt = 'zip'; "
+            "$dialog.AddExtension = $true; "
+            "$dialog.OverwritePrompt = $true; "
+            "if ($dialog.ShowDialog() -eq [System.Windows.Forms.DialogResult]::OK) { $dialog.FileName }"
+        )
+        result = subprocess.run(
+            ["powershell", "-NoProfile", "-Sta", "-Command", script],
+            capture_output=True,
+            text=True,
+            check=False,
+        )
+        if result.returncode != 0:
+            return None
+        path_value = result.stdout.strip()
+        if not path_value:
+            return None
+        path = Path(path_value).expanduser()
+        if path.suffix.lower() != ".zip":
+            path = path.with_suffix(".zip")
+        return path
+    if sys.platform != "darwin":
+        downloads = Path.home() / "Downloads"
+        return (downloads if downloads.exists() else Path.home()) / default_name
     script = (
         'set chosenFile to choose file name with prompt "Save scenario ZIP as:" '
         f'default name "{default_name}"\n'
@@ -727,7 +772,7 @@ def export_scenario(payload):
             zip_path.unlink()
         created_path.rename(zip_path)
     if payload.get("reveal", True):
-        subprocess.run(["open", "-R", str(zip_path)], check=False)
+        open_system_path(zip_path)
     return {"scenarioPath": str(scenario_path), "zipPath": str(zip_path), "canceled": False}
 
 
